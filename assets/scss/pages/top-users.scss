@@ -1,0 +1,180 @@
+.top-users{
+  width: 100%;
+
+  padding-top: 69px;
+  padding-left: 43px;
+  padding-right: 59px;
+
+
+
+  .back {
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
+  .content {
+    padding: 52px 40px 52px 55px;
+    min-height: 700px;
+
+    .title {
+      font-family: 'Gotham', sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 36px;
+      color: #F1F1F1;
+
+    }
+
+    .button {
+      max-width: 186px;
+      font-family: 'Gotham', sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+      color: #F1F1F1;
+      text-transform: inherit;
+    }
+  }
+}
+
+.top-user-item {
+  &__img {
+    object-fit: cover;
+  }
+}
+
+
+@media(max-width: 1199px) {
+ .top-users-list .top-user-item {
+    margin-right: 0;
+  }
+}
+
+
+
+@media(max-width: 1106px) {
+  .top-users .content {
+    padding: 30px 10px;
+  }
+ .top-users .top-users-list {
+    .top-user-item{
+      &:nth-child(1),
+      &:nth-child(2) {
+       .top-user-item {
+         &__img {
+           width: 230px;
+           height: 230px;
+         }
+       }
+      }
+    }
+  }
+}
+
+
+@media (max-width: 840px) {
+ .top-users .top-users-list {
+    max-width: 682px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .top-users {
+    padding: 0;
+    height: 100%;
+    .content {
+      height: 100%;
+
+      &>div {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+    .top-users-list {
+      max-width: 367px;
+      .top-user-item{
+        &:nth-child(1),
+        &:nth-child(2) {
+          width: 132px;
+          .top-user-item {
+            &__img {
+              width: 132px;
+              height: 132px;
+            }
+
+            &__title {
+              font-size: 20px;
+            }
+
+            &__location {
+              font-size: 10px;
+            }
+
+            &__description {
+              font-size:12px;
+            }
+          }
+        }
+
+        &:nth-child(3),
+        &:nth-child(4),
+        &:nth-child(5)
+        {
+          width: 82px;
+
+          .top-user-item {
+
+            &__img {
+              width: 82px;
+              height: 82px;
+            }
+
+            &__title {
+              font-size: 13px;
+            }
+
+            &__description {
+              font-size: 9px;
+            }
+          }
+        }
+
+        &:nth-child(6),
+        &:nth-child(7),
+        &:nth-child(8),
+        &:nth-child(9),
+        &:nth-child(10)
+        {
+          margin-left: 18px;
+          .top-user-item {
+            &__img {
+              width: 50px;
+              height: 50px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+
+
+@media (max-width: 500px) {
+  .top-users {
+    padding: 0;
+    height: 100%;
+
+    .content {
+      height: 100%;
+
+      & > div {
+        .button {
+          width: 100%;
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}

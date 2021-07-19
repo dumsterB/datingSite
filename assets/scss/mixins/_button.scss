@@ -1,0 +1,57 @@
+.button {
+  max-width: 320px;
+  width: 100%;
+  font-family: 'Gotham', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  text-transform: uppercase;
+  color: $btn-color;
+  padding: 13px 10px;
+  border-radius: 5px;
+  margin: 8px 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+
+  &__full {
+    color: $btn-full-color;
+    background: linear-gradient(94deg, #133983 -12.18%, #71BC6F 134.71%);
+    box-shadow: inset 0px -63.1213px 52.3445px -49.2654px rgba(26, 26, 26, 0.3), inset 0px 62px 95px -36.9491px rgba(192, 192, 192, 0.3), inset 0px 3.07909px 13.8559px rgba(101, 101, 101, 0.3), inset 0px 0.769772px 15px rgba(227, 222, 255, 0.2);
+    backdrop-filter: blur(4px);
+    border-radius: 43px;
+  }
+
+  &__empty {
+    position: relative;
+    background: rgba(0, 0, 0, 0.85);
+    box-shadow: inset 0px -63.1213px 52.3445px -49.2654px rgba(26, 26, 26, 0.3), inset 0px 62px 95px -36.9491px rgba(192, 192, 192, 0.3), inset 0px 3.07909px 13.8559px rgba(101, 101, 101, 0.3), inset 0px 0.769772px 15px rgba(227, 222, 255, 0.2);
+    backdrop-filter: blur(4px);
+    border-radius: 28px;
+
+    &:hover {
+      color: $btn-full-color;
+      background: linear-gradient(94deg, #133983 -12.18%, #71BC6F 134.71%);
+    }
+
+    //&::before {
+    //  content: "";
+    //  position: absolute;
+    //  top: 0;
+    //  left: 0;
+    //  right: 0;
+    //  bottom: 0;
+    //  border-radius: 5px;
+    //  padding: 2px;
+    //  background: linear-gradient(45deg, rgba(19, 57, 131, 1), rgba(113, 188, 111, 1));
+    //  -webkit-mask: linear-gradient(#fff 0 0) content-box,
+    //  linear-gradient(#fff 0 0);
+    //  -webkit-mask-composite: destination-out;
+    //  mask-composite: exclude;
+    //}
+  }
+}

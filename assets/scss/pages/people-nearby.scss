@@ -1,0 +1,51 @@
+.people-nearby {
+  width: 100%;
+  margin-top: 69px;
+  margin-right: 59px;
+  margin-left: 43px;
+  .content {
+    min-height: 778px;
+  }
+
+  &__title {
+    font-family: 'Gotham', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 43px;
+    color: #F1F1F1;
+  }
+
+  svg {
+    cursor: pointer;
+  }
+}
+
+@media(max-width: 1370px) {
+  .people-nearby {
+    .search-people {
+      transform: scale(0.8);
+    }
+  }
+}
+
+@media(max-width: 850px) {
+  .people-nearby {
+    margin: 0;
+    .content {
+      border-radius: inherit;
+    }
+  }
+}
+
+
+@media(max-width: 768px) {
+  .people-nearby {
+    &__title {
+      font-size: 22px;
+    }
+    .content {
+      padding: 10px;
+    }
+  }
+}

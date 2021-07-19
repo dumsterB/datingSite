@@ -1,0 +1,64 @@
+.status-vip{
+  margin-top: 20px;
+
+  .back {
+    position: absolute;
+    top: 50px;
+    left: 46px;
+    cursor: pointer;
+  }
+
+  .title {
+    font-family: 'Gotham', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 43px;
+    text-align: left;
+    margin-left: 22px;
+    color: #F1F1F1;
+  }
+
+}
+
+
+@media (max-width: 1380px) {
+  .status-vip {
+    .profile-card {
+      width: 336px;
+    }
+  }
+}
+
+@media (max-width: 1290px) {
+  .status-vip {
+    .profile-card {
+      margin-right: 10px !important;
+    }
+  }
+}
+
+
+@media (max-width: 991px) {
+  .status-vip {
+    .profile-card {
+      margin-right: 0 !important;
+    }
+  }
+}
+
+
+@media (max-width: 500px) {
+  .status-vip {
+    .profile-card {
+      margin-right: 0 !important;
+    }
+
+    .vip-block{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 144px;
+    }
+  }
+}

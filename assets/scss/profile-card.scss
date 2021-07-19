@@ -1,0 +1,115 @@
+.profile-card{
+  width: 389px;
+  background: rgba(0, 0, 0, 0.85);
+  box-shadow: inset 0px -63.1213px 52.3445px -49.2654px rgba(26, 26, 26, 0.3), inset 0px 62px 95px -36.9491px rgba(192, 192, 192, 0.3), inset 0px 3.07909px 13.8559px rgba(101, 101, 101, 0.3), inset 0px 0.769772px 15px rgba(227, 222, 255, 0.2);
+  backdrop-filter: blur(4px);
+  border-radius: 28px;
+  padding: 30px 35px;
+  cursor: pointer;
+  margin-bottom: 23px;
+
+  &:nth-child(2n+1){
+    margin-right: 29px;
+  }
+
+  &:hover {
+    color: $btn-full-color;
+    background: linear-gradient(94deg, #133983 -12.18%, #71BC6F 134.71%);
+    opacity: 1;
+
+    .profile-card__price,
+    .vip-block{
+      opacity: 1;
+    }
+
+  }
+
+  svg {
+    width: 56px;
+    height: 56px;
+    margin-right: 20px;
+  }
+
+  &__gold {
+    font-family: 'Gotham',sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    color: #FFFFFF;
+  }
+
+  &__price {
+    font-family: 'Gotham', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+    opacity: 0.5;
+    margin-top: 3px;
+  }
+
+  .vip-block{
+    font-family: 'Gotham';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    color: #FFFFFF;
+    opacity: 0.5;
+  }
+}
+.active {
+  color: $btn-full-color;
+  background: linear-gradient(94deg, #133983 -12.18%, #71BC6F 134.71%);
+  opacity: 1;
+
+  .profile-card__price {
+    opacity: 1;
+  }
+
+   .vip-block{
+    opacity: 1;
+  }
+}
+
+
+@media(max-width: 768px) {
+  .profile-card {
+    width: 300px;
+    padding: 9px;
+  }
+
+
+  .ballance .back {
+    left: 26px;
+  }
+}
+
+
+@media(max-width: 500px) {
+  .profile-card {
+    width: 100%;
+    padding: 3px 9px;
+    margin-right: 0 !important;
+    position: relative;
+
+    .column {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    &__gold {
+      font-size: 18px;
+    }
+
+    &__price {
+      font-size: 16px;
+      position: absolute;
+      right: 19px;
+      top:50%;
+      transform: translateY(-50%);
+    }
+  }
+}

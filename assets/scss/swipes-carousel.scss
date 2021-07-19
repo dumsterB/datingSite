@@ -1,0 +1,73 @@
+.swipes-carousel{
+  max-width: 560px;
+  width: 100%;
+  position: relative;
+  &__card {
+    .photos-block {
+
+      img {
+        width: 274px;
+        background: #C4C4C4;
+        border-radius: 30px;
+      }
+    }
+  }
+
+  .carousel-swipes {
+    .slick-arrow {
+      display: none !important;
+    }
+    .slick-track {
+      display: flex;
+    }
+
+    .slick-slide>.slick-active {
+
+    }
+
+    .slick-active {
+      max-width: 88%;
+      position: relative;
+      z-index: 1;
+      transition: all .3s;
+      transform: scale(0.8);
+
+      &:first-child {
+        right: -80px;
+      }
+      //
+      //&:nth-child(3) {
+      //  transform: scale(0.8);
+      //}
+    }
+    .slick-current {
+      max-width:100%;
+      position: relative;
+      transition: all .3s;
+      transform: scale(1) !important;
+      z-index: 3;
+      right: 0;
+    }
+
+    .slick-current + .slick-active{
+      transform: scale(0.8) !important;
+      left: -80px;
+    }
+  }
+
+  &__button {
+    position: absolute;
+    right: -72px;
+    bottom: 43px;
+
+    &-right {
+      position: relative;
+      right: -22px;
+      cursor: pointer;
+    }
+
+    &-left {
+      cursor: pointer;
+    }
+  }
+}

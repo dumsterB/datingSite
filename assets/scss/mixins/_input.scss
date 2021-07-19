@@ -1,0 +1,54 @@
+.input{
+  width: 100%;
+  &-default {
+    font-family: 'Gotham';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    color: $input-default-color;
+    opacity: 0.3;
+    width: 100%;
+    max-width: 555px;
+    margin-bottom: 53px;
+    border: none;
+    border-bottom: 1px solid #FFFFFF;
+    padding: 12px 20px;
+    background: transparent;
+
+    &:focus {
+      outline: none;
+    }
+
+
+
+  }
+
+  &-code {
+    width: 48px;
+    height: 58px;
+    background: rgba(80, 80, 80, 0.5);
+    border-radius: 10px;
+    font-family: 'Gotham';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    color: $input-default-color;
+    border: none;
+    text-align: center;
+    margin: 0 5.5px;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    &[type=number] {
+      -moz-appearance: textfield;
+    }
+
+  }
+
+}

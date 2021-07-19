@@ -1,0 +1,74 @@
+.quick-meetings {
+  width: 100%;
+  margin-top: 69px;
+  margin-right: 59px;
+  margin-left: 43px;
+
+  .content {
+    max-height: 800px;
+    height: 100%;
+    padding: 0;
+  }
+
+  &__map-block {
+    position: relative;
+  }
+
+  &__button {
+    max-width: 241px;
+    font-weight: 500;
+    font-size: 16px;
+    border-radius: 5px;
+    text-transform: inherit;
+    padding-top: 15px;
+    padding-bottom: 13px;
+    position: absolute;
+    top: 30px;
+    right: 32px;
+    z-index: 20;
+  }
+
+  &__map {
+    width: 100%;
+    height: 434px;
+    //background: url("/img/map.png") no-repeat;
+    background-size: cover;
+  }
+}
+
+
+@media(max-width: 841px){
+  .quick-meetings {
+    margin: 0;
+  }
+}
+
+
+@media(max-width: 768px){
+  .quick-meeting-modal,
+  .quick-meeting-message-modal{
+    width: 100% !important;
+  }
+  .quick-meeting-list .quick-meeting-item{
+    margin-right: 19px;
+  }
+}
+
+@media(max-width: 500px){
+  .quick-meeting {
+    &-list{
+      padding-left: 20px !important;
+    }
+
+  }
+
+  .quick-meetings__button {
+    width: 100% !important;
+    max-width:100% !important;
+    display: block;
+    margin: 0 auto;
+    right: inherit;
+
+  }
+}
+

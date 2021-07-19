@@ -1,0 +1,24 @@
+.quick-meeting-list {
+  max-width: 939px;
+  min-height: 500px;
+  margin-top: 45px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding-left: 57px;
+
+  max-height: 320px;
+  overflow-y: scroll;
+  @include styledScrollbar();
+  position: relative;
+
+  &:after {
+    content:'';
+    background: linear-gradient(270deg, #212527 0%, rgba(32, 35, 37, 0) 71.1%);
+    transform: rotate(90deg);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+}

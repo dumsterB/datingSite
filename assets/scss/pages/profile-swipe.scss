@@ -1,0 +1,182 @@
+.profile-swipe {
+
+  .name {
+    margin-bottom: 20px;
+
+    .age {
+      margin-left: 0;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .right-block {
+    margin-left: 116px;
+  }
+  .right-block-mobile {
+    display: none;
+  }
+
+  .city {
+    font-family: 'Gotham';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 21px;
+    line-height: 25px;
+    color: #F1F1F1;
+
+
+    span {
+      font-weight: normal;
+    }
+
+  }
+
+  &__about {
+    font-family: 'Gotham', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 18px;
+    color: #F1F1F1;
+    max-width: 300px;
+    margin-top: 20px;
+  }
+
+  &__title-interests {
+    font-family: 'Gotham';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    display: flex;
+    align-items: center;
+    color: #F1F1F1;
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
+
+  &__additional-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 23px;
+    max-width: 180px;
+
+    span {
+      font-family: 'Gotham', sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 11px;
+      color: #F1F1F1;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      svg {
+        margin-right: 7px;
+      }
+
+    }
+  }
+
+  &__title-about {
+    font-family: 'Gotham', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    color: #F1F1F1;
+    margin-top: 30px;
+  }
+
+  &__general-information {
+    width:250px;
+    .row {
+      margin-top: 20px;
+
+      &:nth-child(1) {
+        margin-top: 11px;
+      }
+    }
+    .text {
+      font-family: 'Gotham', sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 19px;
+      color: #EFEFEF;
+
+    }
+
+    .value {
+      text-align: left;
+      font-family: 'Gotham', sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 19px;
+      color: #559575;
+    }
+  }
+
+  &__additional-options {
+    .button__empty {
+      width: 78px;
+      height: 60px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:nth-child(1) {
+        margin-right: 12px;
+      }
+
+      &:hover {
+        svg, path {
+          fill:#fff
+        }
+      }
+
+      svg {
+        margin: 0;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 1360px) {
+  .profile-page{
+    &__info {
+      .name{
+        font-size: 33px;
+      }
+    }
+  }
+  .profile-swipe {
+    .right-block {
+      margin-left: 31px;
+    }
+  }
+}
+
+
+@media (max-width: 630px) {
+  .profile-swipe {
+    &__info {
+      margin: 0 auto;
+      margin-top: 20px;
+    }
+    .right-block {
+      display: none;
+    }
+    .right-block-mobile {
+      display: block;
+    }
+  }
+}

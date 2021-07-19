@@ -1,0 +1,111 @@
+.contact {
+  margin-top: 19px;
+  color: #ffffff;
+  cursor: pointer;
+  position: relative;
+
+  &__col{
+    &:nth-child(2) {
+      width: 253px;
+      padding-bottom: 11px;
+      border-bottom: 1px solid #525252;
+
+      &>.row {
+        padding-right: 14px;
+      }
+    }
+  }
+
+  img {
+    width: 56.91px;
+    height: 53.4px;
+    background: #C4C4C4;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-right: 16px;
+  }
+
+  &__name {
+    font-family: 'Gotham', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    color: #F1F1F1;
+    position: relative;
+
+
+  }
+
+  .online {
+    position: relative;
+    :after {
+      content: '';
+      width: 8px;
+      height: 8px;
+      position: absolute;
+      top: 50%;
+      right: -13px;
+      transform: translateY(-50%);
+      background: #85DD26;
+      border-radius: 50%;
+    }
+  }
+
+  &__last-message {
+    font-family: 'Gotham', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 13px;
+    color: #F1F1F1;
+    margin-top: 4px;
+
+    svg {
+      margin-left:3px;
+    }
+
+    .icon-read {
+      position: relative;
+      left: -12px;
+    }
+  }
+
+  &__unread-message {
+    width: 24px;
+    height: 24px;
+    font-family: 'Gotham', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #559575;
+    position: relative;
+
+    &:after {
+      content:'';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: linear-gradient(94deg, #133983 -12.18%, #71BC6F 134.71%);
+      opacity: 0.3;
+      border-radius: 50%;
+    }
+  }
+
+  &__timestamp {
+    font-family: 'Gotham', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 13px;
+    text-align: right;
+    color: #B5B5B5;
+    margin-top: 4px;
+  }
+}

@@ -1,0 +1,340 @@
+.chat {
+  width: 100%;
+  height: 100%;
+  padding: 69px 59px 0 43px;
+
+  .content {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+  }
+
+  .row {
+    height: 100%;
+  }
+
+  &__contacts-block {
+    min-width: 370px;
+    //height: 100%;
+    padding-top: 30px;
+    background: rgba(24, 24, 24, 0.47);
+    backdrop-filter: blur(61px);
+    border-radius: 30px 0px 30px 30px;
+  }
+
+  &__new-answers {
+    width: 329px;
+    height: 52px;
+    font-family: 'Gotham', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    color: $btn-full-color;
+    background: linear-gradient(94deg, #133983 -12.18%, #71BC6F 134.71%);
+    box-shadow: inset 0px -63.1213px 52.3445px -49.2654px rgba(26, 26, 26, 0.3), inset 0px 62px 95px -36.9491px rgba(192, 192, 192, 0.3), inset 0px 3.07909px 13.8559px rgba(101, 101, 101, 0.3), inset 0px 0.769772px 15px rgba(227, 222, 255, 0.2);
+    backdrop-filter: blur(4px);
+    border-radius: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    cursor: pointer;
+  }
+
+  &__answers-block {
+    width: 100%;
+    height: 100%;
+    padding: 64px 48px;
+  }
+
+  &__header {
+    width: 100%;
+    max-height: 124px;
+    padding: 34px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    .back {
+      margin-right: 32px;
+      cursor: pointer;
+    }
+
+    img {
+      width: 57.85px;
+      height: 57.76px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    &-name {
+      font-family: 'Gotham', sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 20px;
+      color: #F1F1F1;
+      margin-left: 16px;
+      cursor: pointer;
+    }
+
+    &-online {
+      font-family: 'Gotham', sans-serif;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 18px;
+      color: #F1F1F1;
+      margin-left: 16px;
+    }
+  }
+
+  &__content {
+    height: 100%;
+    max-height: 642px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    padding-left: 34px;
+    padding-right: 38px;
+    position: relative;
+    @include styledScrollbar();
+
+    .messages {
+      //height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      margin-top: auto;
+
+      .play {
+        margin-right: 10px;
+        cursor: pointer;
+      }
+
+      .audio-waves {
+
+        &:hover {
+          path {
+            transition: all 3s;
+            fill:red
+          }
+        }
+      }
+
+      &-data {
+        text-align: center;
+        font-family: 'Gotham';
+        font-style: normal;
+        font-weight: 300;
+        font-size: 18px;
+        line-height: 22px;
+        color: #BEBEBE;
+        margin: 15px 0;
+      }
+
+      .message-block {
+        width: auto;
+        font-family: 'Gotham', sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        color: #FFFFFF;
+        padding-top: 8px;
+        position: relative;
+        display: -webkit-box;
+        -webkit-justify-content: space-between;
+
+        .message {
+          display: flex;
+          flex-direction: column;
+          padding: 8px;
+
+          .text {
+            word-break: break-word;
+          }
+
+          .images {
+            img {
+              max-width: 219px;
+              object-fit: cover;
+            }
+          }
+
+          .time {
+            font-family: 'Gotham', sans-serif;
+            font-style: normal;
+            font-weight: 300;
+            font-size: 9px;
+            color: #FFFFFF;
+          }
+        }
+
+        &__right {
+          width: 100%;
+          align-self: flex-end;
+          display: flex;
+          position: relative;
+          justify-content: flex-end;
+
+          .message {
+            padding-right: 8px;
+            padding-left: 17px;
+            align-items: flex-end;
+            background: linear-gradient(94deg, #133983 -12.18%, #71BC6F 134.71%);
+            border-radius: 24px 24px 0px 24px;
+
+            .text {
+              margin-right: 24px;
+            }
+
+
+          }
+        }
+
+        &__left {
+          width: 100%;
+          align-self: flex-end;
+          display: flex;
+          position: relative;
+          justify-content: flex-start;
+
+          .message {
+            padding: 8px 13px;
+            background: rgba(242, 242, 242, 0.1);
+            border-radius: 19px 19px 19px 0;
+          }
+
+        }
+      }
+    }
+  }
+
+  &__footer {
+    width: 100%;
+    padding: 34px;
+
+    &-government {
+      min-width: 61px;
+      margin-right: 19px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-textarea {
+      width: 100%;
+      position: relative;
+
+      input {
+        width: 100%;
+        padding: 7px 22px;
+        padding-right: 35px;
+        background: transparent;
+        border: 1px solid rgba(79, 79, 79, 0.2);
+        border-radius: 21.5px;
+        box-sizing: border-box;
+        font-family: 'Gotham', sans-serif;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 17px;
+        color: #C4C4C4;
+        outline: none;
+        word-break: break-word;
+
+      }
+
+      .icon-send {
+        position: absolute;
+        top: 2px;
+        right: 14px;
+        cursor: pointer;
+
+        &:after {
+          content: '';
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(94deg, #133983 -12.18%, #71BC6F 134.71%);
+          border-radius: 50%;
+        }
+
+        svg {
+          width: 17px;
+        }
+      }
+
+    }
+
+    &-actions {
+      min-width: 70px;
+      margin-left: 14px;
+    }
+  }
+}
+
+
+@media (max-width: 1366px) {
+  .chat {
+    &__new-answers {
+      width: 95%;
+    }
+
+    &__answers-block {
+      .answer-list {
+        .answer {
+          & > div {
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+          }
+
+          &__col {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          }
+
+          &__img {
+            margin: 0 auto;
+          }
+
+          &__content {
+            display: flex;
+            justify-content: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media (max-width: 840px) {
+  .chat {
+    padding: 15px 13px;
+    .contact-list {
+      .contact {
+        &__col:nth-child(2) {
+          width: 100%;
+          flex:1;
+        }
+      }
+    }
+    &__answers-block {
+      padding: 16px 10px;
+    }
+    //&__dialogue {
+    //  display: none;
+    //}
+    &__contacts-block {
+      width: 100%;
+    }
+  }
+
+}
+
+
+@media(max-width: 500px) {
+  .chat {
+    padding: 0;
+   .content {
+     border-radius: inherit;
+   }
+  }
+}

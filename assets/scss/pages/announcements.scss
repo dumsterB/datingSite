@@ -1,0 +1,115 @@
+.announcements {
+  width: 100%;
+  margin-top: 69px;
+  margin-left: 43px;
+
+  .content {
+    padding: 40px 40px 52px 55px;
+
+    .title {
+      font-family: 'Gotham', sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 36px;
+      color: #F1F1F1;
+      margin-left: 10px;
+    }
+
+    .my-announcements {
+      font-family: 'Gotham', sans-serif;
+      font-size: 18px;
+      color: #F1F1F1;
+      opacity: 0.3;
+      margin-left: 20px;
+      position: relative;
+      top: 6px;
+      cursor: pointer;
+    }
+
+    .button {
+      max-width: 265px;
+      font-family: 'Gotham', sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+      color: #F1F1F1;
+      text-transform: inherit;
+    }
+
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+
+      .input-default {
+        margin-bottom: 43px;
+        max-width: 100%;
+      }
+    }
+
+    .added-imgs {
+      margin-top: 20px;
+
+      div {
+        position: relative;
+
+        img {
+          border: 1px solid #000000;
+          border-radius: 10px;
+          background: #C4C4C4;
+          box-sizing: border-box;
+        }
+
+        span {
+          width: 20px;
+          height: 20px;
+          position: absolute;
+          top: 3px;
+          right: 3px;
+          background: rgba(0, 0, 0, 0.3);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50%;
+          cursor: pointer;
+
+          .delete-img {
+
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media(max-width: 840px) {
+  .announcements {
+    margin: 0;
+
+    .content {
+      border-radius: inherit;
+    }
+  }
+}
+
+@media(max-width: 500px) {
+  .announcements .content {
+    padding: 20px;
+  }
+  .announcements .content > .row .row{
+    justify-content: flex-start;
+  }
+  .announcements{
+  .announcement-list {
+    .announcement-item {
+      > .row {
+        flex-direction: column;
+      }
+    }
+  }
+}
+
+}
+

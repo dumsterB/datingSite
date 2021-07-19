@@ -1,0 +1,69 @@
+.ballance {
+  margin-top: 20px;
+
+  .back {
+    position: absolute;
+    top: 50px;
+    left: 46px;
+    cursor: pointer;
+  }
+
+  .title {
+    font-family: 'Gotham', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 43px;
+    text-align: left;
+    margin-left: 22px;
+    color: #F1F1F1;
+  }
+
+    &__bill {
+      font-family: 'Gotham', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 86px;
+      line-height: 103px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: #FFFFFF;
+      text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      margin-top: 160px;
+
+
+      svg {
+        width: 103px;
+        height: 104px;
+        padding-left: 20px;
+      }
+    }
+
+  .button {
+    margin-top: 155px;
+    max-width: 252px;
+  }
+
+  &-card-block {
+    margin-top: 33px;
+
+    .button {
+      max-width: 448px !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+      margin-top: 10px;
+      text-transform: inherit;
+
+      svg {
+        margin-left: 27px;
+        position: relative;
+        top: 2px;
+      }
+    }
+  }
+
+
+}

@@ -1,0 +1,25 @@
+.quick-meeting-item {
+  max-width: 91px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 32px;
+  margin-top: 21px;
+  cursor: pointer;
+
+  &__img {
+    width: 91px;
+    height: 85px;
+    border-radius:15px;
+    object-fit: cover;
+  }
+
+  &__name {
+    font-family: 'Gotham';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    color: #FFFFFF;
+    text-align: center;
+    margin-top: 5px;
+  }
+}

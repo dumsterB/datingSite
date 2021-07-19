@@ -1,0 +1,44 @@
+@font-face {
+  font-family: 'Gotham';
+  src: local('Gotham Book'), local('Gotham-Book'),
+  url('../fonts/Gotham/Gotham-Book.woff2') format('woff2'),
+  url('../fonts/Gotham/Gotham-Book.woff') format('woff'),
+  url('../fonts/Gotham/Gotham-Book.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src: local('Gotham Book'), local('Gotham-Book'),
+  url('../fonts/Gotham/Gotham-Bold.otf') format('otf'),
+  url('../fonts/Gotham/GothamBold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src: local('Gotham Book'), local('Gotham-Book'),
+  url('../fonts/Gotham/GothamMedium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src: local('Gotham Book'), local('Gotham-Book'),
+  url('../fonts/Gotham/Gotham-Light.otf') format('otf'),
+  url('../fonts/Gotham/GothamLight.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Quicksand';
+  src: local('Gotham Book'), local('Gotham-Book'),
+  url('../fonts/Quicksand/Quicksand-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

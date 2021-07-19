@@ -1,0 +1,51 @@
+.quick-meeting-message-modal {
+  box-shadow: inset 0px 62px 95px -36.9491px rgba(192, 192, 192, 0.3), inset 0px 3.07909px 13.8559px rgba(101, 101, 101, 0.3), inset 0px 0.769772px 15px rgba(227, 222, 255, 0.2);
+
+  &__avatar {
+    width: 83px;
+    height: 93px;
+    display: block;
+    background: url("/img/overlay-icon-send.png") no-repeat;
+    background-position: center;
+    background-size: cover;
+    margin: 0 auto;
+    margin-top: -95px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #efefef;
+      position: relative;
+      top: -5px;
+    }
+  }
+
+  .title {
+    font-family: 'Gotham', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 113%;
+    text-align: center;
+    color: #559575;
+  }
+
+  textarea {
+    width: 100%;
+    font-size: 14px;
+    line-height: 119.5%;
+    color: #FFFFFF;
+    background: rgba(48, 48, 48, 0.59);
+    backdrop-filter: blur(12px);
+    border-radius: 18px;
+    border: none;
+    padding: 18px 35px;
+    outline: none;
+    margin-bottom: 18px;
+    margin-top: 18px;
+  }
+}

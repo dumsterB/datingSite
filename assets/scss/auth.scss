@@ -1,0 +1,43 @@
+.auth {
+  display: flex;
+  margin: 19px 0;
+  margin-bottom: 31px;
+
+  &__avatar {
+    width: 100px;
+    height: 100px;
+    background: #C4C4C4;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 30px;
+    object-fit: cover;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 19px;
+  }
+
+  &__name {
+    font-family: 'Gotham', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 30px;
+    color: #F1F1F1;
+    margin-bottom: 13px;
+    text-decoration: none;
+  }
+
+  &__golds {
+    font-family: 'Quicksand', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    color: #F1F1F1;
+    margin-left: 10px;
+  }
+}

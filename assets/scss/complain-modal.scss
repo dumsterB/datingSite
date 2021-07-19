@@ -1,0 +1,121 @@
+.complain-modal {
+
+  .subtitle {
+    font-family: 'Gotham', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+
+  &__block {
+    width: 214px;
+    height: 214px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("/icons/complain-modal.svg") no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+
+  .row {
+    max-width: 365px;
+    margin: 0 auto;
+  }
+  .button {
+    max-width: 159px !important;
+    max-height: 50px;
+    font-weight: normal;
+    color: #559575;
+
+    &:hover {
+      color:#fff;
+    }
+  }
+
+
+
+  .select-block {
+    width: 100%;
+    max-width: 315px;
+    margin: 0 auto;
+    padding: 5px;
+    position: relative;
+
+    &:after {
+      content:'';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 5px;
+      padding: 2px;
+      background: linear-gradient(
+          45deg
+        , #133983, #71bc6f);
+      -webkit-mask: linear-gradient(#fff 0, #fff 0) content-box, linear-gradient(#fff 0, #fff 0);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
+    }
+
+
+    .vs__dropdown-toggle {
+      border:none;
+
+    }
+
+    .vs__dropdown-menu {
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(12px);
+      font-family: 'Gotham', sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 22px;
+      color: #EFEFEF;
+      max-height: 220px;
+
+
+
+      li {
+        color: #EFEFEF;
+      }
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    .vs__selected {
+      font-family: 'Gotham', sans-serif;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 19px;
+      color: #EFEFEF;
+    }
+
+    .vs__clear{
+      display: none;
+    }
+  }
+
+  .input-default {
+    max-width: 314px;
+    margin: 0 auto;
+    margin-top: 15px;
+    display: block;
+  }
+  .button__full {
+    margin-top: 30px;
+    min-height: 50px;
+  }
+}

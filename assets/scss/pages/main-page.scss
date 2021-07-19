@@ -1,0 +1,157 @@
+.main {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  z-index: 1;
+  background-image: url("/img/background.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  display: flex;
+
+  &:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  .content {
+    width: 100%;
+    height: fit-content;
+    max-width: 1000px;
+    background: rgba(24, 24, 24, 0.47);
+    backdrop-filter: blur(61px);
+    border-radius: 30px;
+    padding: 20px 77px 49px 53px;
+  }
+
+  &__content {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    @include removeScrollbar();
+  }
+}
+
+.header-mobile {
+  max-height: 70px;
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(24, 24, 24, 0.81);
+  box-shadow: 9px 0px 35px rgba(0, 0, 0, 0.37);
+  backdrop-filter: blur(61px);
+  padding: 0 14px;
+  z-index: 200;
+  //position: relative;
+
+  &__burger {
+    width: 21px;
+    position: relative;
+
+    span {
+      display: block;
+      width: 21px;
+      height: 1px;
+      background: #559575;
+      margin-bottom: 8px;
+      position: relative;
+      transition: all .2s;
+    }
+
+    &-active {
+      position: relative;
+
+      span {
+        position: absolute;
+
+        &:nth-child(1) {
+          transform: rotateZ(45deg);
+          top: 0;
+        }
+
+        &:nth-child(2) {
+          display: none;
+        }
+
+        &:nth-child(3) {
+          transform: rotateZ(-45deg);
+          top: 0;
+        }
+      }
+    }
+  }
+
+  &__menu {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 999999;
+    top: 59px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(24, 24, 24, 0.90);
+    box-shadow: 9px 0px 35px rgba(0, 0, 0, 0.37);
+    display: none;
+    transition: all .3s;
+
+    &-active {
+      transition: all .3s;
+      display: block;
+    }
+  }
+
+
+  &__logo {
+    position: relative;
+    left: 15px;
+
+    svg {
+      width: 186px;
+    }
+  }
+
+  .auth {
+    justify-content: center;
+  }
+
+  .links-list {
+    max-width: 350px;
+    justify-content: center;
+    margin: 0 auto;
+
+    .link {
+      margin-bottom: 5px;
+    }
+  }
+}
+
+
+@media(max-width: 840px) {
+  .main {
+    flex-direction: column;
+
+    .header-mobile {
+      display: flex;
+    }
+  }
+}
+
+
+@media(max-width: 600px) {
+  .header-mobile {
+    max-height: 59px;
+
+    &__logo {
+      svg {
+        width: 125px;
+      }
+    }
+  }
+}

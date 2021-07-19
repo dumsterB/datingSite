@@ -1,0 +1,139 @@
+.photo-slider-modal {
+  background: transparent;
+  box-shadow: none;
+  width: 1200px;
+
+
+
+  .icons-row {
+    font-family: 'Gotham';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 15px;
+    letter-spacing: -0.165px;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    cursor: pointer;
+    position: relative;
+
+
+
+    &:nth-child(1){
+      margin-right: 46px;
+
+      &:after {
+        content:'';
+        width: 1px;
+        height: 23.5px;
+        opacity: 0.2;
+        background: #ffffff;
+        position: absolute;
+        right: -22px;
+      }
+    }
+
+
+
+    svg {
+      margin-right: 9px;
+    }
+
+  }
+
+  &__button {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+
+    &-left {
+      position: relative;
+      left: -10px;
+      cursor: pointer;
+    }
+
+    &-right{
+      position: relative;
+      right: -10px;
+      cursor: pointer;
+    }
+  }
+
+
+
+  .slick-slider {
+    height: 100%;
+    display: flex!important;
+    justify-content: center;
+    align-items: center;
+
+    .slick-arrow {
+      display: none !important;
+    }
+
+    .slick-track {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: auto !important;
+    }
+
+    .slick-slide {
+      //margin-right: 111px;
+    }
+
+    .slick-active {
+      display: flex!important;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .slick-current{
+      .carousel-item {
+        &:after {
+          display: none;
+        }
+      }
+    }
+  }
+
+
+
+  .carousel {
+    display: flex;
+
+    &-item {
+      width: 450.04px;
+      height: 642.15px;
+      margin: 0 auto;
+      border-radius: 22px;
+      position: relative;
+      max-width: 88%;
+
+      &:after {
+        content: '';
+        width: 100%;
+        height: 99.66%;
+        border-radius: 22px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: rgba(6, 6, 6, 0.75);
+        //backdrop-filter: blur(9px);
+      }
+
+      img {
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+        //transition: all .4s;
+
+      }
+    }
+  }
+
+
+}

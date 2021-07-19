@@ -1,0 +1,45 @@
+.verification-code {
+  .back {
+    position: absolute;
+    left: 36px;
+    top: 54px;
+    cursor: pointer;
+  }
+
+  .title {
+    font-family: 'Gotham', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 52px;
+    text-align: center;
+    text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    background: -webkit-linear-gradient(rgba(19, 57, 131, 1), rgba(113, 188, 111, 1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 28px;
+    margin-top: 20px;
+  }
+
+ form {
+   .text {
+     font-family: 'Gotham', sans-serif;
+     font-style: normal;
+     font-weight: normal;
+     font-size: 18px;
+     line-height: 22px;
+     color: #F1F1F1;
+     display: block;
+     text-align: center;
+     margin: 0 auto;
+     margin-top: 22px;
+
+     .send-again{
+       background: -webkit-linear-gradient(rgba(19, 57, 131, 1), rgba(113, 188, 111, 1));
+       -webkit-background-clip: text;
+       -webkit-text-fill-color: transparent;
+       cursor: pointer;
+     }
+   }
+ }
+
+}
