@@ -1,0 +1,35 @@
+
+name: Dev Deploy
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: SSH COPY
+        uses: easingthemes/ssh-deploy@v2.1.5
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY_DEV }}
+          REMOTE_HOST: ${{ secrets.HOST_DEV }}
+          REMOTE_USER: ${{ secrets.USER_DEV }}
+          REMOTE_PORT: 1452
+          SOURCE: ""
+          ARGS: "-rltgoDzvO --delete"
+          TARGET: "/var/www/alanica/front"
+
+      - name: UPDATE APP
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_DEV }}
+          username: ${{ secrets.USER_DEV }}
+          key: ${{ secrets.SSH_KEY_DEV }}
+          command_timeout: 20m
+          port: 1452
+          script: sh ~/scripts/alanica/front-deploy.sh
+
