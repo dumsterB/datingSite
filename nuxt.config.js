@@ -3,9 +3,6 @@ export default {
   ssr: false,
   head: {
     title: 'Alanica',
-    htmlAttrs: {
-      lang: 'en'
-    },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -53,19 +50,14 @@ export default {
 
   ],
   i18n: {
-    locales: ['en', 'ru'],
+    locales: [
+      { name: 'Rus', code: 'ru', iso: 'ru-RU', file: 'ru.js' },
+      { name: 'English', code: 'en', iso: 'en-US', file: 'en.js' }
+    ],
     defaultLocale: 'ru',
-    vueI18n: {
-      fallbackLocale: 'ru',
-      messages: {
-        en: {
-          welcome: 'Welcome'
-        },
-        ru: {
-          welcome: 'Добро пожаловать'
-        },
-      }
-    }
+    fallbackLocale: 'ru',
+    lazy: true,
+    langDir: 'lang',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
