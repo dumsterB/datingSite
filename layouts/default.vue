@@ -79,7 +79,7 @@ export default {
   methods: {
     logout() {
       this.$store.dispatch('user/logout');
-      this.$router.push('/')
+      this.$router.push(this.localePath('/'))
     },
     uploadPhoto() {
       this.edit = !!this.$route.params.id;

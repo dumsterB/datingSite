@@ -1,17 +1,17 @@
 <template>
   <div class="verification-code" v-if="isVerifCode">
-    <span class="back">
+    <span class="back" @click="$emit('setVerificCode')">
       <inline-svg src="/icons/arrow-left.svg"/>
     </span>
     <h2 class="title">Your Code</h2>
     <form action="">
       <div class="row jc-center">
-        <input type="number" class="input-code" @keypress="maxLength" />
-        <input type="number" class="input-code" @keypress="maxLength" />
-        <input type="number" class="input-code" @keypress="maxLength" />
-        <input type="number" class="input-code" @keypress="maxLength" />
-        <input type="number" class="input-code" @keypress="maxLength" />
-        <input type="number" class="input-code" @keypress="maxLength" />
+        <input v-focus type="text" class="input-code" @keyup="onKeyup" maxlength="1"/>
+        <input type="text" class="input-code" @keyup="onKeyup" maxlength="1"/>
+        <input type="text" class="input-code" @keyup="onKeyup" maxlength="1"/>
+        <input type="text" class="input-code" @keyup="onKeyup" maxlength="1"/>
+        <input type="text" class="input-code" @keyup="onKeyup" maxlength="1"/>
+        <input type="text" class="input-code" @keyup="onKeyup" maxlength="1"/>
       </div>
       <span class="text">Didn’t get a code? <span class="send-again">Send again</span></span>
     </form>
@@ -41,6 +41,18 @@ methods:{
   maxLength(e){
     console.log(e.target.value.length)
     if (e.target.value.length >= 1) return false
+  },
+  async onKeyup(event){
+    event.target.value = event.target.value.replace(/[^0-9]/g,'')
+    if((event.keyCode >= 48 && event.keyCode <= 57)||(event.keyCode >= 96&&event.keyCode<=105)){
+      const next = event.target.nextElementSibling
+      if(next === null){
+        await this.$emit('confirmVerificCode', {mobile: '+380637058924', password: 'Realemil777'})
+        return
+      }
+      event.target.nextElementSibling.focus()
+    }
+    return
   }
 }
 }

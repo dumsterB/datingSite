@@ -1,15 +1,16 @@
 <template>
   <div class="send-verification-code" v-if="isSendVerifCode">
-    <span class="back">
+    <span class="back" @click="$emit('setSendVerificCode')">
       <inline-svg src="/icons/arrow-left.svg"/>
     </span>
-    <h2 class="title">Search</h2>
+    <h2 class="title">Phone</h2>
     <form @submit.prevent="send" @keypress.enter="send">
       <div class="row jc-center">
         <input type="text" class="input-default phone-code" v-model="phoneCode">
-        <input type="text" class="input-default phone-number" v-model="phoneNumber" placeholder="Phone Number">
+        <input v-focus type="text" class="input-default phone-number" v-model="phoneNumber" placeholder="Phone Number" required>
       </div>
       <p class="text">We will send you a varification code</p>
+      <button class="button button__full" >Next</button>
     </form>
   </div>
 </template>

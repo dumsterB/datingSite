@@ -1,25 +1,30 @@
 <template>
   <div class="auth-page">
     <div class="container">
+      <Loader v-if="loading"/>
       <LoginForm
-        v-if="!isForgotPassword && !isSignUp && !isQrCode && !isSendVerifCode && !isVerifCode"
+        v-if="!isForgotPassword && !isSignUp && !isQrCode && !isSendVerifCode && !isVerifCode && !isRegisterPhoto"
         :isForgotPassword="isForgotPassword"
         :isSignUp="isSignUp"
         :isQrCode="isQrCode"
         :isSendVerifCode="isSendVerifCode"
+        :authType="'login'"
         @setForgotPassword="setForgotPassword"
         @setSignUp="setSignUp"
         @setQrCode="setQrCode"
+        @sendMobileLoginCode="sendMobileLoginCode"
+        @login="login"
       />
       <PasswordRecovery
         :isForgotPassword="isForgotPassword"
         @setForgotPassword="setForgotPassword"
         @recoveryPassword="recoveryPassword"
       />
-      <SignUpForm :isSignUp="isSignUp" @setSignUp="setSignUp" @sendSendUp="sendSendUp"/>
+      <SignUpForm :isSignUp="isSignUp" :authType="'register'" @setSignUp="setSignUp" @sendSendUp="sendSendUp"/>
       <LogInWithQrCode :isQrCode="isQrCode" @setQrCode="setQrCode"/>
-      <SendVarificationCode :isSendVerifCode="isSendVerifCode" @sendVerificCode="sendVerificCode"/>
-      <VeriticationCode :isVerifCode="isVerifCode"/>
+      <SendVarificationCode :authType="authType" :isSendVerifCode="isSendVerifCode" @setSendVerificCode="setSendVerificCode" @sendVerificCode="sendVerificCode"/>
+      <VeriticationCode :isVerifCode="isVerifCode" @setVerificCode="setVerificCode" @confirmVerificCode="confirmVerificCode"/>
+      <RegisterPhoto :isRegisterPhoto="isRegisterPhoto" @setRegisterPhoto="setRegisterPhoto"/>
     </div>
     <SentPasswordModal :modal="modals.passwordModal" @close="close"></SentPasswordModal>
   </div>
@@ -33,6 +38,8 @@ import SignUpForm from '@/components/Forms/SignUpForm';
 import SendVarificationCode from '@/components/SendVarificationCode';
 import VeriticationCode from '@/components/VeriticationCode';
 import SentPasswordModal from '@/components/modals/SentPasswordModal';
+import RegisterPhoto from '@/components/RegisterPhoto';
+import Loader from "@/components/Loader";
 
 export default {
   components: {
@@ -42,9 +49,12 @@ export default {
     LogInWithQrCode,
     SendVarificationCode,
     VeriticationCode,
-    SentPasswordModal
+    SentPasswordModal,
+    RegisterPhoto,
+    Loader
   },
   layout: 'auth',
+  middleware: "auth",
   comments: {},
   data() {
     return {
@@ -53,12 +63,15 @@ export default {
       isQrCode: false,
       isSendVerifCode: false,
       isVerifCode: false,
+      isRegisterPhoto: false,
+      authType: null,
       newUser: {},
       modals: {
         passwordModal: {
           show: false
         }
-      }
+      },
+      loading: false
     }
   },
   methods: {
@@ -71,6 +84,20 @@ export default {
     setQrCode() {
       this.isQrCode = !this.isQrCode;
     },
+    setSendVerificCode() {
+      if(this.authType==='register'){
+        this.isSignUp = !this.isSignUp;
+      }       
+      this.isSendVerifCode = !this.isSendVerifCode;
+    },
+    setVerificCode() {
+      this.isSendVerifCode = !this.isSendVerifCode;
+      this.isVerifCode = !this.isVerifCode;
+    },
+    setRegisterPhoto() {
+      this.isRegisterPhoto = !this.isRegisterPhoto;
+      this.isVerifCode = !this.isVerifCode;
+    },
     recoveryPassword() {
       this.modals.passwordModal.show = true;
     },
@@ -82,13 +109,37 @@ export default {
       this.newUser = payload;
       await this.$store.dispatch('user/register', payload)
 
-      // this.isSignUp = !this.isSignUp;
-      // this.isSendVerifCode = true;
+      this.authType = 'register';
+      this.isSignUp = !this.isSignUp;
+      this.isSendVerifCode = true;
+    },
+    async login(payload) {
+      this.loading = true
+      await this.$store.dispatch('user/login', payload).then(data => {
+          setTimeout(() => {
+            this.$router.push(this.localePath('/profile'))
+          })
+          this.loading = false
+        }).catch(e => {
+          console.log(e)
+          this.loading = false
+        })
     },
     sendVerificCode(payload) {
-      console.log(payload);
       this.isSendVerifCode = false;
       this.isVerifCode = true
+    },
+    async confirmVerificCode(payload) {
+      if(this.authType==='register'){
+        this.isVerifCode = false;
+        this.isRegisterPhoto = true
+      } else {
+        await this.login(payload);
+      }
+    },
+    sendMobileLoginCode(){
+      this.authType = 'login';
+      this.isSendVerifCode = true;
     }
   }
 }

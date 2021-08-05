@@ -7,8 +7,8 @@
     <form @submit.prevent="send">
       <div class="row">
         <div class="column">
-          <input type="text" placeholder="Full Name" v-model="form.full_name"  class="input-default"/>
-          <input type="password" placeholder="Password" v-model="form.password"  class="input-default"/>
+          <input v-focus type="text" placeholder="Full Name" v-model="form.full_name"  class="input-default" required/>
+          <input type="password" placeholder="Password" v-model="form.password"  class="input-default" required/>
 <!--          <input type="text" placeholder="Phone" required class="input-default m-0"/>-->
           <div class="select-block">
             <v-select class="select-block__day" v-model="selectedDay" :options="optionsDays">
@@ -29,17 +29,17 @@
           </div>
         </div>
         <div class="column">
-          <input type="email" placeholder="Email" v-model="form.email"  class="input-default"/>
-          <input type="password" placeholder="Password again" v-model="form.password_again"  class="input-default"/>
+          <input type="email" placeholder="Email" v-model="form.email"  class="input-default" required/>
+          <input type="password" placeholder="Password again" v-model="form.password_again" class="input-default" required/>
           <div class="sex-block">
             <span class="sex-block__title">Sex:</span>
             <div class="row-radio">
           <span>
-            <input type="radio" id="mail" name="male" value="male" v-model="gender">
+            <input type="radio" id="mail" value="male" v-model="form.gender">
             <label for="mail">Mail</label>
           </span>
               <span>
-             <input type="radio" id="female" name="female" value="female" v-model="gender">
+             <input type="radio" id="female" value="female" v-model="form.gender">
             <label for="female">Female</label>
           </span>
             </div>
@@ -65,13 +65,15 @@ export default {
       selectedMonth: 'January',
       selectedYear: 2021,
       optionsMonths: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-      gender: '',
       form:{
         full_name:'',
         password:'',
         password_again:'',
-        mail:''
-      }
+        email:'',
+        file:'',
+        gender: 'male',
+      },
+      image:null
     }
   },
   computed: {
@@ -100,16 +102,25 @@ export default {
       //   orientation: [this.gender],
       //   birthday: "1999-10-10"
       // }
-      const payload = {
+      /*const payload = {
         name: 'user1',
         mobile: '+380622319223',
         gender: 'male',
         orientation: ['male'],
-      }
+      }*/
+      const payload = {
+        name: this.form.full_name,
+        email: this.form.email,
+        phone: this.form.phone,
+        password: this.form.password,
+        gender: this.form.gender,
+        orientation: ['male'],
+        image: this.image
+      };
 
       console.log(payload)
       this.$emit('sendSendUp', payload)
-    }
+    } 
   }
 }
 </script>
