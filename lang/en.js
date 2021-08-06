@@ -1,5 +1,22 @@
 export default {
     'Continue' : 'Continue',
+    'Next' : 'Next',
+    'Phone': 'Phone',
+    'Your Code' : 'Your Code',
     'Login with Phone' : 'Login with Phone',
-    'Forgot password?' : 'Forgot password?'
+    'Forgot password?' : 'Forgot password?',
+    'Not with us?' : 'Not with us?',
+    'Sign Up' : 'Sign Up',
+    'Log in with QR code' : 'Log in with QR code',
+    'Continue' : 'Continue',
+    'Continue' : 'Continue',
+    'Swipes' : 'Swipes',
+    'My account' : 'My account',
+    'People nearby' : 'People nearby',
+    'Forums' : 'Forums',
+    'Quick meetings' : 'Quick meetings',
+    'Chats' : 'Chats',
+    'TOP Users' : 'TOP Users',
+    'Ads' : 'Ads',
+    'Entertainment' : 'Entertainment'
   }

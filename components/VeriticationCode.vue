@@ -3,7 +3,7 @@
     <span class="back" @click="$emit('setVerificCode')">
       <inline-svg src="/icons/arrow-left.svg"/>
     </span>
-    <h2 class="title">Your Code</h2>
+    <h2 class="title">{{$t('Your Code')}}</h2>
     <form action="">
       <div class="row jc-center">
         <input v-focus type="number" class="input-code" @keyup="onKeyup" min="0" max="9"/>

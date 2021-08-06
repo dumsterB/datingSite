@@ -20,8 +20,8 @@
         </a>
       </div>
       <div class="sign-up">
-        <p @click="$emit('setSignUp')">Not with us? <span>Sign Up</span></p>
-        <p @click="$emit('setQrCode')">Log in with QR code</p>
+        <p @click="$emit('setSignUp')">{{ $t("Not with us?") }} <span>{{ $t("Sign Up") }}</span></p>
+        <p @click="$emit('setQrCode')">{{ $t("Log in with QR code") }}</p>
       </div>
     </form>
   </div>

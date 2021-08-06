@@ -1,5 +1,20 @@
 export default {
     'Continue' : 'Далее',
+    'Next' : 'Далее',
+    'Phone': 'Введите номер',
+    'Your Code' : 'Подтвердите код',
     'Login with Phone' : 'Войти через телефон',
-    'Forgot password?' : 'Забыли пароль?'
+    'Forgot password?' : 'Забыли пароль?',
+    'Not with us?' : 'Еще не с нами?',
+    'Sign Up' : 'Зарегистрироваться',
+    'Log in with QR code' : 'Войти с помощью QR кода',
+    'Swipes' : 'Свайпы',
+    'My account' : 'Мой профиль',
+    'People nearby' : 'Люди рядом',
+    'Forums' : 'Форумы',
+    'Quick meetings' : 'Быстрые свидания',
+    'Chats' : 'Чаты',
+    'TOP Users' : 'Лидеры',
+    'Ads' : 'Объявления',
+    'Entertainment' : 'Развлечения'
   }

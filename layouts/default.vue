@@ -79,17 +79,6 @@ export default {
   data() {
     return {
       edit: false,
-      links: [
-        {id: 1, href: '/swipes', icon: 'swipe', title: 'Swipes', vip: false},
-        {id: 2, href: '/profile', icon: 'profile', title: 'My account', vip: false},
-        {id: 3, href: '/people-nearby', icon: 'people-nearby', title: 'People nearby', vip: false},
-        {id: 4, href: '/forums', icon: 'forums', title: 'Forums', vip: true},
-        {id: 5, href: '/quick-meetings', icon: 'quick-meetings', title: 'Quick meetings', vip: true},
-        {id: 6, href: '/chat', icon: 'chats', title: 'Chats', vip: false},
-        {id: 7, href: '/top-users', icon: 'top-users', title: 'TOP Users', vip: false},
-        {id: 8, href: '/announcements', icon: 'ads', title: 'Ads', vip: false},
-        {id: 9, href: '/entertainment', icon: 'entertainment', title: 'Entertainment', vip: false},
-      ],
       isActiveMenu: false,
       locales : [
         {label: 'Русский', code: 'ru', src: '/icons/ru-flag.svg'},
@@ -137,6 +126,19 @@ export default {
     },
     localesList(){
       return this.locales.filter(loc => loc.code !== this.$i18n.locale);
+    },
+    links(){
+      return [
+        {id: 1, href: '/swipes', icon: 'swipe', title: this.$t('Swipes'), vip: false},
+        {id: 2, href: '/profile', icon: 'profile', title: this.$t('My account'), vip: false},
+        {id: 3, href: '/people-nearby', icon: 'people-nearby', title: this.$t('People nearby'), vip: false},
+        {id: 4, href: '/forums', icon: 'forums', title: this.$t('Forums'), vip: true},
+        {id: 5, href: '/quick-meetings', icon: 'quick-meetings', title: this.$t('Quick meetings'), vip: true},
+        {id: 6, href: '/chat', icon: 'chats', title: this.$t('Chats'), vip: false},
+        {id: 7, href: '/top-users', icon: 'top-users', title: this.$t('TOP Users'), vip: false},
+        {id: 8, href: '/announcements', icon: 'ads', title: this.$t('Ads'), vip: false},
+        {id: 9, href: '/entertainment', icon: 'entertainment', title: this.$t('Entertainment'), vip: false},
+      ]
     },
     currentLocale:{
       get(){

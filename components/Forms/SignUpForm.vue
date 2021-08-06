@@ -46,7 +46,7 @@
           </div>
         </div>
       </div>
-      <button class="button button__full" >Next</button>
+      <button class="button button__full" >{{$t('Next')}}</button>
     </form>
   </div>
 </template>
