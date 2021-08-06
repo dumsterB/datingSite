@@ -6,7 +6,7 @@
     <h2 class="title">Your Code</h2>
     <form action="">
       <div class="row jc-center">
-        <input v-focus type="text" class="input-code" @keyup="onKeyup" maxlength="1"/>
+        <input v-focus type="number" class="input-code" @keyup="onKeyup" min="0" max="9"/>
         <input type="number" class="input-code" @keyup="onKeyup" min="0" max="9"/>
         <input type="number" class="input-code" @keyup="onKeyup" min="0" max="9"/>
         <input type="number" class="input-code" @keyup="onKeyup" min="0" max="9"/>

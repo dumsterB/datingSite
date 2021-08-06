@@ -11,12 +11,29 @@
         <div class="sidebar-left__content">
           <Auth v-if="userData" :user="userData" :coins="coins.coins"/>
           <LinksList :links="links"/>
+          <v-select class="select-block__year"
+          v-model="currentLocale"
+          :clearable="false" 
+          :options="localesList"
+          @input="changeLocale"
+          >
+            <template v-slot:selected-option="currentLocale">
+                <inline-svg :src="currentLocale.src"/> <span>{{ currentLocale.label }}</span>
+            </template>
+            <template v-slot:option="option">
+              <span :class="option.icon"></span>
+              <inline-svg :src="option.src"/> <span>{{ option.label }}</span>
+            </template>
+            <template #open-indicator="{ attributes }">
+              <span v-bind="attributes"><inline-svg src="/icons/arrow-dwn.svg"/></span>
+            </template>
+          </v-select>
         </div>
         <div class="sidebar-left__footer">
-        <span class="log-out" @click="logout">
-        <inline-svg src="/icons/logout.svg"/>
-          Log out
-        </span>
+          <span class="log-out" @click="logout">
+          <inline-svg src="/icons/logout.svg"/>
+            Log out
+          </span>
         </div>
       </div>
       <div class="header-mobile">
@@ -73,7 +90,11 @@ export default {
         {id: 8, href: '/announcements', icon: 'ads', title: 'Ads', vip: false},
         {id: 9, href: '/entertainment', icon: 'entertainment', title: 'Entertainment', vip: false},
       ],
-      isActiveMenu: false
+      isActiveMenu: false,
+      locales : [
+        {label: 'Русский', code: 'ru', src: '/icons/ru-flag.svg'},
+        {label: 'English', code: 'en', src: '/icons/en-flag.svg'}
+      ]
     }
   },
   methods: {
@@ -86,6 +107,14 @@ export default {
     },
     closeMenu(){
       this.isActiveMenu = false
+    },
+    changeLocale(value){
+      const route = $nuxt.$route.path.match(/\/en\//);
+      if(route) {
+        this.$router.push($nuxt.$route.path.replace(/\/en/,''));
+      } else {
+        this.$router.push('/en'+$nuxt.$route.path);
+      }
     }
   },
   created() {
@@ -106,6 +135,17 @@ export default {
     coins() {
       return this.$store.getters["user/coins"];
     },
+    localesList(){
+      return this.locales.filter(loc => loc.code !== this.$i18n.locale);
+    },
+    currentLocale:{
+      get(){
+        return this.locales.filter(loc => loc.code === this.$i18n.locale);
+      },
+      set(newName){
+        return newName
+      } 
+    }
   },
   mounted() {
     this.uploadPhoto()

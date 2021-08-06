@@ -22,13 +22,6 @@
       <div class="sign-up">
         <p @click="$emit('setSignUp')">Not with us? <span>Sign Up</span></p>
         <p @click="$emit('setQrCode')">Log in with QR code</p>
-        <NuxtLink :to="switchLocalePath('en')">
-          EN
-        </NuxtLink>
-        |
-        <NuxtLink :to="switchLocalePath('ru')">
-          RU
-        </NuxtLink>
       </div>
     </form>
   </div>
