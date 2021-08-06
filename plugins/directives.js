@@ -13,3 +13,9 @@ Vue.directive('click-outside', {
     document.body.removeEventListener('click', el.clickOutsideEvent)
   }
 });
+
+Vue.directive('focus', {
+  inserted: function (el) {
+    el.focus()
+  }
+})
