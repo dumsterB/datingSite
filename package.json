@@ -20,6 +20,7 @@
     "nuxt-svg-loader": "^1.2.0",
     "sass-loader": "7.1.0",
     "vue-carousel": "^0.18.0",
+    "vue-cropperjs": "^4.2.0",
     "vue-inline-svg": "^2.0.0",
     "vue-select": "^3.11.2",
     "vue-slick-carousel": "^1.0.6",
