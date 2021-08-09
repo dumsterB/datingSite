@@ -50,8 +50,6 @@
         id="img"
         type="file"
         name="image"
-        accept="image/*"
-        style="visibility:hidden"
         @change="setImage"
       />
     </form>
