@@ -24,7 +24,7 @@
       <LogInWithQrCode :isQrCode="isQrCode" @setQrCode="setQrCode"/>
       <SendVarificationCode :authType="authType" :isSendVerifCode="isSendVerifCode" @setSendVerificCode="setSendVerificCode" @sendVerificCode="sendVerificCode"/>
       <VeriticationCode :isVerifCode="isVerifCode" @setVerificCode="setVerificCode" @confirmVerificCode="confirmVerificCode"/>
-      <RegisterPhoto :isRegisterPhoto="isRegisterPhoto" @setRegisterPhoto="setRegisterPhoto"/>
+      <RegisterPhoto :isRegisterPhoto="isRegisterPhoto" @setRegisterPhoto="setRegisterPhoto" @getRegisterPhoto="getRegisterPhoto"/>
     </div>
     <SentPasswordModal :modal="modals.passwordModal" @close="close"></SentPasswordModal>
   </div>
@@ -107,7 +107,7 @@ export default {
     },
     async sendSendUp(payload) {
       this.newUser = payload;
-      await this.$store.dispatch('user/register', payload)
+      //await this.$store.dispatch('user/register', payload)
 
       this.authType = 'register';
       this.isSignUp = !this.isSignUp;
@@ -121,21 +121,36 @@ export default {
           })
           this.loading = false
         }).catch(e => {
-          console.log(e)
           this.loading = false
         })
     },
     sendVerificCode(payload) {
+      this.newUser.mobile = payload;
       this.isSendVerifCode = false;
       this.isVerifCode = true
     },
     async confirmVerificCode(payload) {
+      this.newUser.code = payload;
       if(this.authType==='register'){
         this.isVerifCode = false;
         this.isRegisterPhoto = true
       } else {
-        await this.login(payload);
+        console.log(this.newUser);
+        await this.login(this.newUser);
       }
+    },
+    async getRegisterPhoto(payload) {
+      //this.newUser.photo = payload;
+      this.loading = true
+      await this.$store.dispatch('user/register', this.newUser).then(data => {
+          setTimeout(() => {
+            this.$router.push(this.localePath('/profile'))
+          })
+          this.loading = false
+        }).catch(e => {
+          console.log(e)
+          this.loading = false
+        })
     },
     sendMobileLoginCode(){
       this.authType = 'login';

@@ -14,6 +14,7 @@ export const actions = {
     const token = localStorage.getItem('token') ;
     if (!token) {
       ctx.commit('user/clearUser', {root: true})
+      return
     }
     await load('/v2/auth/token/check','post',  null, true).then(data => {
       localStorage.setItem('token', data.accessToken)
@@ -61,15 +62,14 @@ export const actions = {
     //     return res.json()
     //   })
     // }
-
-    await load('/v2/auth/login','post',  user).then(data => {
-      localStorage.setItem('token', data.accessToken)
-      ctx.commit('user/setToken', {
-        token: data.accessToken
-      }, {root: true})
-    }).catch(e => {
-      console.log(e)
-    })
+      await load('/v2/auth/login','post', user).then(data => {
+        localStorage.setItem('token', data.accessToken)
+        ctx.commit('user/setToken', {
+          token: data.accessToken
+        }, {root: true})
+      }).catch(e => {
+        throw e;
+      })
     // await fetch(`https://${process.env.API_HOST}/v2/auth/login`, {
     //   method: 'post',
     //   headers: {
@@ -101,9 +101,12 @@ export const actions = {
   },
   async register(ctx, user) {
     await load('/users/register','post',  user).then(data => {
-
+      localStorage.setItem('token', data.accessToken)
+        ctx.commit('user/setToken', {
+          token: data.accessToken
+        }, {root: true})
     }).catch(e => {
-      console.log(e)
+      throw e;
     })
     // await fetch(`https://${process.env.API_HOST}/users/register`, {
     //   method: 'POST',

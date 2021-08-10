@@ -3,13 +3,30 @@
      <span class="back" @click="$emit('setSignUp')">
        <inline-svg src="/icons/arrow-left.svg"/>
     </span>
-    <h2 class="title">Sign Up</h2>
+    <h2 class="title">{{$t('Sign Up')}}</h2>
     <form @submit.prevent="send">
       <div class="row">
         <div class="column">
-          <input v-focus type="text" placeholder="Full Name" v-model="form.full_name"  class="input-default" required/>
-          <input type="password" placeholder="Password" v-model="form.password"  class="input-default" required/>
+          <input v-focus type="text" :placeholder="$t('Full Name')" v-model="form.full_name"  class="input-default" required/>
+          <input type="password" :placeholder="$t('Password')" v-model="form.password"  class="input-default" required/>
 <!--          <input type="text" placeholder="Phone" required class="input-default m-0"/>-->
+          <div class="sex-block">
+            <span class="sex-block__title">{{$t('Sex')}}:</span>
+            <div class="row-radio">
+              <span>
+                <input type="radio" id="mail" value="male" v-model="form.gender">
+                <label for="mail">{{$t('Male')}}</label>
+              </span>
+              <span>
+                <input type="radio" id="female" value="female" v-model="form.gender">
+                <label for="female">{{$t('Female')}}</label>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <input type="email" :placeholder="$t('Email')" v-model="form.email"  class="input-default" required/>
+          <input type="password" :placeholder="$t('Password again')" v-model="form.password_again" class="input-default" required/>
           <div class="select-block">
             <v-select class="select-block__day" v-model="selectedDay" :options="optionsDays">
               <template #open-indicator="{ attributes }">
@@ -26,23 +43,6 @@
                 <span v-bind="attributes"><inline-svg src="/icons/arrow-dwn.svg"/></span>
               </template>
             </v-select>
-          </div>
-        </div>
-        <div class="column">
-          <input type="email" placeholder="Email" v-model="form.email"  class="input-default" required/>
-          <input type="password" placeholder="Password again" v-model="form.password_again" class="input-default" required/>
-          <div class="sex-block">
-            <span class="sex-block__title">Sex:</span>
-            <div class="row-radio">
-          <span>
-            <input type="radio" id="mail" value="male" v-model="form.gender">
-            <label for="mail">Mail</label>
-          </span>
-              <span>
-             <input type="radio" id="female" value="female" v-model="form.gender">
-            <label for="female">Female</label>
-          </span>
-            </div>
           </div>
         </div>
       </div>
@@ -70,10 +70,9 @@ export default {
         password:'',
         password_again:'',
         email:'',
-        file:'',
         gender: 'male',
+        orientation: this.gender
       },
-      image:null
     }
   },
   computed: {
@@ -108,18 +107,7 @@ export default {
         gender: 'male',
         orientation: ['male'],
       }*/
-      const payload = {
-        name: this.form.full_name,
-        email: this.form.email,
-        phone: this.form.phone,
-        password: this.form.password,
-        gender: this.form.gender,
-        orientation: ['male'],
-        image: this.image
-      };
-
-      console.log(payload)
-      this.$emit('sendSendUp', payload)
+      this.$emit('sendSendUp', this.form)
     } 
   }
 }
