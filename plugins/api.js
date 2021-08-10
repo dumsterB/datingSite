@@ -14,6 +14,14 @@ export async function load(uri, method, data, auth = false){
     params.headers['Authorization'] = 'Bearer ' + token;
   }
 
-  return fetch(`https://${process.env.API_HOST}${uri}`, params).then(res => res.json())
+  //return fetch(`https://${process.env.API_HOST}${uri}`, params).then(res => res.json())
+
+  let response = await fetch(`https://${process.env.API_HOST}${uri}`, params);
+  if (response.status !== 200) {
+    let { err } = await response.json()
+    console.log(err)
+    throw new Error(err.msg);
+  }
+  return await response.json();;
 }
 

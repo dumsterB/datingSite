@@ -58,6 +58,7 @@ export default {
     fallbackLocale: 'ru',
     lazy: true,
     langDir: 'lang',
+    detectBrowserLanguage: false
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
