@@ -42,7 +42,6 @@
       <input
         id="img"
         type="file"
-        accept="image/*"
         name="image"
         class="inputfile"
         @change="setImage"
@@ -76,7 +75,7 @@ export default {
     setImage(e) {
       const file = e.target.files[0];
       if (!file.type.includes("image/")) {
-        alert("Please select an image file");
+        alert("Выберите изображение");
         return;
       }
       if (typeof FileReader === "function") {
