@@ -5,7 +5,7 @@ export const state = () => ({
 export const actions = {
   async fetchAllQuickMeetingsPeoples(ctx, payload){
     const token = localStorage.getItem('token');
-    await fetch(`https://${process.env.API_HOST}/v2/quick-dating/select/near/all`, {
+    await fetch(`https://${process.env.API_HOST}/v2/quick-dating/select/want-qdate/near/all`, {
       method: 'post',
       headers: {
         'Authorization': `Bearer ${token}`,

@@ -12,11 +12,15 @@
           >
             <gmap-marker
               :key="index"
-              v-for="(m, index) in markers"
-              :position="m.position"
+              v-for="(m, index) in quickMeetingsPeoples"
+              :position="{lat: m.geo[0], lng: m.geo[1]}"
               :clickable="true"
-              :draggable="true"
-              :icon="{ url: require('../static/img/avatar.jpg')}"
+              :draggable="false"
+              :icon="{ 
+                url: m.pic ? m.pic.url : require('../static/img/avatar.jpg'),
+                size: {width: 100, height: 100, f: 'px', b: 'px',},
+                scaledSize: {width: 100, height: 100, f: 'px', b: 'px',},
+                }"
             ></gmap-marker>
           </GmapMap>
 
