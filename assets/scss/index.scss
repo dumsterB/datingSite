@@ -34,6 +34,7 @@
 @import "pages/announcements";
 @import "pages/quick-meetings";
 @import "pages/people-nearby";
+@import "pages/empty-page";
 
 @import "login-form";
 @import "password-recovery";
@@ -75,3 +76,5 @@
 @import "quick-meeting-message";
 @import "search-people";
 @import "option-settings";
+@import "profile-settings";
+@import "confirm-profile-delete-modal";

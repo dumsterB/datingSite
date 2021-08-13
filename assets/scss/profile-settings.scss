@@ -1,0 +1,164 @@
+.profile-settings {
+    
+    .button__full {
+        font-family: 'Gotham', sans-serif;
+        font-style: normal;
+        min-width: 137px;
+    }
+
+    .button{
+        &__empty:hover {background: rgba(24, 24, 24, 0.47);
+            background: rgba(24, 24, 24, 0.47);
+          }
+    }
+    
+    .settings-block{
+        .button__full{
+            margin-left: 20px;
+        }
+
+        .button__empty {
+            font-family: 'Gotham', sans-serif;
+            font-style: normal;
+            max-width: 402px !important;
+            height: auto;
+            display: flex;
+            align-items: center;
+            padding-left: 22px;
+            padding-right: 22px;
+        }
+    }
+
+    .button__empty.opened {
+        height: auto;
+        background: rgba(0, 0, 0, 0.85);
+        box-shadow: inset 0px 62px 95px -36.9491px rgba(192, 192, 192, 0.3), inset 0px 3.07909px 13.8559px rgba(101, 101, 101, 0.3), inset 0px 0.769772px 15px rgba(227, 222, 255, 0.2);
+        border-radius: 31px;
+    }
+
+    .settings-item{
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        text-align: left;
+
+        .text{
+            font-size: 14px;
+            color: #7C7C7C;
+        }
+
+    }
+
+    .delete{
+        font-family: 'Gotham', sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        color: #FFFFFF;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .back{
+        margin-top: 5px;
+        align-self: stretch;
+    }
+
+    .expanded{
+        display: none;
+    }
+    .opened .expanded {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .opened .text{
+        display: none;
+    }
+
+    .input-default{
+        font-size: 14px;
+        padding: 0;
+        margin-bottom: 5px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .overlay{
+        border-radius: 30px;
+    }
+
+    .sex-block{
+        display: flex;
+        margin: 10px 0;
+        &__title{
+            min-width: 100px;
+        }
+    }
+
+    .city-block{
+        display: flex;
+        margin: 10px 0;
+
+        &__title{
+            min-width: 100px;
+        }
+    }
+
+    .sex-block {
+        
+        &__title {
+          font-family: 'Gotham', sans-serif;
+          font-style: normal;
+          font-weight: normal;
+          color: #EFEFEF;
+          margin-right: 13px;
+        }
+    
+        label {
+          font-size: 14px;
+          color: #EFEFEF;
+          cursor: pointer;
+          margin-right: 18px;
+          padding-left: 20px;
+          position: relative;
+    
+    
+          &:after {
+            content: '';
+            width: 11px;
+            height: 12px;
+            border-radius: 50%;
+            border: 1px solid #FFFFFF;
+            position: absolute;
+            top: 2px;
+            left: 0;
+          }
+    
+    
+        }
+    
+        input {
+          position: absolute;
+          z-index: -1;
+          opacity: 0;
+    
+          &:checked + label:before {
+            content: '';
+            width: 11px;
+            height: 12px;
+            background: linear-gradient(94deg, #133983 -12.18%, #71BC6F 134.71%);
+            border-radius: 50%;
+            padding: 1px;
+            position: absolute;
+            top: 2px;
+            left: 0;
+          }
+    
+          &:checked + label:after {
+            border: none;
+          }
+        }
+      }
+}
+  

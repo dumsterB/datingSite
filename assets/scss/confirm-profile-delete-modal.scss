@@ -1,0 +1,27 @@
+.confirm-profile-delete-modal{
+    
+    .title {
+      font-style: normal;
+      font-weight: normal;
+      margin: 20px auto;
+    }
+    
+    .delete-options{
+        display: flex;
+        justify-content: center;
+
+        .button{
+            width: 150px;
+            margin: 0 10px;
+            height: auto;
+        }
+    }
+
+  }
+
+  @media(max-width: 768px){
+    .confirm-profile-delete-modal{
+      width: 100% !important;
+    }
+  }
+  

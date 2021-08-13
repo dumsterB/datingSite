@@ -16,8 +16,9 @@ export const actions = {
       ctx.commit('user/clearUser', {root: true})
       return
     }
-    await load('/v2/auth/token/check','post',  null, true).then(data => {
-      localStorage.setItem('token', data.accessToken)
+    await load('/v2/auth/token/check','post', '', true).then(data => {
+      //todo set token from data object
+      localStorage.setItem('token', token)
       ctx.commit('user/setToken', {
         token: token
       }, {root: true})
@@ -142,6 +143,22 @@ export const actions = {
     })
   },
 
+  async updateProfile(ctx, payload) {
+    await load('/profile/update','patch', payload, true).then(data => {
+      return data.json()
+    }).catch(e => {
+      throw e;
+    })
+  },
+
+  async addProfilePhoto(ctx, payload) {
+    await load('/v2/user/profile/image','put', payload, true).then(data => {
+      return data
+    }).catch(e => {
+      throw e;
+    })
+  },
+
   async removeProfilePhoto(ctx, payload) {
     await fetch(`https://${process.env.API_HOST}/v2/user/profile/image`, {
       method: 'delete',
@@ -161,21 +178,11 @@ export const actions = {
   },
 
   async makeProfilePhotoMain(ctx, payload) {
-    await fetch(`https://${process.env.API_HOST}/v2/user/profile/image/main`, {
-      method: 'put',
-      headers: {
-        'Authorization': `Bearer ${ctx.state.token}`
-      },
-      body: JSON.stringify(payload)
-    }).then(res => {
-      return res.json()
+    await load('/v2/user/profile/image/main','put', payload, true).then(data => {
+      return data.json()
+    }).catch(e => {
+      throw e;
     })
-      .then(data => {
-        console.log(data)
-        // ctx.commit('user/setCoins', {
-        //   coins: data
-        // }, {root: true})
-      })
   },
 
   async userById(ctx, payload) {
@@ -213,6 +220,11 @@ export const mutations = {
   },
   setSelectedUser(state, payload){
     state.selectedUser = payload
+  },
+  setProfileField(state, payload){
+    for (let key in payload) {
+      state.user.profile.key = payload[key];
+    }
   },
   clearUser(state) {
     state.user = {}

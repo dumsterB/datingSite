@@ -33,5 +33,16 @@ export default {
     'Chats' : 'Чаты',
     'TOP Users' : 'Лидеры',
     'Ads' : 'Объявления',
-    'Entertainment' : 'Развлечения'
+    'Entertainment' : 'Развлечения',
+    'Save' : 'Сохранить',
+    'City' : 'Город',
+    'Personal information' : 'Персональная информация',
+    'Job' : 'Работа',
+    'Interests' : 'Интересы',
+    'Shortly about myself' : 'Коротко о себе',
+    'Delete account' : 'Удалить аккаунт',
+    'Are you sure you want to delete your account?' : 'Вы уверены что хотите удалить аккаунт?',
+    'Yes' : 'Да',
+    'No' : 'Нет',
+    'Your account has been successfully deleted!' : 'Ваш аккаунт успешно удален!'
   }

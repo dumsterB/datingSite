@@ -5,7 +5,7 @@ export async function load(uri, method, data, auth = false){
 
   if (data instanceof FormData) {
     params.body = data;
-  } else if(method.includes('post')){
+  } else if(method.includes('post') || method.includes('put') || method.includes('patch')){
     params.headers = {'Content-Type': 'application/json'};
     params.body = Object.keys(data).length ? JSON.stringify(data) : null;
   }

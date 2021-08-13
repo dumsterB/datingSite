@@ -35,5 +35,16 @@ export default {
     'Chats' : 'Chats',
     'TOP Users' : 'TOP Users',
     'Ads' : 'Ads',
-    'Entertainment' : 'Entertainment'
+    'Entertainment' : 'Entertainment',
+    'Save' : 'Save',
+    'City' : 'City',
+    'Personal information' : 'Personal information',
+    'Job' : 'Job',
+    'Interests' : 'Interests',
+    'Shortly about myself' : 'Shortly about myself',
+    'Delete account' : 'Delete account',
+    'Are you sure you want to delete your account?' : 'Are you sure you want to delete your account?',
+    'Yes' : 'Yes',
+    'No' : 'No',
+    'Your account has been successfully deleted!' : 'Your account has been successfully deleted!'
   }

@@ -1,17 +1,13 @@
 <template>
   <div class="profile-page" v-if="user">
     <div class="content">
-      <template v-if="!isBallance && !isStatusVip">
-        <!--        <p>{{$t('welcome')}}</p>-->
-        <!--        <nuxt-link :to="switchLocalePath('en')">English</nuxt-link>-->
-        <!--        <nuxt-link :to="switchLocalePath('ru')">Русский</nuxt-link>-->
-        <!--        <nuxt-link :to="localePath('swipes')">{{ $t('home') }}</nuxt-link>-->
+      <template v-if="!isBallance && !isStatusVip && !isProfileSettings">
         <div class="row">
-          <label for="file-upload" class="button button__full">+ Add photo</label>
-          <input id="file-upload" type="file" accept="image/png, image/jpg, image/jpeg" @change="change"
+          <label for="file-upload" class="button button__full">+ {{$t('Add photo')}}</label>
+          <input id="file-upload" type="file" @change="change"
                  style="display:none;">
           <div class="settings-block">
-            <i>
+            <i @click="setProfileSettings">
               <SettingsIcon/>
             </i>
             <i>
@@ -72,6 +68,7 @@
       </template>
       <Ballance @setBallance="setBallance" v-if="isBallance"/>
       <StatusVip @setStatusVip="setStatusVip" v-if="isStatusVip"/>
+      <ProfileSettings :user="user" @setProfileSettings="setProfileSettings" @updateProfile="updateProfile" v-if="isProfileSettings"/>
 
 
     </div>
@@ -98,6 +95,7 @@ import DailyIcon from '@/static/icons/daily.svg';
 import GuestIcon from '@/static/icons/guest.svg';
 import StatusVip from '@/components/StatusVip';
 import PhotosSliderModal from '@/components/modals/PhotosSliderModal';
+import ProfileSettings from '@/components/ProfileSettings';
 
 export default {
   components: {
@@ -112,12 +110,14 @@ export default {
     DailyIcon,
     BallanceIcon,
     GuestIcon,
-    PhotosSliderModal
+    PhotosSliderModal,
+    ProfileSettings
   },
   data() {
     return {
       isBallance: false,
       isStatusVip: false,
+      isProfileSettings: false,
       modals: {
         verificationModal: {
           show: false
@@ -135,6 +135,17 @@ export default {
     setStatusVip() {
       this.isStatusVip = !this.isStatusVip;
     },
+    setProfileSettings() {
+      this.isProfileSettings = !this.isProfileSettings;
+    },
+    async updateProfile() {
+      await this.$store.dispatch('user/updateProfile', this.$store.state.user.user.profile).then(data => {
+          console.log('update res', data)
+        }).catch(e => {
+          console.log(e)
+          this.loading = false
+        })
+    },
     close() {
       this.modals.verificationModal.show = false
     },
@@ -143,7 +154,9 @@ export default {
       reader.readAsDataURL(event.target.files[0]);
       const res = await this.$store.dispatch('media/uploadImage', event.target.files[0])
       const data = await res.json();
+      console.log(data, this.$store.state.user.user.profile.pictures.length+1);
 
+      await this.$store.dispatch('user/addProfilePhoto', {file:data._id, index: this.$store.state.user.user.profile.pictures.length+1})
     },
     async uploadImage(file) {
 
