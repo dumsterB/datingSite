@@ -64,7 +64,8 @@ export default {
   data() {
     return {
       imgSrc: "",
-      cropImg: ""
+      cropImg: "",
+      originalFilename : ""
     };
   },
   methods: {
@@ -81,24 +82,36 @@ export default {
       if (typeof FileReader === "function") {
         const reader = new FileReader();
         reader.onload = event => {
-          this.imgSrc = event.target.result;
-          // rebuild cropperjs with the updated source
-          //this.$refs.cropper.replace(event.target.result);
+        this.imgSrc = event.target.result;
+        //this.$refs.cropper.replace(event.target.result);
+        this.originalFilename = file.name;          
         };
         reader.readAsDataURL(file);
       } else {
         alert("Sorry, FileReader API not supported");
       }
     },
-    cropImage() {
-      // get image data for post processing, e.g. upload or setting image src
+    async cropImage() {
       this.cropImg = this.$refs.cropper.getCroppedCanvas().toDataURL();
-      //add file to form
-      this.$emit('getRegisterPhoto', this.cropImg)
+      const cropped = this.dataURLtoFile(this.cropImg, this.originalFilename);
+      this.$emit('getRegisterPhoto', cropped)
     },
     reset() {
       this.imgSrc = null;
       this.cropImg = null;
+    },
+    dataURLtoFile(dataurl, filename) {
+      let arr = dataurl.split(','),
+          mime = arr[0].match(/:(.*?);/)[1],
+          bstr = atob(arr[1]), 
+          n = bstr.length, 
+          u8arr = new Uint8Array(n);
+
+      while(n--){
+          u8arr[n] = bstr.charCodeAt(n);
+      }
+    
+      return new File([u8arr], filename, {type:mime});
     }
   }
 };

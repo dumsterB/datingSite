@@ -140,7 +140,7 @@ export default {
       }
     },
     async getRegisterPhoto(payload) {
-      //this.newUser.photo = payload;
+      this.newUser.file = payload;
       this.loading = true
       await this.$store.dispatch('user/register', this.newUser).then(data => {
           setTimeout(() => {
