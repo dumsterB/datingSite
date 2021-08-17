@@ -83,7 +83,7 @@ export default {
       if (contact.new_messages_count) {
         this.readAllMessages(contact);
       }
-      this.$router.push({path: `/chat/${user}`, query: {chat_id: contact.latest_message.chat_id}});
+      this.$router.push({path: this.localePath(`/chat/${user}`), query: {chat_id: contact.latest_message.chat_id}});
     },
 
     getCurrentUserId(contact) {

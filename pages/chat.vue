@@ -98,7 +98,8 @@
                   </div>
                   <div class="chat__footer-actions">
                     <inline-svg src="/icons/smile.svg"/>
-                    <inline-svg src="/icons/voice.svg"/>
+                    <inline-svg @mousedown="startRecord" @mouseup="sendRecord"  src="/icons/voice.svg"/>
+                    <audio ref="recordPlayer" controls src="" style="visibility:hidden;width:0.1px;height:0.1px"/>
                   </div>
                 </div>
               </div>
@@ -123,6 +124,7 @@ export default {
       isChat: false,
       message: '',
       newMessage: {},
+      audio: null,
       companion: {
         name: '',
         pic: '',
@@ -209,6 +211,30 @@ export default {
     }
   },
   methods: {
+    sendRecord(){
+      this.mediaRecorder.stop()
+      setTimeout(() => this.send());
+      
+    },
+    startRecord() {
+      navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
+        let audioChunks = [];
+        this.mediaRecorder = new MediaRecorder(stream)
+        this.mediaRecorder.addEventListener('dataavailable', (event) => {
+          audioChunks.push(event.data)
+          this.$refs.recordPlayer.src = URL.createObjectURL(event.data)
+          const audioBlob = new Blob(audioChunks, {
+                  type: 'audio/mp3'
+                });
+          //this.audio =URL.createObjectURL(event.data)
+          this.audio = new File([audioBlob], "audio");
+        })
+        this.mediaRecorder.start()
+
+      }).catch((error) => {
+        alert('Чтобы записать аудио, разрешите использование микрофона')
+      })
+    },
     audioSound(audio) {
       //  console.log(this.$refs[`audio_${audio._id}`])
       // if (this.$refs[`audio_${audio._id}`] !== undefined){
@@ -244,12 +270,14 @@ export default {
           status: contact.opponent.is_online ? 'online' : 'offline'
         }
         this.isMobile && this.openMobileDialog()
+        this.isChat = true;
       }
     },
     openNewAnswers() {
-      this.isNewAnswers = true
+      //this.isNewAnswers = true
       // this.isMobileDialog = true
-      console.log(this.isNewAnswers)
+      this.isChat = false;
+      
     },
     openMobileDialog() {
       this.isMobileDialog = true
@@ -258,7 +286,7 @@ export default {
       if (this.isMobile) {
         this.isMobileDialog = false
       }
-      this.$router.push('/chat')
+      this.$router.push(this.localePath('/chat'))
     },
     checkCompanion() {
       if (!this.$route.params.id) {
@@ -272,7 +300,7 @@ export default {
       this.getOpponent(companion)
     },
     async send() {
-      if (!this.message) {
+      if (!this.message && !this.audio) {
         return
       }
       let id = this.$route.params.id;
@@ -288,12 +316,15 @@ export default {
         const payload = {
           chat_id: chat_id,
           receiver_id: id,
-          message_text: this.message.trim()
+          /*message_text: this.message.trim()*/
         }
-
+        if(this.message) payload.message_text = this.message.trim();
+        if(this.audio) payload.message_audio = this.audio
+          
         await this.$store.dispatch('chat/sendMessage', payload)
         await this.$store.dispatch('chat/allChat')
         this.message = '';
+        this.audio = null;
         this.scroll();
       }
     },

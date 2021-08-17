@@ -20,7 +20,8 @@ export const actions = {
 
     const formData = new FormData();
     formData.append('receiver_id',`${payload.receiver_id}`);
-    formData.append('message_text',`${payload.message_text}`);
+    if(payload.message_text) formData.append('message_text',`${payload.message_text}`);
+    if(payload.message_audio) formData.append('message_audio', payload.message_audio);
 
     await fetch(`https://${process.env.API_HOST}/v2/chat/${payload.chat_id}/message`, {
       method: 'post',
