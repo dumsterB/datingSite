@@ -70,18 +70,26 @@
               <div class="row ai-center jc-center">
                 <div class="row no-wrap ai-center w-100">
                   <div class="chat__footer-government">
-                    <Component
-                      :is="require(`@/static/icons/add-photo.svg`).default"
-                      class="BaseIcon"
-                      v-bind="$attrs"
-                      @v-on="$listeners"
+                    <input
+                      id="img"
+                      type="file"
+                      @change="setImage"
                     />
-                    <Component
+                    <label for="img">
+                      <Component
+                        :is="require(`@/static/icons/add-photo.svg`).default"
+                        class="BaseIcon"
+                        v-bind="$attrs"
+                        @v-on="$listeners"
+                      />
+                    </label>
+                    
+                    <!--Component
                       :is="require(`@/static/icons/present.svg`).default"
                       class="BaseIcon"
                       v-bind="$attrs"
                       @v-on="$listeners"
-                    />
+                    /-->
                   </div>
                   <div class="chat__footer-textarea">
                     <form @submit.prevent="send">
@@ -92,6 +100,7 @@
                         class="BaseIcon"
                         v-bind="$attrs"
                         @v-on="$listeners"
+                        @click="send"
                       />
                    </span>
                     </form>
@@ -99,7 +108,7 @@
                   <div class="chat__footer-actions">
                     <inline-svg src="/icons/smile.svg"/>
                     <inline-svg @mousedown="startRecord" @mouseup="sendRecord"  src="/icons/voice.svg"/>
-                    <audio ref="recordPlayer" controls src="" style="visibility:hidden;width:0.1px;height:0.1px"/>
+                    <audio ref="recordPlayer" controls src=""/>
                   </div>
                 </div>
               </div>
@@ -125,6 +134,7 @@ export default {
       message: '',
       newMessage: {},
       audio: null,
+      images: [],
       companion: {
         name: '',
         pic: '',
@@ -211,10 +221,15 @@ export default {
     }
   },
   methods: {
+    async setImage(event){
+      const res = await this.$store.dispatch('media/uploadImage', event.target.files[0])
+      const data = await res.json();
+      this.images.push(data._id)
+      this.send()
+    },
     sendRecord(){
       this.mediaRecorder.stop()
       setTimeout(() => this.send());
-      
     },
     startRecord() {
       navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
@@ -300,7 +315,7 @@ export default {
       this.getOpponent(companion)
     },
     async send() {
-      if (!this.message && !this.audio) {
+      if (!this.message && !this.audio && !this.images.length) {
         return
       }
       let id = this.$route.params.id;
@@ -320,10 +335,12 @@ export default {
         }
         if(this.message) payload.message_text = this.message.trim();
         if(this.audio) payload.message_audio = this.audio
+        if(this.images.length) payload.images = this.images
           
         await this.$store.dispatch('chat/sendMessage', payload)
         await this.$store.dispatch('chat/allChat')
         this.message = '';
+        this.images = [];
         this.audio = null;
         this.scroll();
       }
