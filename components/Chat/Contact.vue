@@ -74,16 +74,17 @@ export default {
        this.show = false;
       }
     },
-    showOptions(id){
+    async showOptions(id){
       if (this.contact.id === id) {
         this.show = true
+        await this.$store.dispatch('user/userById', this.contact.opponent._id)
       }
     },
     openChat(contact) {
       this.$emit('getUser', contact)
 
       let user = this.getCurrentUserId(contact)
-      console.log(user)
+      //console.log(user)
       this.$store.dispatch('chat/allMessages', contact.latest_message.chat_id);
       if (contact.new_messages_count) {
         this.readAllMessages(contact);

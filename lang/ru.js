@@ -8,6 +8,7 @@ export default {
     'Confirm code' : 'Подтвердите код',
     'Didn’t get a code?' : 'Не получили код?',
     'Send again' : 'Отправить снова',
+    'Send' : 'Отправить',
     'Login with Phone' : 'Войти через телефон',
     'Forgot password?' : 'Забыли пароль?',
     'Not with us?' : 'Еще не с нами?',
@@ -44,5 +45,11 @@ export default {
     'Are you sure you want to delete your account?' : 'Вы уверены что хотите удалить аккаунт?',
     'Yes' : 'Да',
     'No' : 'Нет',
-    'Your account has been successfully deleted!' : 'Ваш аккаунт успешно удален!'
+    'Your account has been successfully deleted!' : 'Ваш аккаунт успешно удален!',
+    'Delete' : 'Удалить',
+    'Complain' : 'Пожаловаться',
+    'Block' : 'Заблокировать',
+    'Mute notifications' : 'Выключить уведомления',
+    'The user is blocked!' : 'Пользователь заблокирован!',
+    'Please tell me the reason' : 'Пожалуйста назовите причину'
   }

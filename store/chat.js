@@ -11,7 +11,8 @@ export const state = () => ({
     query:{
       chat_id:''
     }
-  }
+  },
+  blockModal: false
 })
 
 export const actions = {
@@ -110,7 +111,10 @@ export const mutations = {
     console.log(payload)
     state.chatRoute = payload
     console.log(state.chatRoute)
-  }
+  },
+  setBlockModal(state){
+    state.blockModal = !state.blockModal;
+  },
 }
 
 export const getters = {

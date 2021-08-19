@@ -117,17 +117,19 @@
         </template>
       </div>
     </div>
+    <ComplainModal @close="close" @done="done"/>
   </div>
 </template>
 <script>
 import ContactList from "@/components/Chat/ContactList";
 import AnswerList from "@/components/NewAnswers/Answer-list";
+import ComplainModal from "~/components/modals/ComplainModal";
 import * as _ from 'lodash'
 import Icon from "@/components/Icon";
 import Loader from "@/components/Loader";
 
 export default {
-  components: {Icon, AnswerList, ContactList, Loader},
+  components: {Icon, AnswerList, ContactList, Loader, ComplainModal},
   data() {
     return {
       isChat: false,
@@ -362,7 +364,16 @@ export default {
     },
     openAnswers() {
       this.isNewAnswers = true
-    }
+    },
+    close(){
+      this.$store.commit('chat/setBlockModal')
+    },
+    done(payload){
+      console.log(payload)
+      //todo block action
+      this.$store.commit('chat/setBlockModal')
+      this.$router.push(this.localePath('/chat'))
+    },
   },
   fetch() {
   }

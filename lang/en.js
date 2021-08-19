@@ -8,6 +8,7 @@ export default {
     'Confirm code' : 'Confirm code',
     'Didn’t get a code?' : 'Didn’t get a code?',
     'Send again' : 'Send again',
+    'Send' : 'Send',
     'Login with Phone' : 'Login with Phone',
     'Forgot password?' : 'Forgot password?',
     'Not with us?' : 'Not with us?',
@@ -46,5 +47,11 @@ export default {
     'Are you sure you want to delete your account?' : 'Are you sure you want to delete your account?',
     'Yes' : 'Yes',
     'No' : 'No',
-    'Your account has been successfully deleted!' : 'Your account has been successfully deleted!'
+    'Your account has been successfully deleted!' : 'Your account has been successfully deleted!',
+    'Delete' : 'Delete',
+    'Complain' : 'Complain',
+    'Block' : 'Block',
+    'Mute notifications' : 'Mute notifications',
+    'The user is blocked!' : 'The user is blocked!',
+    'Please tell me the reason' : 'Please tell me the reason'
   }

@@ -1,9 +1,9 @@
 <template>
   <div class="option-settings" ref="options">
-    <p @click="deleteItem"><Icon name="delete" /> Удалить</p>
-    <p @click="complain"><Icon name="complain" /> Пожаловаться</p>
-    <p @click="block"><Icon name="block-off" /> Заблокировать</p>
-    <p @click="notificationsOff"><Icon name="notification-off" /> Выключить уведомления</p>
+    <p @click="deleteItem"><Icon name="delete" /> {{$t('Delete')}}</p>
+    <p @click="complain"><Icon name="complain" /> {{$t('Complain')}}</p>
+    <p @click="block"><Icon name="block-off" /> {{$t('Block')}}</p>
+    <p @click="notificationsOff"><Icon name="notification-off" /> {{$t('Mute notifications')}}</p>
   </div>
 </template>
 
@@ -27,11 +27,11 @@ export default {
       this.$emit('closeOptions')
     },
     complain(){
-      console.log('complain');
+      this.$store.commit('chat/setBlockModal')
       this.$emit('closeOptions')
     },
     block(){
-      console.log('block');
+      this.$store.commit('chat/setBlockModal')
       this.$emit('closeOptions')
     },
     notificationsOff(){

@@ -53,13 +53,13 @@
            <h2 class="profile-swipe__title-interests">Interests</h2>
            <InterestsList :interests="user.profile.interests"/>
            <div class="profile-swipe__additional-options">
-             <span @click="modals.complainModal.show = true">
+             <span @click="$store.commit('chat/setBlockModal')">
                <Icon name="block-off"/>
-               Block off
+               {{$t('Block')}}
              </span>
              <span>
                  <Icon name="complain"/>
-               Complain
+               {{$t('Complain')}}
              </span>
            </div>
          </div>
@@ -135,11 +135,11 @@ export default {
   },
   methods:{
     close(){
-      this.modals.complainModal.show = false
+      this.$store.commit('chat/setBlockModal')
     },
     done(payload){
       console.log(payload)
-      this.modals.complainModal.show = false;
+      this.$store.commit('chat/setBlockModal')
       this.$router.go(-1)
     },
     chatEnter(){
