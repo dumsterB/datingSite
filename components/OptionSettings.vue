@@ -1,9 +1,9 @@
 <template>
-  <div class="option-settings" v-if="show" ref="options" @click="close">
-    <p><Icon name="delete" @click="deleteItem"/> Удалить</p>
-    <p><Icon name="complain" @click="complain"/> Пожаловаться</p>
-    <p><Icon name="block-off" @click="block"/> Заблокировать</p>
-    <p><Icon name="notification-off" @click="notificationsOff"/> Выключить уведомления</p>
+  <div class="option-settings" ref="options">
+    <p @click="deleteItem"><Icon name="delete" /> Удалить</p>
+    <p @click="complain"><Icon name="complain" /> Пожаловаться</p>
+    <p @click="block"><Icon name="block-off" /> Заблокировать</p>
+    <p @click="notificationsOff"><Icon name="notification-off" /> Выключить уведомления</p>
   </div>
 </template>
 
@@ -23,24 +23,28 @@ export default {
   },
   methods:{
     deleteItem(){
-
+      console.log('deleted');
+      this.$emit('closeOptions')
     },
     complain(){
-
+      console.log('complain');
+      this.$emit('closeOptions')
     },
     block(){
-
+      console.log('block');
+      this.$emit('closeOptions')
     },
     notificationsOff(){
-
+      console.log('notificationsOff');
+      this.$emit('closeOptions')
     },
-    close(e) {
+    /*close(e) {
       let container = this.$refs.options;
       console.log(container)
       if (container !== e.target) {
        this.$emit('closeOptions')
       }
-    },
+    },*/
   }
 }
 </script>

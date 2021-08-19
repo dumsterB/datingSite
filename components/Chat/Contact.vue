@@ -38,13 +38,13 @@
           </div>
         </div>
         <div class="row column p-0">
-          <span @click="showOptions(contact.id)">
-            <Icon name="options"/>
+          <span class="options" ref="dots" @click="showOptions(contact.id)">
+            <!--Icon  name="options"/-->
           </span>
         </div>
       </div>
     </div>
-    <OptionSettings :show="show" :itemId="contact.id" @closeOptions="close"/>
+    <OptionSettings v-if="show" :itemId="contact.id" @closeOptions="close" v-click-outside="closeEvent"/>
   </div>
 </template>
 
@@ -69,10 +69,15 @@ export default {
 
   },
   methods: {
+    closeEvent(e) {
+      if (this.$refs.dots !== e.target) {  
+       this.show = false;
+      }
+    },
     showOptions(id){
-    if (this.contact.id === id) {
-      this.show = true
-    }
+      if (this.contact.id === id) {
+        this.show = true
+      }
     },
     openChat(contact) {
       this.$emit('getUser', contact)
