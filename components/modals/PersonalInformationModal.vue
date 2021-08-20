@@ -1,34 +1,27 @@
 <template>
   <div class="overlay">
-  <div class="modal quick-meeting-modal" v-once>
+  <div class="modal personal-information-modal" v-once>
      <span class="close" @click="$emit('setPersonalInformation')">
       <inline-svg src="icons/close-modal.svg"/>
     </span>
     <div class="modal-body">
-      <h2 class="title">Быстрые свидания</h2>
-      <p class="text">Назначай встречу прямо сейчас.</p>
-      <span class="quick-meeting-modal__icon">
-       <inline-svg src="icons/quick-meetings-modal.svg"/>
-     </span>
-      <p class="quick-meeting-modal__description">Общайся с пользователями, которые готовы к знакомству вживую.</p>
-      <button class="button button__full" @click="$emit('next')">Войти  </button>
+      <h2 class="title">{{ $t('Personal information') }}</h2>
+      <div class="personal-information-modal__content">
+      </div>
+      <button class="button button__full" @click="$emit('next')">Войти</button>
     </div>
   </div>
   </div>
 </template>
 
 <script>
+import ArrowRight from '@/static/icons/arrow-right-rounded.svg';
+
 export default {
+    components: {ArrowRight},
     name:'PersonalInformationModal',
     props:{
     
   }
 }
 </script>
-
-
-<style>
-[v-cloak] {
-  display: none;
-}
-</style>

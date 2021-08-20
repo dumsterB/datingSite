@@ -10,9 +10,9 @@
             <i @click="setProfileSettings">
               <SettingsIcon/>
             </i>
-            <i>
+            <!--i>
               <EditIcon/>
-            </i>
+            </i-->
           </div>
         </div>
         <div class="row" v-if="user.profile">
@@ -21,7 +21,7 @@
         </div>
         <div class="row">
           <div class="profile-page__info online">
-            <p class="name" v-if="user.profile">{{ user.profile.name }}, <span class="age"> 25</span></p>
+            <p class="name" v-if="user.profile">{{ user.profile.name }}, <span class="age"> {{ user.profile.birth_date | birthday }} </span></p>
           </div>
         </div>
         <div class="row">

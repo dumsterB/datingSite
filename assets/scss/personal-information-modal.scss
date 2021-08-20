@@ -1,0 +1,40 @@
+.personal-information-modal {
+    width: 500px;
+    padding: 55px 0;
+
+    .title {
+      font-family: 'Gotham', sans-serif;
+      font-style: normal;
+      font-weight: 300;
+    }
+  
+    .text {
+      font-family: 'Gotham', sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 21px;
+      color: #D9A410;
+    }
+  
+    &__icon {
+      display: flex;
+      justify-content: center;
+      margin-top: 35px;
+      margin-bottom: 28px;
+    }
+  
+    &__content {
+      width: 100%;
+      font-family: 'Gotham', sans-serif;
+      font-size: 16px;
+      text-align: center;
+      margin: 0 auto;
+      color: #F1F1F1;
+      margin-bottom: 16px;
+    }
+    ul, li{
+        list-style: none;
+        text-align: left;
+    }
+  }
+  

@@ -77,7 +77,7 @@
             </span>
         </div>
 
-        <div class="button button__empty">
+        <div class="button button__empty" @click="setInterests">
             <div class="settings-item">
                 <span class="heading">{{ $t('Interests') }}</span>
                 <span class="text">Tell best things happened to you</span>
@@ -86,6 +86,7 @@
                 <inline-svg src="/icons/arrow-right.svg"/>
             </span>
         </div>
+        <Interests v-if="isInterests" @setInterests="setInterests"></Interests>
 
         <div ref="short" class="button button__empty">
             <div class="settings-item">
@@ -124,14 +125,16 @@
 
 <script>
 import PersonalInformation from "@/components/modals/PersonalInformationModal";
+import Interests from "@/components/modals/InterestsModal";
 import ConfirmProfileDelete from "@/components/modals/ConfirmProfileDeleteModal";
 
 export default {
-  components: { PersonalInformation, ConfirmProfileDelete },
+  components: { PersonalInformation, Interests, ConfirmProfileDelete },
   props : ['user'],
   data() {
     return {
       isPersonalInformation: false,
+      isInterests: false,
       isConfirmProfleDelete: false,
       activeItem: "",
       form : {
@@ -152,6 +155,9 @@ export default {
   methods: {
     setPersonalInformation(){
         this.isPersonalInformation = !this.isPersonalInformation;
+    },
+    setInterests(){
+        this.isInterests = !this.isInterests;
     },
     setConfirmProfleDelete(){
         this.isConfirmProfleDelete = !this.isConfirmProfleDelete;
