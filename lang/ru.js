@@ -51,5 +51,8 @@ export default {
     'Block' : 'Заблокировать',
     'Mute notifications' : 'Выключить уведомления',
     'The user is blocked!' : 'Пользователь заблокирован!',
-    'Please tell me the reason' : 'Пожалуйста назовите причину'
+    'Please tell me the reason' : 'Пожалуйста назовите причину',
+    'Interests' : 'Интересы',
+    'Popular' : 'Популярное',
+    'I\'m interested in...' : 'Меня интересует...'
   }
