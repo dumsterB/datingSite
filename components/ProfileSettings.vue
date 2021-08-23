@@ -18,31 +18,31 @@
     </div>
     <div class="row">
         <div class="profile-page__info online">
-        <p class="name" v-if="user.profile">{{ user.profile.name }}, <span class="age"> 25</span></p>
+        <p class="name" v-if="user.profile">{{ user.profile.name }}, <span class="age"> {{ user.profile.birth_date | birthday }}</span></p>
         </div>
     </div>
     <div class="row">
         <div ref="info" class="button button__empty">
             <div class="settings-item">
-                <span class="heading">{{ user.profile.name }}, Age</span>
-                <span class="text">Girl, Kiev</span>
+                <span class="heading">{{ user.profile.name }}, {{ user.profile.birth_date | birthday }}</span>
+                <span class="text">{{ gender }}, {{ city }}</span>
                 <div class="expanded">
                     <div class="sex-block">
                         <span class="sex-block__title">{{$t('Sex')}}:</span>
                         <div class="row-radio">
                         <span>
-                            <input type="radio" id="mail" value="male" v-model="form.gender">
+                            <input type="radio" id="mail" value="male" v-model="gender">
                             <label for="mail">{{$t('Male')}}</label>
                         </span>
                         <span>
-                            <input type="radio" id="female" value="female" v-model="form.gender">
+                            <input type="radio" id="female" value="female" v-model="gender">
                             <label for="female">{{$t('Female')}}</label>
                         </span>
                         </div>
                     </div>
                     <div class="city-block">
                         <span class="sex-block__title">{{$t('City')}} :</span>
-                        <input type="text" name="" id="" class="input-default">
+                        <input type="text" name="city" v-model="city" class="input-default">
                     </div>
                 </div>
             </div>
@@ -91,10 +91,10 @@
         <div ref="short" class="button button__empty">
             <div class="settings-item">
                 <span class="heading">{{ $t('Shortly about myself') }}</span>
-                <span class="text">Tell best things happened to you</span>
+                <span class="text">{{description}}</span>
                 <div class="expanded">
                     <span>
-                        <input type="text" name="short" class="input-default">
+                        <input type="text" name="" v-model="description" class="input-default">
                     </span>
                 </div>
             </div>
@@ -135,22 +135,42 @@ export default {
     return {
       isPersonalInformation: false,
       isInterests: false,
-      isConfirmProfleDelete: false,
-      activeItem: "",
-      form : {
-          gender : 'male'
-      }
+      isConfirmProfleDelete: false
     };
   },
   computed: {
-  job: {
+        gender: {
+            get () {
+                return this.$store.state.user.user.profile.gender
+            },
+            set(value) {
+                this.$store.commit('user/setProfileField', {gender : value})
+            }
+        },
+        city: {
+            get () {
+                return this.$store.state.user.user.profile.city
+            },
+            set(value) {
+                this.$store.commit('user/setProfileField', {city : value})
+            }
+        },
+        job: {
             get () {
                 return this.$store.state.user.user.profile.job
             },
             set(value) {
                 this.$store.commit('user/setProfileField', {job : value})
             }
-        }
+        },
+        description: {
+            get () {
+                return this.$store.state.user.user.profile.description
+            },
+            set(value) {
+                this.$store.commit('user/setProfileField', {description : value})
+            }
+        },
     },
   methods: {
     setPersonalInformation(){

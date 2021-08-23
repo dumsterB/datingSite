@@ -223,7 +223,7 @@ export const mutations = {
   },
   setProfileField(state, payload){
     for (let key in payload) {
-      state.user.profile.key = payload[key];
+      this._vm.$set(state.user.profile, key, payload[key]);
     }
   },
   clearUser(state) {
