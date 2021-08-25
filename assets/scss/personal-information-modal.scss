@@ -1,6 +1,12 @@
 .personal-information-modal {
     width: 500px;
     padding: 55px 0;
+    max-height: 60vh;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      width: 0; 
+      background: transparent; 
+  }
 
     .title {
       font-family: 'Gotham', sans-serif;
@@ -35,6 +41,59 @@
     ul, li{
         list-style: none;
         text-align: left;
+    }
+    .item-title{
+      display: flex;
+      flex-direction: row;
+      vertical-align: middle;
+      justify-content: center;
+      align-items: center;
+      padding: 0 20px;
+      text-transform: uppercase;
+      border-bottom: 1px solid #525252;
+      cursor: pointer;
+      i{
+        width: 10%;
+        &:last-child{
+          transition: all 200ms ease-in-out;
+        }
+      }
+      span{
+        width: 80%;
+        text-align: left;
+      }
+      &__subtext{
+        display:block;
+        color:#559575;
+        font-size:12px;
+      }
+    }
+    .item-list{
+      display: none;
+      text-align: left;
+      padding: 5px 0 0 40px;
+      cursor: pointer;
+
+      span{
+        display: block;
+        font-family: 'Gotham', sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        padding-bottom: 25px;
+
+        &:hover{
+          opacity: 0.5;
+        }
+      }
+    }
+    .opened{
+      .item-list{
+      display: block;
+      }
+      i:last-child{
+        transform: rotate(90deg);
+      }
     }
   }
   

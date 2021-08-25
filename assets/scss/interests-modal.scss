@@ -1,0 +1,103 @@
+.interests-modal {
+
+    width: 500px;
+    padding: 55px;
+    max-height: 60vh;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      width: 0; 
+      background: transparent; 
+    }
+
+    .title {
+      font-style: normal;
+      font-weight: 300;
+    }
+  
+    .text {
+      font-family: 'Gotham', sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 21px;
+      color: #D9A410;
+      position: relative;
+
+      input{
+        width: 100%;
+        padding: 7px 22px;
+        padding-right: 35px;
+        background: transparent;
+        border: 1px solid rgba(79, 79, 79, 0.2);
+        border-radius: 21.5px;
+        box-sizing: border-box;
+        font-family: 'Gotham', sans-serif;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 17px;
+        color: #C4C4C4;
+        outline: none;
+        word-break: break-word;
+      }
+
+      .icon-add{
+        position: absolute;
+        top: 5px;
+        right: 14px;
+        cursor: pointer;
+      }
+    }
+    
+    .interests-list{
+        width: 100%;
+        max-width: 100%;
+        padding: 15px 0;
+
+        p{
+            font-size: 16px;
+            cursor: pointer;
+        }
+    }
+    .interests-popular{
+        font-family: 'Gotham', sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 19px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        border-top: 1px solid #525252;
+        padding-top: 20px;
+    }
+
+    .controls {
+        text-align: center;
+  
+        .button__control{
+          max-width: 110px;
+          margin: 0 auto;
+          margin-top: 28px;
+          margin-left: 25px;
+          display: inline;
+          justify-content: center;
+          background: linear-gradient(94deg, #133983 -12.18%, #71BC6F 134.71%);
+          box-shadow: inset 0px -63.1213px 52.3445px -49.2654px rgba(26, 26, 26, 0.3), inset 0px 62px 95px -36.9491px rgba(192, 192, 192, 0.3), inset 0px 3.07909px 13.8559px rgba(101, 101, 101, 0.3), inset 0px 0.769772px 15px rgba(227, 222, 255, 0.2);
+          backdrop-filter: blur(4px);
+          border-radius: 43px;
+        }
+  
+        .button__cancel{
+          max-width: 110px;
+          margin: 0 auto;
+          margin-top: 28px;
+          margin-left: 25px;
+          display: inline;
+          justify-content: center;
+          linear-gradient: (90deg, rgba(224, 198, 149, 0.05) 0%, rgba(218, 176, 113, 0.05) 100%);
+          border: 1px linear-gradient(94deg, #133983 -12.18%, #71BC6F 134.71%);
+          box-shadow: inset 0px -63.1213px 52.3445px -49.2654px rgba(26, 26, 26, 0.3), inset 0px 62px 95px -36.9491px rgba(192, 192, 192, 0.3), inset 0px 3.07909px 13.8559px rgba(101, 101, 101, 0.3), inset 0px 0.769772px 15px rgba(227, 222, 255, 0.2);
+          backdrop-filter: blur(4px);
+          border-radius: 43px;
+        }
+      }
+  }
+  

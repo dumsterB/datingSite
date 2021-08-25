@@ -53,5 +53,8 @@ export default {
     'Block' : 'Block',
     'Mute notifications' : 'Mute notifications',
     'The user is blocked!' : 'The user is blocked!',
-    'Please tell me the reason' : 'Please tell me the reason'
+    'Please tell me the reason' : 'Please tell me the reason',
+    'Interests' : 'Interests',
+    'Popular' : 'Popular',
+    'I\'m interested in...' : 'I\'m interested in...'
   }
