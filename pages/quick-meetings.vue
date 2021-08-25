@@ -2,36 +2,35 @@
   <div class="quick-meetings">
     <div class="content">
       <div class="quick-meetings__map-block">
-        <button class="button button__full quick-meetings__button">Stop Quick dating</button>
+        <button class="button button__full quick-meetings__button">
+          Stop Quick dating
+        </button>
         <div class="quick-meetings__map">
-          <GmapMap
-            :center="map"
-            :zoom="13"
-            style="width: 100%; height: 434px"
-            :icon="{ url: require('../static/img/avatar.jpg')}"
-          >
-            <gmap-marker
-              :key="index"
-              v-for="(m, index) in quickMeetingsPeoples"
-              :position="{lat: m.geo[0], lng: m.geo[1]}"
-              :clickable="true"
-              :draggable="false"
-              :icon="{ 
-                url: m.pic ? m.pic.url : require('../static/img/avatar.jpg'),
-                size: {width: 100, height: 100, f: 'px', b: 'px',},
-                scaledSize: {width: 100, height: 100, f: 'px', b: 'px',},
-                }"
-            ></gmap-marker>
+          <GmapMap :center="map" :zoom="12" style="width: 100%; height: 434px">
+            <GmapCustomMarker
+              v-for="(m, i) in quickMeetingsPeoples"
+              :key="i"
+              :marker="{ lat: m.geo[0], lng: m.geo[1] }"
+            >
+              <UserMarker
+                :img="m.pic ? m.pic.url : require('../static/img/avatar.jpg')"
+              />
+            </GmapCustomMarker>
           </GmapMap>
-
-
-
         </div>
       </div>
-      <QuickMeetingList :quickMeetingsPeoples="quickMeetingsPeoples"/>
+      <QuickMeetingList :quickMeetingsPeoples="quickMeetingsPeoples" />
     </div>
-    <QuickMeetingsModal :modal="modals.QuickMeetingsModal" @close="close" @next="next"/>
-    <QuickMeetingsMessageModal :modal="modals.QuickMeetingsMessageModal" @close="close" @nextStep="nextStep"/>
+    <QuickMeetingsModal
+      :modal="modals.QuickMeetingsModal"
+      @close="close"
+      @next="next"
+    />
+    <QuickMeetingsMessageModal
+      :modal="modals.QuickMeetingsMessageModal"
+      @close="close"
+      @nextStep="nextStep"
+    />
   </div>
 </template>
 
@@ -39,9 +38,17 @@
 import QuickMeetingList from "@/components/Quick-meeting/QuickMeetingList";
 import QuickMeetingsModal from "@/components/modals/QuickMeetingsModal";
 import QuickMeetingsMessageModal from "@/components/modals/QuickMeetingsMessageModal";
+import GmapCustomMarker from "vue2-gmap-custom-marker";
+import UserMarker from "@/components/UserMarker.vue";
 
 export default {
-  components: {QuickMeetingsModal, QuickMeetingList, QuickMeetingsMessageModal},
+  components: {
+    QuickMeetingsModal,
+    QuickMeetingList,
+    QuickMeetingsMessageModal,
+    GmapCustomMarker,
+    UserMarker
+  },
   data() {
     return {
       modals: {
@@ -56,45 +63,49 @@ export default {
         lat: 0,
         lng: 0
       },
-      markers: [{
-        position: {lat: 46.4814079999, lng: 30.70033}
-      }, {
-        position: {lat: 46.4814079922, lng: 30.70033}
-      }]
-    }
+      markers: [
+        {
+          position: { lat: 46.4814079999, lng: 30.70033 }
+        },
+        {
+          position: { lat: 46.4814079922, lng: 30.70033 }
+        }
+      ]
+    };
   },
- async mounted() {
+  async mounted() {
     if ("geolocation" in navigator) {
-      navigator.geolocation.watchPosition((position) => {
-        console.log(position.coords)
-        this.map.lat = position.coords.latitude
-        this.map.lng = position.coords.longitude
-         this.$store.dispatch('quick-dating/fetchAllQuickMeetingsPeoples', `${this.map.lat},${this.map.lng}`)
+      navigator.geolocation.watchPosition(position => {
+        console.log(position.coords);
+        this.map.lat = position.coords.latitude;
+        this.map.lng = position.coords.longitude;
+        this.$store.dispatch(
+          "quick-dating/fetchAllQuickMeetingsPeoples",
+          `${this.map.lat},${this.map.lng}`
+        );
       });
     } else {
       /* местоположение НЕ доступно */
     }
   },
-    computed:{
-      quickMeetingsPeoples(){
-        return this.$store.getters['quick-dating/getQuickMeetingsPeoples']
-      }
-    },
+  computed: {
+    quickMeetingsPeoples() {
+      return this.$store.getters["quick-dating/getQuickMeetingsPeoples"];
+    }
+  },
   methods: {
     close() {
-      this.modals.QuickMeetingsModal.show = false
+      this.modals.QuickMeetingsModal.show = false;
     },
     next() {
       this.modals.QuickMeetingsModal.show = false;
-      this.modals.QuickMeetingsMessageModal.show = true
+      this.modals.QuickMeetingsMessageModal.show = true;
     },
     nextStep() {
-      this.modals.QuickMeetingsMessageModal.show = false
+      this.modals.QuickMeetingsMessageModal.show = false;
     }
   }
-}
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
