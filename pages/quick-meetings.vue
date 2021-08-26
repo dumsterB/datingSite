@@ -14,6 +14,7 @@
             >
               <UserMarker
                 :img="m.pic ? m.pic.url : require('../static/img/avatar.jpg')"
+                :peopleId="m._id"
               />
             </GmapCustomMarker>
           </GmapMap>

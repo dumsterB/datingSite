@@ -50,6 +50,10 @@
       width: 78px;
       height: 79px;
       border-radius: 50%;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }
