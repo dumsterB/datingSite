@@ -15,6 +15,7 @@
               <UserMarker
                 :img="m.pic ? m.pic.url : require('../static/img/avatar.jpg')"
                 :peopleId="m._id"
+                :textMessage="textMessage"
               />
             </GmapCustomMarker>
           </GmapMap>
@@ -52,6 +53,8 @@ export default {
   },
   data() {
     return {
+      textMessage:
+        "Et ipsum reprehenderit minim fugiat adipisicing. Laborum esse incididunt irure eiusmod pariatur. Incididunt ea aute",
       modals: {
         QuickMeetingsModal: {
           show: true
