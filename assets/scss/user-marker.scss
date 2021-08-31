@@ -1,5 +1,9 @@
 .user-marker {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   &__circle {
     width: 87px;
     height: 88px;
@@ -28,7 +32,6 @@
     height: 35px;
     position: absolute;
     top: 68px;
-    left: 25px;
     clip: rect(auto, 180px, auto, 17px);
     transform: rotate(90deg);
     z-index: 1;
@@ -45,11 +48,32 @@
     }
   }
 
+  &__message {
+    position: relative;
+    margin-top: 4px;
+    max-width: 247px;
+    background: #559575;
+    border-radius: 15px;
+    padding: 8px 20px;
+
+    &_text {
+      color: #ffffff;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 11px;
+      line-height: 128.5%;
+    }
+  }
+
   &__avatar {
     img {
       width: 78px;
       height: 79px;
       border-radius: 50%;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }
