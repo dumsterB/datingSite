@@ -3,7 +3,9 @@
     <div class="content">
       <div class="quick-meetings__map-block">
         <button class="button button__full quick-meetings__button">
-          Stop Quick dating
+          <router-link :to="{path: '/profile' }">
+            Stop Quick dating
+          </router-link>
         </button>
         <div class="quick-meetings__map">
           <GmapMap :center="map" :zoom="12" style="width: 100%; height: 434px">
@@ -30,6 +32,7 @@
     />
     <QuickMeetingsMessageModal
       :modal="modals.QuickMeetingsMessageModal"
+      :users="quickMeetingsPeoples"
       @close="close"
       @nextStep="nextStep"
     />
