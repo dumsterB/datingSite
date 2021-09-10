@@ -7,7 +7,7 @@
           <ContactList :contacts="contacts" @getOpponent="getOpponent" v-if="!isContactList"/>
         </div>
         <div class="chat__answers-block" v-if="!isChat && !isNewAnswers && !isMobile && !isMobileDialog ">
-          <AnswerList/>
+          <!-- <AnswerList/> -->
         </div>
         <template v-if="isChat">
           <div class="column jc-space-between w-100 chat__dialogue"
@@ -122,14 +122,20 @@
 </template>
 <script>
 import ContactList from "@/components/Chat/ContactList";
-import AnswerList from "@/components/NewAnswers/Answer-list";
+// import AnswerList from "@/components/NewAnswers/Answer-list";
 import ComplainModal from "~/components/modals/ComplainModal";
 import * as _ from 'lodash'
 import Icon from "@/components/Icon";
 import Loader from "@/components/Loader";
 
 export default {
-  components: {Icon, AnswerList, ContactList, Loader, ComplainModal},
+  components: {
+    Icon, 
+    // AnswerList, 
+    ContactList, 
+    Loader, 
+    ComplainModal
+  },
   data() {
     return {
       isChat: false,
