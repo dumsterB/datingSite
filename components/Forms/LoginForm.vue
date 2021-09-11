@@ -34,8 +34,8 @@ export default {
   data() {
     return {
       form: {
-        login: '+380637058924',
-        password: 'Realemil777'
+        login: '',
+        password: ''
       }
     }
   },

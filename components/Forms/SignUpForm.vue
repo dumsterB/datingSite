@@ -89,25 +89,22 @@ export default {
         years.push(i)
       }
       return years
+    },
+    birthDate(){
+      return `${this.selectedYear}-${this.optionsMonths.indexOf(this.selectedMonth) + 1}-${this.selectedDay}`;
     }
   },
   methods:{
     send(){
-      // const payload = {
-      //   name: this.form.full_name,
-      //   mobile: '+380604319223',
-      //   password: this.form.password,
-      //   gender: this.gender,
-      //   orientation: [this.gender],
-      //   birthday: "1999-10-10"
-      // }
-      /*const payload = {
-        name: 'user1',
-        mobile: '+380622319223',
-        gender: 'male',
-        orientation: ['male'],
-      }*/
-      this.$emit('sendSendUp', this.form)
+      const payload = {
+        name: this.form.full_name,
+        //mobile: '+380604319223',
+        password: this.form.password,
+        gender: this.form.gender,
+        orientation: [this.form.gender],
+        birth_date: this.birthDate
+      }
+      this.$emit('sendSendUp', payload)
     } 
   }
 }

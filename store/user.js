@@ -102,10 +102,10 @@ export const actions = {
   },
   async register(ctx, user) {
     await load('/users/register','post',  user).then(data => {
-      localStorage.setItem('token', data.accessToken)
+      /*localStorage.setItem('token', data.accessToken)
         ctx.commit('user/setToken', {
           token: data.accessToken
-        }, {root: true})
+        }, {root: true})*/
     }).catch(e => {
       throw e;
     })
@@ -119,6 +119,16 @@ export const actions = {
     //   .then(data => {
     //     console.log('DATA', data)
     //   })
+  },
+  async verifySMS(ctx, payload) {
+    await load('/users/verify_sms','post', payload).then(data => {
+      localStorage.setItem('token', data.accessToken)
+      ctx.commit('user/setToken', {
+        token: data.accessToken
+      }, {root: true})
+    }).catch(e => {
+      throw e;
+    })
   },
   async userData(ctx) {
     await load('/v2/user/data','get', '',  true).then(data => {

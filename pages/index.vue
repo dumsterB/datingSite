@@ -124,16 +124,34 @@ export default {
           this.loading = false
         })
     },
-    sendVerificCode(payload) {
+    async sendVerificCode(payload) {
       this.newUser.mobile = payload;
+      await this.$store.dispatch('user/register', this.newUser)
       this.isSendVerifCode = false;
       this.isVerifCode = true
     },
     async confirmVerificCode(payload) {
-      this.newUser.code = payload;
+      //this.newUser.code = payload;
+      const verifyPayload = {
+        mobile : this.newUser.mobile,
+        code : payload
+      }
+      const loginPayload = {
+        mobile : this.newUser.mobile,
+        password : this.newUser.password
+      }
+
       if(this.authType==='register'){
-        this.isVerifCode = false;
-        this.isRegisterPhoto = true
+        await this.$store.dispatch('user/verifySMS', verifyPayload).then(async data => {
+          setTimeout(async () => {
+            await this.$store.dispatch('user/login', loginPayload)
+            this.isVerifCode = false;
+            this.isRegisterPhoto = true
+          })
+          this.loading = false
+        }).catch(e => {
+          this.loading = false
+        })
       } else {
         console.log(this.newUser);
         await this.login(this.newUser);
@@ -142,15 +160,22 @@ export default {
     async getRegisterPhoto(payload) {
       this.newUser.file = payload;
       this.loading = true
-      await this.$store.dispatch('user/register', this.newUser).then(data => {
-          setTimeout(() => {
-            this.$router.push(this.localePath('/profile'))
-          })
-          this.loading = false
-        }).catch(e => {
-          console.log(e)
-          this.loading = false
+
+      const reader = new FileReader();
+      reader.readAsDataURL(payload);
+
+      const res = await this.$store.dispatch('media/uploadImage', payload)
+      const data = await res.json();
+
+      await this.$store.dispatch('user/addProfilePhoto', {file:data._id, index: 0}).then(data => {
+        setTimeout(() => {
+          this.$router.push(this.localePath('/profile'))
         })
+        this.loading = false
+      }).catch(e => {
+        console.log(e)
+        this.loading = false
+      })
     },
     sendMobileLoginCode(){
       this.authType = 'login';
