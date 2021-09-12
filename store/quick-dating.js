@@ -1,5 +1,8 @@
+import {load} from '@/plugins/api';
+
 export const state = () => ({
-  quickMeetingsPeoples:[]
+  quickMeetingsPeoples:[],
+  quickMeetingsLiqPay: {}
 })
 
 export const actions = {
@@ -17,17 +20,32 @@ export const actions = {
     }).then(data => {
       ctx.commit('quick-dating/setQuickMeetingsPeoples', data, {root: true})
     })
-  }
+  },
+
+  async generateLiqpay(ctx, payload) {
+    await load('/v2/coin/liqpay','put', payload, true)
+    .then(data => {
+      ctx.commit('quick-dating/setQuickMeetingsLiqpay', data, {root: true})
+    }).catch(e => {
+      throw e;
+    })
+  },
 }
 
 export const mutations = {
   setQuickMeetingsPeoples(state, payload){
     state.quickMeetingsPeoples = payload
+  },
+  setQuickMeetingsLiqpay(state, payload){
+    state.quickMeetingsLiqPay = payload
   }
 }
 
 export const getters = {
   getQuickMeetingsPeoples(state){
     return state.quickMeetingsPeoples
+  },
+  getQuickMeetingsLiqpay(state){
+    return state.quickMeetingsLiqPay
   }
 }
