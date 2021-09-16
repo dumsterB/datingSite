@@ -83,7 +83,6 @@ export default {
   async mounted() {
     if ("geolocation" in navigator) {
       navigator.geolocation.watchPosition(position => {
-        // console.log(position.coords);
         this.map.lat = position.coords.latitude;
         this.map.lng = position.coords.longitude;
         this.$store.dispatch(

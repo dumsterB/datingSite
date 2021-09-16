@@ -77,7 +77,6 @@ class WS {
           break;
         case 'want-qdate-off':
           this.wantQdateOff(data);
-          console.log('want-qdate-off', data);
           break;
         case 'reward-achived':
           console.log('new-chat', data);

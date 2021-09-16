@@ -51,7 +51,6 @@ export const mutations = {
     state.quickMeetingsLiqPay = payload
   },
   setQDate(state, payload) {
-    console.log("put", payload);
     ws.store.qDate = payload
   }
 }

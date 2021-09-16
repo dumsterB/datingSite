@@ -47,7 +47,6 @@ export default {
     qDateOff() {
       let showWindow = false
       if (this.$ws.store.qDateOff.length) {
-        console.log("gender", this.getUserData.profile.gender);
         showWindow = this.getUserData.profile.gender !== "female";
       } else {
         showWindow = false
