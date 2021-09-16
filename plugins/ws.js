@@ -8,6 +8,8 @@ class WS {
     contacts: [],
     forums:[],
     forumMessages:[],
+    qDate: null,
+    qDateOff: ""
   };
 
   constructor() {
@@ -74,6 +76,7 @@ class WS {
           console.log('forum-new-pin', data);
           break;
         case 'want-qdate-off':
+          this.wantQdateOff(data);
           console.log('want-qdate-off', data);
           break;
         case 'reward-achived':
@@ -106,6 +109,12 @@ class WS {
 
   send(event) {
     this.socket.send(event)
+  }
+
+  wantQdateOff(data) {
+    if (this.store.qDate) {
+      this.store.qDateOff = data.type;
+    }
   }
 
 

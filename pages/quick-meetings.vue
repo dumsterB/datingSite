@@ -12,7 +12,7 @@
             <GmapCustomMarker
               v-for="(m, i) in quickMeetingsPeoples"
               :key="i"
-              :marker="{ lat: m.geo[0], lng: m.geo[1] }"
+              :marker="{ lat: m.geo[1], lng: m.geo[0] }"
             >
               <UserMarker
                 :img="m.pic ? m.pic.url : require('../static/img/avatar.jpg')"
@@ -83,7 +83,7 @@ export default {
   async mounted() {
     if ("geolocation" in navigator) {
       navigator.geolocation.watchPosition(position => {
-        console.log(position.coords);
+        // console.log(position.coords);
         this.map.lat = position.coords.latitude;
         this.map.lng = position.coords.longitude;
         this.$store.dispatch(

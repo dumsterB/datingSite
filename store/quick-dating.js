@@ -1,8 +1,10 @@
 import {load} from '@/plugins/api';
+import ws from '../plugins/ws'
 
 export const state = () => ({
   quickMeetingsPeoples:[],
-  quickMeetingsLiqPay: {}
+  quickMeetingsLiqPay: {},
+  wantDate: null
 })
 
 export const actions = {
@@ -22,6 +24,15 @@ export const actions = {
     })
   },
 
+  async wantQdate({ commit }, payload) {
+    await load("/v2/quick-dating/want-qdate", "put", payload, true)
+      .then(data => {
+        commit("quick-dating/setQDate", data.status, { root: true })
+      }).catch(err => {
+        console.error(err)
+      })
+  },
+
   async generateLiqpay(ctx, payload) {
     await load('/v2/coin/liqpay','put', payload, true)
     .then(data => {
@@ -38,6 +49,10 @@ export const mutations = {
   },
   setQuickMeetingsLiqpay(state, payload){
     state.quickMeetingsLiqPay = payload
+  },
+  setQDate(state, payload) {
+    console.log("put", payload);
+    ws.store.qDate = payload
   }
 }
 
