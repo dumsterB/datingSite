@@ -8,7 +8,15 @@
       <span class="ballance__bill">10  <BallanceIcon/></span>
       <button class="button button__full" @click="setRefill">Top up</button>
     </div>
-   <div class="ballance-card-block" v-else>
+   <form
+     class="ballance-card-block"
+     v-else
+     method="POST"
+     accept-charset="utf-8"
+     action="https://www.liqpay.ua/api/3/checkout"
+   >
+     <input type="hidden" name="data" :value="quickMeetingsLiqpay.data" />
+     <input type="hidden" name="signature" :value="quickMeetingsLiqpay.signature" />
      <div class="row jc-center">
        <ProfileCard :title="1" :price="5" :activeItem="activeItem" @setCheckCard="setCheckCard" />
        <ProfileCard :title="10" :price="5" :activeItem="activeItem" @setCheckCard="setCheckCard" />
@@ -16,7 +24,7 @@
        <ProfileCard :title="100" :price="5" :activeItem="activeItem" @setCheckCard="setCheckCard" />
      </div>
      <button class="button button__full">Оплатить c помощью <LiqpayIcon/></button>
-   </div>
+   </form>
   </div>
 </template>
 
@@ -33,13 +41,19 @@ export default {
       activeItem: '',
     }
   },
+  computed: {
+    quickMeetingsLiqpay() {
+      return this.$store.getters["quick-dating/getQuickMeetingsLiqpay"];
+    },
+  },
   methods:{
     setRefill(){
       this.isRefill = !this.isRefill;
     },
-    setCheckCard(card){
+    async setCheckCard(card){
       this.activeItem = card.name
+      await this.$store.dispatch('quick-dating/generateLiqpay', { "amount" : card.title });
     },
-  }
+  },
 }
 </script>
