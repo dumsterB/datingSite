@@ -44,9 +44,14 @@ export default {
     getUserData() {
       return this.$store.getters["user/user"];
     },
+    coins() {
+      return this.$store.getters["user/coins"];
+    },
     qDateOff() {
-      let showWindow = false
-      if (this.$ws.store.qDateOff.length) {
+      let showWindow = true
+      if (this.coins.coins <= 0) {
+        showWindow = true
+      } else if (this.$ws.store.qDateOff.length) {
         showWindow = this.getUserData.profile.gender !== "female";
       } else {
         showWindow = false
@@ -56,7 +61,9 @@ export default {
   },
   async created(){
     await this.$store.dispatch('quick-dating/generateLiqpay', { "amount" : 10 });
-    await this.$store.dispatch("quick-dating/wantQdate", { "status": this.modal.show });
+    if (this.coins.coins > 0) {
+      await this.$store.dispatch("quick-dating/wantQdate", { "status": this.modal.show });
+    }
   }
 }
 </script>
