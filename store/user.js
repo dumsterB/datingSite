@@ -130,6 +130,29 @@ export const actions = {
       throw e;
     })
   },
+  async recover(ctx, phone) {
+    await load('/v2/auth/recover','post',  {phone}).then(data => {
+      
+    }).catch(e => {
+      throw e;
+    })
+  },
+  async submitRecover(ctx, payload) {
+    await load('/v2/auth/recover/code','post',  payload).then(data => {
+      localStorage.setItem('token', data.accessToken)
+      ctx.commit('user/setToken', {
+        token: data.accessToken
+      }, {root: true})
+    }).catch(e => {
+      throw e;
+    })
+  },
+  async updatePassword(ctx, payload) {
+    await load('/v2/user/profile/pass','put',  payload, true).then(data => {
+    }).catch(e => {
+      throw e;
+    })
+  },
   async userData(ctx) {
     await load('/v2/user/data','get', '',  true).then(data => {
       ctx.commit('user/setDataUser', {

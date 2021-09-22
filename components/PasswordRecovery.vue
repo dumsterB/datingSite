@@ -4,12 +4,14 @@
       <inline-svg src="/icons/arrow-left.svg" @click="$emit('setForgotPassword')" />
       Восстановление пароля
     </h2>
-   <div class="column ai-center ">
-     <form @submit.prevent="send" class="column ai-center w-100">
-       <input type="email" placeholder="Email" class="input-default" v-model="email"/>
-       <button class="button button__full">Send</button>
-     </form>
-   </div>
+    <form @submit.prevent="send" @keypress.enter="send">
+      <div class="row jc-center">
+        <input type="text" class="input-default phone-code" v-model="phoneCode">
+        <input v-focus type="number" class="input-default phone-number" v-model="phoneNumber" :placeholder="$t('Phone number')" required>
+      </div>
+      <p class="text">{{$t('We will send you a varification code')}}</p>
+      <button class="button button__full" >{{$t('Next')}}</button>
+    </form>
   </div>
 </template>
 
@@ -24,13 +26,18 @@ export default {
   },
   data(){
     return {
-      email: ''
+      phoneCode: '+380',
+      phoneNumber:''
+    }
+  },
+  computed:{
+    phone(){
+      return this.phoneCode.trim() + this.phoneNumber.trim();
     }
   },
   methods:{
     send(){
-      console.log(this.email);
-      this.$emit('recoveryPassword')
+      this.$emit('recoveryPassword', this.phone)
     }
   }
 }

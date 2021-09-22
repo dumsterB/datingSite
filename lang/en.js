@@ -56,5 +56,8 @@ export default {
     'Please tell me the reason' : 'Please tell me the reason',
     'Interests' : 'Interests',
     'Popular' : 'Popular',
-    'I\'m interested in...' : 'I\'m interested in...'
+    'I\'m interested in...' : 'I\'m interested in...',
+    'Done!' : 'Done!',
+    'A new password has been sent to your phone' : 'A new password has been sent to your phone',
+    'Enter new password from SMS' : 'Enter new password from SMS'
   }

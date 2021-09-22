@@ -4,12 +4,13 @@
       <inline-svg src="/icons/logo.svg" />
     </div>
     <form @submit.prevent="send">
-      <input type="text" placeholder="Login" class="input-default"
-             :class="{ '_error-input': loginError }" required
-             v-model="form.login" />
+      <div class="jc-center">
+        <input type="text" class="input-default phone-code" v-model="phoneCode">
+        <input v-focus type="number" class="input-default phone-number" v-model="phoneNumber" :placeholder="$t('Phone number')" required>
+      </div>
       <span v-if="loginError" class="error-message login">Неверный логин или пароль</span>
       <div class="password-block">
-        <input type="password" placeholder="Password" class="input-default"
+        <input type="password" :placeholder="$t('Password')" class="input-default"
                :class="{ '_error-input': loginError }" required
                v-model="form.password" />
         <span to="/" class="forgot-password"
@@ -50,17 +51,24 @@ export default {
   components: {},
   data() {
     return {
+      phoneCode: '+380',
+      phoneNumber:'',
       form: {
         login: "",
         password: "",
       },
     };
   },
+  computed:{
+    phone(){
+      return this.phoneCode.trim() + this.phoneNumber.trim();
+    }
+  },
   methods: {
     async send() {
-      if (this.form.login.trim() && this.form.password.trim()) {
+      if (this.phone && this.form.password.trim()) {
         const payload = {
-          mobile: this.form.login,
+          mobile: this.phone,
           password: this.form.password,
         };
         this.$emit("login", payload);
