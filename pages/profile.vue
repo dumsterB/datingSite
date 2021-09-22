@@ -3,7 +3,7 @@
     <div class="content">
       <template v-if="!isBallance && !isStatusVip && !isProfileSettings">
         <div class="row">
-          <label for="file-upload" class="button button__full">+ {{$t('Add photo')}}</label>
+          <label for="file-upload" class="button button__full">+ Добавьте фото</label>
           <input id="file-upload" type="file" @change="change"
                  style="display:none;">
           <div class="settings-block">
