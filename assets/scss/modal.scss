@@ -74,6 +74,8 @@
     max-width: 100%;
     width: 100%;
     padding-top: 25px;
+    padding-left: 0;
+    padding-right: 0;
 
     .close {
       top: 17px;
@@ -85,7 +87,7 @@
     }
 
     .text{
-      display: none;
+      //display: none;
     }
 
     .password-alright {
