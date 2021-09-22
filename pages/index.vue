@@ -9,6 +9,7 @@
         :isQrCode="isQrCode"
         :isSendVerifCode="isSendVerifCode"
         :authType="'login'"
+        :loginError="loginError"
         @setForgotPassword="setForgotPassword"
         @setSignUp="setSignUp"
         @setQrCode="setQrCode"
@@ -23,7 +24,7 @@
       <SignUpForm :isSignUp="isSignUp" :authType="'register'" @setSignUp="setSignUp" @sendSendUp="sendSendUp"/>
       <LogInWithQrCode :isQrCode="isQrCode" @setQrCode="setQrCode"/>
       <SendVarificationCode :authType="authType" :isSendVerifCode="isSendVerifCode" @setSendVerificCode="setSendVerificCode" @sendVerificCode="sendVerificCode"/>
-      <VeriticationCode :isVerifCode="isVerifCode" @setVerificCode="setVerificCode" @confirmVerificCode="confirmVerificCode"/>
+      <VeriticationCode :verifySMSError="verifySMSError" :isVerifCode="isVerifCode" @setVerificCode="setVerificCode" @confirmVerificCode="confirmVerificCode"/>
       <RegisterPhoto :isRegisterPhoto="isRegisterPhoto" @setRegisterPhoto="setRegisterPhoto" @getRegisterPhoto="getRegisterPhoto"/>
     </div>
     <SentPasswordModal :modal="modals.passwordModal" @close="close"></SentPasswordModal>
@@ -71,7 +72,9 @@ export default {
           show: false
         }
       },
-      loading: false
+      loading: false,
+      loginError: false,
+      verifySMSError: false,
     }
   },
   methods: {
@@ -87,7 +90,7 @@ export default {
     setSendVerificCode() {
       if(this.authType==='register'){
         this.isSignUp = !this.isSignUp;
-      }       
+      }
       this.isSendVerifCode = !this.isSendVerifCode;
     },
     setVerificCode() {
@@ -113,7 +116,7 @@ export default {
       this.isSignUp = !this.isSignUp;
       this.isSendVerifCode = true;
     },
-    async login(payload) {
+    async login(payload, verifySMS) {
       this.loading = true
       await this.$store.dispatch('user/login', payload).then(data => {
           setTimeout(() => {
@@ -121,6 +124,14 @@ export default {
           })
           this.loading = false
         }).catch(e => {
+          if (e && verifySMS) {
+            this.verifySMSError = true
+          } else if (e) {
+            this.loginError = true;
+          } else {
+            this.verifySMSError = false;
+            this.loginError = false;
+          }
           this.loading = false
         })
     },
@@ -153,8 +164,8 @@ export default {
           this.loading = false
         })
       } else {
-        console.log(this.newUser);
-        await this.login(this.newUser);
+        const verifySMS = true;
+        await this.login(this.newUser, verifySMS);
       }
     },
     async getRegisterPhoto(payload) {

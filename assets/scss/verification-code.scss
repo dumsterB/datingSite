@@ -40,6 +40,19 @@
        cursor: pointer;
      }
    }
+
+   .text-error-message {
+     display: flex;
+     justify-content: center;
+     margin-top: 7px;
+     font-family: 'Gotham', sans-serif;
+     font-style: normal;
+     font-weight: normal;
+     font-size: 12px;
+     line-height: 13px;
+     color: #f40101;
+     text-decoration: none;
+   }
  }
 
 }

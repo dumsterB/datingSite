@@ -6,13 +6,14 @@
     <h2 class="title">{{$t('Confirm code')}}</h2>
     <form action="">
       <div class="row jc-center">
-        <input v-focus type="number" class="input-code" @keyup="onKeyup" min="0" max="9"/>
-        <input type="number" class="input-code" @keyup="onKeyup" min="0" max="9"/>
-        <input type="number" class="input-code" @keyup="onKeyup" min="0" max="9"/>
-        <input type="number" class="input-code" @keyup="onKeyup" min="0" max="9"/>
-        <input type="number" class="input-code" @keyup="onKeyup" min="0" max="9"/>
-        <input type="number" class="input-code" @keyup="onKeyup" min="0" max="9"/>
+        <input v-focus type="number" class="input-code" :class="{ '_sms-error': verifySMSError }" @keyup="onKeyup" min="0" max="9"/>
+        <input type="number" class="input-code" :class="{ '_sms-error': verifySMSError }" @keyup="onKeyup" min="0" max="9"/>
+        <input type="number" class="input-code" :class="{ '_sms-error': verifySMSError }" @keyup="onKeyup" min="0" max="9"/>
+        <input type="number" class="input-code" :class="{ '_sms-error': verifySMSError }" @keyup="onKeyup" min="0" max="9"/>
+        <input type="number" class="input-code" :class="{ '_sms-error': verifySMSError }" @keyup="onKeyup" min="0" max="9"/>
+        <input type="number" class="input-code" :class="{ '_sms-error': verifySMSError }" @keyup="onKeyup" min="0" max="9"/>
       </div>
+      <span v-if="verifySMSError" class="text-error-message">Неправильный код</span>
       <span class="text">{{$t('Didn’t get a code?')}} <span class="send-again">{{$t('Send again')}}</span></span>
     </form>
   </div>
@@ -25,6 +26,10 @@ export default {
     isVerifCode:{
       type: Boolean,
       required: true
+    },
+    verifySMSError: {
+      type: Boolean,
+      default: false
     }
   },
   data(){
