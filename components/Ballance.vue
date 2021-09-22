@@ -18,10 +18,10 @@
      <input type="hidden" name="data" :value="quickMeetingsLiqpay.data" />
      <input type="hidden" name="signature" :value="quickMeetingsLiqpay.signature" />
      <div class="row jc-center">
-       <ProfileCard :title="1" :price="5" :activeItem="activeItem" @setCheckCard="setCheckCard" />
-       <ProfileCard :title="10" :price="5" :activeItem="activeItem" @setCheckCard="setCheckCard" />
-       <ProfileCard :title="50" :price="5" :activeItem="activeItem" @setCheckCard="setCheckCard" />
-       <ProfileCard :title="100" :price="5" :activeItem="activeItem" @setCheckCard="setCheckCard" />
+       <ProfileCard :title="1" :price="0.99" :activeItem="activeItem" @setCheckCard="setCheckCard" />
+       <ProfileCard :title="10" :price="8.99" :activeItem="activeItem" @setCheckCard="setCheckCard" />
+       <ProfileCard :title="50" :price="32.99" :activeItem="activeItem" @setCheckCard="setCheckCard" />
+       <ProfileCard :title="100" :price="54.99" :activeItem="activeItem" @setCheckCard="setCheckCard" />
      </div>
      <button class="button button__full">Оплатить c помощью <LiqpayIcon/></button>
    </form>

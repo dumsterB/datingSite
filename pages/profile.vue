@@ -25,45 +25,45 @@
           </div>
         </div>
         <div class="row">
-          <button class="button button__empty">
-            <i>
-              <label class="switch">
-                <input type="checkbox">
-                <span class="slider round"></span>
-              </label>
-            </i>
-            <span>Are you ready to meet today?</span>
-          </button>
+<!--          <button class="button button__empty">-->
+<!--            <i>-->
+<!--              <label class="switch">-->
+<!--                <input type="checkbox">-->
+<!--                <span class="slider round"></span>-->
+<!--              </label>-->
+<!--            </i>-->
+<!--            <span>Are you ready to meet today?</span>-->
+<!--          </button>-->
           <button class="button button__empty" @click="setBallance">
             <i>
               <BallanceIcon/>
             </i>
             <span>Ballance</span>
           </button>
-          <button class="button button__empty" @click="setStatusVip">
-            <i>
-              <VipIcon/>
-            </i>
-            <span>Become a VIP</span>
-          </button>
-          <button class="button button__empty">
-            <i>
-              <DailyIcon/>
-            </i>
-            <span>Daily rewords</span>
-          </button>
-          <button class="button button__empty" @click="modals.verificationModal.show = true">
-            <i>
-              <VerificationIcon/>
-            </i>
-            <span>Verification</span>
-          </button>
-          <button class="button button__empty">
-            <i>
-              <GuestIcon/>
-            </i>
-            <span>Guest</span>
-          </button>
+<!--          <button class="button button__empty" @click="setStatusVip">-->
+<!--            <i>-->
+<!--              <VipIcon/>-->
+<!--            </i>-->
+<!--            <span>Become a VIP</span>-->
+<!--          </button>-->
+<!--          <button class="button button__empty">-->
+<!--            <i>-->
+<!--              <DailyIcon/>-->
+<!--            </i>-->
+<!--            <span>Daily rewords</span>-->
+<!--          </button>-->
+<!--          <button class="button button__empty" @click="modals.verificationModal.show = true">-->
+<!--            <i>-->
+<!--              <VerificationIcon/>-->
+<!--            </i>-->
+<!--            <span>Verification</span>-->
+<!--          </button>-->
+<!--          <button class="button button__empty">-->
+<!--            <i>-->
+<!--              <GuestIcon/>-->
+<!--            </i>-->
+<!--            <span>Guest</span>-->
+<!--          </button>-->
         </div>
       </template>
       <Ballance @setBallance="setBallance" v-if="isBallance"/>

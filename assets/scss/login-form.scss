@@ -7,12 +7,35 @@
     margin-bottom: 48px;
   }
   form {
+    position: relative;
     max-width: 555px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    .error-message {
+      font-family: 'Gotham', sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 11px;
+      line-height: 13px;
+      color: #f40101;
+      text-decoration: none;
+    }
+
+    .login {
+      position: absolute;
+      top: 55px;
+      left: 20px;
+    }
+
+    .password {
+      position: absolute;
+      top: 154px;
+      left: 20px;
+    }
 
     .password-block {
       width: 100%;

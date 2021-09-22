@@ -22,6 +22,6 @@ export async function load(uri, method, data, auth = false){
     console.log(err)
     throw new Error(err.msg);
   }
-  return await response.json();;
+  return await response.json();
 }
 
