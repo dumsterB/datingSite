@@ -46,6 +46,17 @@
     width: 100%;
     height: 100%;
     padding: 64px 48px;
+
+    span{
+      font-family: 'Gotham', sans-serif;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 30px;
+      line-height: 36px;
+      text-align: center;
+      color: #FFFFFF;
+      margin-bottom: 6px;
+    }
   }
 
   &__header {

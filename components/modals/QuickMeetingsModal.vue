@@ -1,9 +1,9 @@
 <template>
   <div class="overlay" v-if="qDateOff">
   <div class="modal quick-meeting-modal">
-     <!--span class="close" @click="$emit('close')">
+     <span class="close" @click="$router.push('/profile')">
       <inline-svg src="icons/close-modal.svg"/>
-    </span-->
+    </span>
     <div class="modal-body">
       <h2 class="title">Быстрые свидания</h2>
       <p class="text">Назначай встречу прямо сейчас.</p>

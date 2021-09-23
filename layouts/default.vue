@@ -57,7 +57,14 @@
         >
           <Auth v-if="userData" :user="userData" :coins="coins.coins" />
           <LinksList :links="links" @closeMenu="closeMenu" />
+          <div class="sidebar-left__footer">
+          <span class="log-out" @click="logout">
+            <inline-svg src="/icons/logout.svg" />
+              Log out
+            </span>
+          </div>
         </div>
+        
         <div
           class="header-mobile__logo"
           @click="$router.push('/'), (isActiveMenu = false)"

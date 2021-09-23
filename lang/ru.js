@@ -39,6 +39,7 @@ export default {
     'City' : 'Город',
     'Personal information' : 'Персональная информация',
     'Job' : 'Работа',
+    'Interests' : 'Интересы',
     'Shortly about myself' : 'Коротко о себе',
     'Delete account' : 'Удалить аккаунт',
     'Are you sure you want to delete your account?' : 'Вы уверены что хотите удалить аккаунт?',
@@ -56,5 +57,6 @@ export default {
     'I\'m interested in...' : 'Меня интересует...',
     'Done!' : 'Готово!',
     'A new password has been sent to your phone' : 'Новый пароль был отправлен вам на телефон',
-    'Enter new password from SMS' : 'Введите новый пароль из СМС'
+    'Enter new password from SMS' : 'Введите новый пароль из СМС',
+    'No chats yet...' : 'Пока нет чатов...'
   }
