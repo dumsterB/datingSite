@@ -39,7 +39,6 @@ export default {
     'City' : 'Город',
     'Personal information' : 'Персональная информация',
     'Job' : 'Работа',
-    'Interests' : 'Интересы',
     'Shortly about myself' : 'Коротко о себе',
     'Delete account' : 'Удалить аккаунт',
     'Are you sure you want to delete your account?' : 'Вы уверены что хотите удалить аккаунт?',
