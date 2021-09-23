@@ -1,4 +1,5 @@
 import ws from '../plugins/ws'
+import {load} from '@/plugins/api'
 
 export const state = () => ({
   chats: [],
@@ -48,6 +49,13 @@ export const actions = {
 
     }).then(res => {
       return res.json()
+    })
+  },
+
+  async chatCreateGet(ctx, payload) {
+    return await load(`/v2/chat/get-or-create/${payload}`,'post', '' ,true).then(data => data)
+    .catch(e => {
+      throw e;
     })
   },
 

@@ -3,11 +3,14 @@
     <div class="content">
       <div class="row jc-start no-wrap">
         <div class="chat__contacts-block" v-if="!isMobileDialog">
-          <div class="chat__new-answers" @click="openNewAnswers">12 new answers</div>
+          <!--div class="chat__new-answers" @click="openNewAnswers">12 new answers</div-->
           <ContactList :contacts="contacts" @getOpponent="getOpponent" v-if="!isContactList"/>
         </div>
         <div class="chat__answers-block" v-if="!isChat && !isNewAnswers && !isMobile && !isMobileDialog ">
           <!-- <AnswerList/> -->
+        </div>
+        <div class="chat__answers-block" v-else-if="contacts.length === 0">
+          <span>{{$t('No chats yet...')}}</span>
         </div>
         <template v-if="isChat">
           <div class="column jc-space-between w-100 chat__dialogue"

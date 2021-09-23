@@ -98,7 +98,7 @@ class WS {
 
   newMessage(data) {
     const chat = this.store.chats[data.data.chat_id]
-    chat.push(data.data);
+    if (chat) chat.push(data.data);
   }
 
   newForumMessage(){

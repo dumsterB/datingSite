@@ -172,12 +172,27 @@ export default {
       this.$store.commit("chat/setBlockModal");
       this.$router.go(-1);
     },
-    chatEnter() {
-      console.log(this.$store.state.chat);
-      this.$router.push({
-        path: `/chat/${this.user._id}`,
-        query: { chat_id: this.getChatId }
-      });
+    async chatEnter() {
+      await this.$store.dispatch('chat/chatCreateGet', this.user._id).then(async data =>{
+        const contact = this.$store.getters["chat/getContacts"].filter(x => x.opponent._id === this.user._id)
+        if(contact.length > 0){
+          this.$router.push({
+              path: `/chat/${this.user._id}`,
+              query: { chat_id: data._id }
+            });
+        } else {
+          const payload = {
+            chat_id: data._id,
+            message_text: '🖐'
+          }
+          await this.$store.dispatch('chat/sendMessage', payload).then(async res => {
+            this.$router.push({
+              path: `/chat/${this.user._id}`,
+              query: { chat_id: data._id }
+            });
+          }) 
+        }
+      })
     }
   },
   async fetch() {
