@@ -27,7 +27,7 @@
       <VeriticationCode :verifySMSError="verifySMSError" :isVerifCode="isVerifCode" @setVerificCode="setVerificCode" @confirmVerificCode="confirmVerificCode"/>
       <RegisterPhoto :isRegisterPhoto="isRegisterPhoto" @setRegisterPhoto="setRegisterPhoto" @getRegisterPhoto="getRegisterPhoto"/>
     </div>
-    <SentPasswordModal :modal="modals.passwordModal" @close="close"></SentPasswordModal>
+    <SentPasswordModal :modal="modals.passwordModal" :phone="recoveryPhone" @submitRecoveryPassword="submitRecoveryPassword" @close="close"></SentPasswordModal>
   </div>
 </template>
 
@@ -75,6 +75,7 @@ export default {
       loading: false,
       loginError: false,
       verifySMSError: false,
+      recoveryPhone: ''
     }
   },
   methods: {
@@ -101,8 +102,23 @@ export default {
       this.isRegisterPhoto = !this.isRegisterPhoto;
       this.isVerifCode = !this.isVerifCode;
     },
-    recoveryPassword() {
-      this.modals.passwordModal.show = true;
+    async recoveryPassword(payload) {
+      this.recoveryPhone = payload
+      await this.$store.dispatch('user/recover', payload).then(()=>{
+        this.modals.passwordModal.show = true;
+      });
+    },
+    async submitRecoveryPassword(payload) {
+      await this.$store.dispatch('user/submitRecover', payload).then(async data => {
+          setTimeout(() => {
+            this.$router.push(this.localePath('/profile'))
+          })
+          await this.$store.dispatch('user/updatePassword', {pass:payload.code}).then(async data => {
+            
+          })
+        }).catch(e => {
+          console.log('error', e)
+        })
     },
     close() {
       this.modals.passwordModal.show = false;

@@ -53,5 +53,8 @@ export default {
     'Please tell me the reason' : 'Пожалуйста назовите причину',
     'Interests' : 'Интересы',
     'Popular' : 'Популярное',
-    'I\'m interested in...' : 'Меня интересует...'
+    'I\'m interested in...' : 'Меня интересует...',
+    'Done!' : 'Готово!',
+    'A new password has been sent to your phone' : 'Новый пароль был отправлен вам на телефон',
+    'Enter new password from SMS' : 'Введите новый пароль из СМС'
   }
