@@ -192,6 +192,20 @@ export const actions = {
     })
   },
 
+  async removeAccount(ctx) {
+    const myData = {reason: 'wqe qweqwe'}
+    await fetch(`https://${process.env.API_HOST}/v2/user`, {
+      method: 'delete',
+      headers: {
+        'Authorization': `Bearer ${ctx.state.token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(myData)
+    }).then(res => {
+      ctx.commit("removeToken")
+    })
+  },
+
   async removeProfilePhoto(ctx, payload) {
     await fetch(`https://${process.env.API_HOST}/v2/user/profile/image`, {
       method: 'delete',
@@ -235,6 +249,10 @@ export const actions = {
 }
 
 export const mutations = {
+  removeToken(state) {
+    localStorage.removeItem("token")
+    state.token = "";
+  },
   setInit(state, payload) {
     state.token = payload.token
     state.user = payload.user

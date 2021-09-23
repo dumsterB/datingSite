@@ -20,7 +20,7 @@ export default {
     name:'ConfirmProfileDeleteModal',
     methods: {
         deleteProfile(){
-            this.$store.dispatch('user/logout');
+            this.$store.dispatch('user/removeAccount')
             this.$router.push(this.localePath('/empty'))
         }
     }
