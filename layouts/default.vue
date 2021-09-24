@@ -37,7 +37,7 @@
         <div class="sidebar-left__footer">
           <span class="log-out" @click="logout">
             <inline-svg src="/icons/logout.svg" />
-            Log out
+            {{$t('Log out')}}
           </span>
         </div>
       </div>
@@ -57,10 +57,32 @@
         >
           <Auth v-if="userData" :user="userData" :coins="coins.coins" />
           <LinksList :links="links" @closeMenu="closeMenu" />
-          <div class="sidebar-left__footer">
-          <span class="log-out" @click="logout">
+          <v-select
+            class="select-block__year"
+            v-model="currentLocale"
+            :clearable="false"
+            :options="localesList"
+            @input="changeLocale"
+          >
+            <template v-slot:selected-option="currentLocale">
+              <!-- <inline-svg :src="currentLocale.src" /> -->
+              <span>{{ currentLocale.label }}</span>
+            </template>
+            <template v-slot:option="option">
+              <span :class="option.icon"></span>
+              <!-- <inline-svg :src="option.src" />  -->
+              <span>{{ option.label }}</span>
+            </template>
+            <template #open-indicator="{ attributes }">
+              <span v-bind="attributes"
+                ><inline-svg src="/icons/arrow-dwn.svg"
+              /></span>
+            </template>
+          </v-select>
+          <div class="mobile-footer">
+            <span class="log-out" @click="logout">
             <inline-svg src="/icons/logout.svg" />
-              Log out
+              {{$t('Log out')}}
             </span>
           </div>
         </div>

@@ -25,15 +25,15 @@
           </div>
         </div>
         <div class="row">
-<!--          <button class="button button__empty">-->
-<!--            <i>-->
-<!--              <label class="switch">-->
-<!--                <input type="checkbox">-->
-<!--                <span class="slider round"></span>-->
-<!--              </label>-->
-<!--            </i>-->
-<!--            <span>Are you ready to meet today?</span>-->
-<!--          </button>-->
+          <button class="button button__empty" @click="$router.push(localePath('/quick-meetings'))">
+            <i>
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+              </label>
+            </i>
+            <span>{{$t('Are you ready to meet today?')}}</span>
+          </button>
           <button class="button button__empty" @click="setBallance">
             <i>
               <BallanceIcon/>
