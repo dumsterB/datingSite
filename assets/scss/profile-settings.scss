@@ -1,7 +1,7 @@
 .profile-settings {
-    
+
     .button__full {
-        font-family: 'Gotham', sans-serif;
+        font-family: 'Arial', sans-serif;
         font-style: normal;
         min-width: 137px;
     }
@@ -11,14 +11,14 @@
             background: rgba(24, 24, 24, 0.47);
           }
     }
-    
+
     .settings-block{
         .button__full{
             margin-left: 20px;
         }
 
         .button__empty {
-            font-family: 'Gotham', sans-serif;
+            font-family: 'Arial', sans-serif;
             font-style: normal;
             max-width: 402px !important;
             height: auto;
@@ -106,7 +106,7 @@
     }
 
     .sex-block {
-        
+
         &__title {
           font-family: 'Gotham', sans-serif;
           font-style: normal;
@@ -114,7 +114,7 @@
           color: #EFEFEF;
           margin-right: 13px;
         }
-    
+
         label {
           font-size: 14px;
           color: #EFEFEF;
@@ -122,8 +122,8 @@
           margin-right: 18px;
           padding-left: 20px;
           position: relative;
-    
-    
+
+
           &:after {
             content: '';
             width: 11px;
@@ -134,15 +134,15 @@
             top: 2px;
             left: 0;
           }
-    
-    
+
+
         }
-    
+
         input {
           position: absolute;
           z-index: -1;
           opacity: 0;
-    
+
           &:checked + label:before {
             content: '';
             width: 11px;
@@ -154,11 +154,10 @@
             top: 2px;
             left: 0;
           }
-    
+
           &:checked + label:after {
             border: none;
           }
         }
       }
 }
-  

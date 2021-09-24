@@ -50,7 +50,7 @@
                 <inline-svg src="/icons/arrow-right.svg"/>
             </span>
         </div>
-        
+
         <div class="button button__empty" @click="setPersonalInformation">
             <div class="settings-item">
                 <span class="heading">{{ $t('Personal information') }}</span>
@@ -117,7 +117,7 @@
         <span class="delete" @click="setConfirmProfleDelete">
             <inline-svg src="/icons/trash.svg"/>
             {{$t('Delete account')}}
-        </span>    
+        </span>
     </div>
     <ConfirmProfileDelete v-if="isConfirmProfleDelete" @setConfirmProfleDelete="setConfirmProfleDelete"></ConfirmProfileDelete>
   </div>

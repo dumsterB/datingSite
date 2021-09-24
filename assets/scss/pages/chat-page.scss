@@ -223,10 +223,10 @@
     padding: 34px;
 
     &-government {
-      min-width: 61px;
-      margin-right: 19px;
-      display: flex;
-      justify-content: space-between;
+      //min-width: 61px;
+      margin-right: 14px;
+      //display: flex;
+      //justify-content: space-between;
 
       input[type=file]{
         position: absolute;
@@ -264,13 +264,26 @@
         right: 14px;
         cursor: pointer;
 
-        &:after {
+        &::before {
           content: '';
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(94deg, #133983 -12.18%, #71BC6F 134.71%);
-          border-radius: 50%;
+          position: absolute;
+          top: 7px;
+          right: 0;
+          width: 17px;
+          height: 18px;
+          background-image: url("data:image/svg+xml,%3Csvg width='17' height='18' viewBox='0 0 17 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.846607 4.90521L15.3852 0.0641486C16.3287 -0.249999 17.231 0.641642 16.9468 1.60723L12.3843 17.1089C12.0706 18.1748 10.6436 18.3231 10.1236 17.3439L6.97222 11.4101L11.5624 6.02671L5.4226 10.2143L0.579445 7.15021C-0.306109 6.58995 -0.144909 5.23536 0.846607 4.90521Z' fill='url(%23paint0_linear)'/%3E%3Cdefs%3E%3ClinearGradient id='paint0_linear' x1='-2.03261' y1='-2.76923' x2='24.5697' y2='-1.01125' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='%23133983'/%3E%3Cstop offset='1' stop-color='%2371BC6F'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E%0A");
+          background-position: center;
+          background-size: 100%;
+          background-repeat: no-repeat;
         }
+
+        //&:after {
+        //  content: '';
+        //  width: 100%;
+        //  height: 100%;
+        //  background: linear-gradient(94deg, #133983 -12.18%, #71BC6F 134.71%);
+        //  border-radius: 50%;
+        //}
 
         svg {
           width: 17px;
