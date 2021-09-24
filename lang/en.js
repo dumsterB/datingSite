@@ -60,5 +60,8 @@ export default {
     'Done!' : 'Done!',
     'A new password has been sent to your phone' : 'A new password has been sent to your phone',
     'Enter new password from SMS' : 'Enter new password from SMS',
-    'No chats yet...' : 'No chats yet...'
+    'No chats yet...' : 'No chats yet...',
+    'Log out' : 'Log out',
+    'Are you ready to meet today?' : 'Are you ready to meet today?',
+    'Make the main' : 'Make the main'
   }

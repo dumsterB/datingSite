@@ -58,5 +58,8 @@ export default {
     'Done!' : 'Готово!',
     'A new password has been sent to your phone' : 'Новый пароль был отправлен вам на телефон',
     'Enter new password from SMS' : 'Введите новый пароль из СМС',
-    'No chats yet...' : 'Пока нет чатов...'
+    'No chats yet...' : 'Пока нет чатов...',
+    'Log out' : 'Выйти',
+    'Are you ready to meet today?' : 'Готовы встретиться сегодня?',
+    'Make the main' : 'Сделать главным'
   }

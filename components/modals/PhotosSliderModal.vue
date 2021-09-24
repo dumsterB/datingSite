@@ -3,7 +3,16 @@
        v-if="this.$glob.modals.photoSliderModal.show"
        ref="overlay"
        @click="close">
+       <span class="close-gallery" @click="$glob.modals.photoSliderModal.show = false">
+         <Component
+            :is="require(`@/static/icons/close-modal.svg`).default"
+            class="BaseIcon"
+            v-bind="$attrs"
+            @v-on="$listeners"
+          />
+       </span>
     <div class="modal photo-slider-modal">
+      
       <vue-slick-carousel
         v-bind="settings"
         ref="carousel"
@@ -18,7 +27,7 @@
                 v-bind="$attrs"
                 @v-on="$listeners"
               />
-             Make the main
+             {{$t('Make the main')}}
            </span>
             <span class="icons-row" @click="deletePhoto(index)">
               <Component
@@ -27,7 +36,7 @@
                 v-bind="$attrs"
                 @v-on="$listeners"
               />
-            Delete
+            {{$t('Delete')}}
            </span>
           </div>
           <div class="carousel-item">
@@ -118,11 +127,16 @@ export default {
         this.$glob.modals.photoSliderModal.show = false
       }
     },
-    deletePhoto(inx){
-      this.$store.dispatch('user/removeProfilePhoto', {index: inx})
+    async deletePhoto(inx){
+      await this.$store.dispatch('user/removeProfilePhoto', {index: inx})
+      await this.$store.dispatch('user/userData')
+      this.$glob.modals.photoSliderModal.show = false
     },
-    setMainPhoto(inx){
-      this.$store.dispatch('user/makeProfilePhotoMain', {index: inx})
+    async setMainPhoto(inx){
+      await this.$store.dispatch('user/makeProfilePhotoMain', {index: inx})
+      await this.$store.dispatch('user/userData')
+      this.$glob.modals.photoSliderModal.show = false
+      this.$refs.carousel.goTo(0)
     }
   },
   computed: {
@@ -146,5 +160,11 @@ export default {
 .VueCarousel-navigation-next {
   right: 50% !important;
   transform: translateY(-50%) translateX(-100%);
+}
+.close-gallery{
+    position: absolute;
+    z-index: 9999;
+    right: 10px;
+    top: 10px;
 }
 </style>

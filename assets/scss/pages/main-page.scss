@@ -90,7 +90,7 @@
 
   &__menu {
     width: 100vw;
-    height: 100vh;
+    height: calc(100vh - 60px);
     position: fixed;
     z-index: 999999;
     top: 59px;
@@ -131,34 +131,121 @@
       margin-bottom: 5px;
     }
   }
-  .log-out {
-    font-family: 'Gotham';
+  .v-select {
+    margin: 5px 20px 0 80px;
+    cursor: pointer;
+  }
+
+  .vs__dropdown-toggle {
+    border: none;
+    border-radius: 0;
+
+  }
+
+  .vs__selected-options {
+    cursor: pointer;
+    input {
+      font-family: 'Gotham', sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 22px;
+      color: #EFEFEF;
+      width: 0;
+      height: 0;
+    }
+  }
+
+  .vs__selected {
+    font-family: 'Gotham', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
     line-height: 22px;
-    color: #ffffff;
-    display: flex;
-    align-items: center;
+    color: #EFEFEF;
+    padding-left: 7px;
     cursor: pointer;
-    position: relative;
-    margin-left: 15px;
-    margin-top: 15px;
+    svg{
+      margin-right: 30px;
+    }
+    span{
+      vertical-align: top;
+    } 
+  }
 
-    &:after {
-      content: '';
-      width: 100%;
-      height: 1px;
-      position: absolute;
-      opacity: 0.1;
-      border: 1px solid #FFFFFF;
-      bottom: 47px;
-      left: 0;
+  .vs__dropdown-menu {
+    background: rgba(255, 255, 255, 0.13);
+    font-family: 'Gotham', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    color: #EFEFEF;
+    max-height: 220px;
+    padding-left: 0;
+    vertical-align: middle;
+
+    li {
+      color: #EFEFEF;
+      padding-left: 10px;
+      display: flex;
+      align-items: center;
+      background:unset;
+      border: unset;
+      span{
+        opacity: 0.3;
+      }
     }
 
-    svg {
-      margin-right: 36px;
-      margin-left: 20px;
+    li:hover{
+      background-color: inherit;
+    }
+
+    svg{
+      margin-right: 30px;
+    }   
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .vs--open .vs__dropdown-toggle {
+    border:none;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.13);
+  }
+
+  .vs--single.vs--open .vs__selected {
+    position: static;
+    opacity: 1;
+  }
+
+  .vs__clear {
+    display: none;
+  }
+  .mobile-footer{
+    position: absolute;
+    bottom: 25px;
+
+    .log-out {
+      font-family: 'Gotham';
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 22px;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      position: relative;
+      margin-left: 15px;
+      margin-top: 20px;
+  
+      svg {
+        margin-right: 36px;
+        margin-left: 20px;
+      }
     }
   }
 }
