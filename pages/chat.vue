@@ -86,7 +86,7 @@
                         @v-on="$listeners"
                       />
                     </label>
-                    
+
                     <!--Component
                       :is="require(`@/static/icons/present.svg`).default"
                       class="BaseIcon"
@@ -97,15 +97,15 @@
                   <div class="chat__footer-textarea">
                     <form @submit.prevent="send">
                       <input type="text" placeholder="Your message..." v-model="message">
-                      <span class="icon-send">
-                      <Component
-                        :is="require(`@/static/icons/chats.svg`).default"
-                        class="BaseIcon"
-                        v-bind="$attrs"
-                        @v-on="$listeners"
-                        @click="send"
-                      />
-                   </span>
+<!--                      <span class="icon-send">-->
+<!--                        <Component-->
+<!--                          :is="require(`@/static/icons/chats.svg`).default"-->
+<!--                          v-bind="$attrs"-->
+<!--                          @v-on="$listeners"-->
+<!--                          @click="send"-->
+<!--                        />-->
+<!--                      </span>-->
+                      <div @click="send" class="icon-send"></div>
                     </form>
                   </div>
                   <div class="chat__footer-actions">
@@ -133,10 +133,10 @@ import Loader from "@/components/Loader";
 
 export default {
   components: {
-    Icon, 
-    // AnswerList, 
-    ContactList, 
-    Loader, 
+    Icon,
+    // AnswerList,
+    ContactList,
+    Loader,
     ComplainModal
   },
   data() {
@@ -303,7 +303,7 @@ export default {
       //this.isNewAnswers = true
       // this.isMobileDialog = true
       this.isChat = false;
-      
+
     },
     openMobileDialog() {
       this.isMobileDialog = true
@@ -347,7 +347,7 @@ export default {
         if(this.message) payload.message_text = this.message.trim();
         if(this.audio) payload.message_audio = this.audio
         if(this.images.length) payload.images = this.images
-          
+
         await this.$store.dispatch('chat/sendMessage', payload)
         await this.$store.dispatch('chat/allChat')
         this.message = '';
