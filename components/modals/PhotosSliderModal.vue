@@ -127,11 +127,16 @@ export default {
         this.$glob.modals.photoSliderModal.show = false
       }
     },
-    deletePhoto(inx){
-      this.$store.dispatch('user/removeProfilePhoto', {index: inx})
+    async deletePhoto(inx){
+      await this.$store.dispatch('user/removeProfilePhoto', {index: inx})
+      await this.$store.dispatch('user/userData')
+      this.$glob.modals.photoSliderModal.show = false
     },
-    setMainPhoto(inx){
-      this.$store.dispatch('user/makeProfilePhotoMain', {index: inx})
+    async setMainPhoto(inx){
+      await this.$store.dispatch('user/makeProfilePhotoMain', {index: inx})
+      await this.$store.dispatch('user/userData')
+      this.$glob.modals.photoSliderModal.show = false
+      this.$refs.carousel.goTo(0)
     }
   },
   computed: {

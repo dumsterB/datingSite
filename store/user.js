@@ -186,6 +186,7 @@ export const actions = {
 
   async addProfilePhoto(ctx, payload) {
     await load('/v2/user/profile/image','put', payload, true).then(data => {
+      ctx.commit('user/setProfilePictures', data, {root: true})
       return data
     }).catch(e => {
       throw e;
@@ -217,7 +218,7 @@ export const actions = {
       return res.json()
     })
       .then(data => {
-        console.log(data)
+        ctx.commit('user/setProfilePictures', data, {root: true})
         // ctx.commit('user/setCoins', {
         //   coins: data
         // }, {root: true})
@@ -226,7 +227,7 @@ export const actions = {
 
   async makeProfilePhotoMain(ctx, payload) {
     await load('/v2/user/profile/image/main','put', payload, true).then(data => {
-      return data.json()
+      ctx.commit('user/setProfilePictures', data, {root: true})
     }).catch(e => {
       throw e;
     })
@@ -276,6 +277,9 @@ export const mutations = {
     for (let key in payload) {
       this._vm.$set(state.user.profile, key, payload[key]);
     }
+  },
+  setProfilePictures(state, payload){
+    state.user.profile.pictures = payload
   },
   clearUser(state) {
     state.user = {}
