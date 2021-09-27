@@ -6,7 +6,7 @@
       v-bind="$attrs"
       @v-on="$listeners"
     />
-    <p class="text">Пригласить в театр</p>
+    <p class="text">{{$t('Invite to the theater')}}</p>
   </div>
 </template>
 

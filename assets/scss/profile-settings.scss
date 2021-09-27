@@ -94,6 +94,11 @@
         &__title{
             min-width: 100px;
         }
+
+        &__radio {
+          display: flex;
+          flex-direction: column;
+        }
     }
 
     .city-block{

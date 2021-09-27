@@ -11,7 +11,7 @@
         <ProfileCard :title="'1 mounth'" :price="5" :activeItem="activeItem" @setCheckCard="setCheckCard" :isVip="false" />
         <ProfileCard :title="'1 year'" :price="5" :activeItem="activeItem" @setCheckCard="setCheckCard" :isVip="false" />
       </div>
-      <button class="button button__full">Оплатить c помощью <LiqpayIcon/></button>
+      <button class="button button__full">{{$t('Pay with')}} <LiqpayIcon/></button>
     </div>
   </div>
 </template>

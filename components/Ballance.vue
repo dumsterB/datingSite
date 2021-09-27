@@ -23,7 +23,7 @@
        <ProfileCard :title="50" :price="32.99" :activeItem="activeItem" @setCheckCard="setCheckCard" />
        <ProfileCard :title="100" :price="54.99" :activeItem="activeItem" @setCheckCard="setCheckCard" />
      </div>
-     <button class="button button__full">Оплатить c помощью <LiqpayIcon/></button>
+     <button class="button button__full">{{$t('Pay with')}} <LiqpayIcon/></button>
    </form>
   </div>
 </template>
