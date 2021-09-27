@@ -68,5 +68,8 @@ export default {
     'Chat with users who are ready to meet live.' : 'Общайся с пользователями, которые готовы к знакомству вживую.',
     'Invite to the theater' : 'Пригласить в театр',
     'Password recovery' : 'Восстановление пароля',
-    'Invalid code' : 'Неправильный код'
+    'Invalid code' : 'Неправильный код',
+    'Complain about' : 'Пожаловаться на',
+    'The user is complained!' : 'Жалоба отправлена!'
   }
+

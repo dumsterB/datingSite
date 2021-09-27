@@ -97,6 +97,31 @@ export const actions = {
     })
   },
 
+  async deleteChat(ctx, payload) {
+    return await load(`/v2/chat/${payload}`,'delete', '' , true).then(async data =>{
+      await ctx.dispatch("allChat");
+    })
+    .catch(e => {
+      throw e;
+    })
+  },
+
+  async complainUser(ctx, payload) {
+    return await load(`/v2/complain/${payload.user}`,'post', payload , true).then(data => data)
+    .catch(e => {
+      throw e;
+    })
+  },
+
+  async blockUser(ctx, payload) {
+    return await load(`/v2/complain/${payload.user}/block`,'post', payload , true).then(async data => {
+      await ctx.dispatch("allChat");
+    })
+    .catch(e => {
+      throw e;
+    })
+  },
+
 }
 
 export const mutations = {
