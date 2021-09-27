@@ -29,15 +29,15 @@
                 <div class="expanded">
                     <div class="sex-block">
                         <span class="sex-block__title">{{$t('Sex')}}:</span>
-                        <div class="row-radio">
-                        <span>
-                            <input type="radio" id="mail" value="male" v-model="gender">
-                            <label for="mail">{{$t('Male')}}</label>
-                        </span>
-                        <span>
-                            <input type="radio" id="female" value="female" v-model="gender">
-                            <label for="female">{{$t('Female')}}</label>
-                        </span>
+                        <div class="sex-block__radio">
+                            <span>
+                                <input type="radio" id="mail" value="male" v-model="gender">
+                                <label for="mail">{{$t('Male')}}</label>
+                            </span>
+                            <span>
+                                <input type="radio" id="female" value="female" v-model="gender">
+                                <label for="female">{{$t('Female')}}</label>
+                            </span>
                         </div>
                     </div>
                     <div class="city-block">

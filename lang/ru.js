@@ -52,7 +52,6 @@ export default {
     'Mute notifications' : 'Выключить уведомления',
     'The user is blocked!' : 'Пользователь заблокирован!',
     'Please tell me the reason' : 'Пожалуйста назовите причину',
-    'Interests' : 'Интересы',
     'Popular' : 'Популярное',
     'I\'m interested in...' : 'Меня интересует...',
     'Done!' : 'Готово!',
@@ -62,6 +61,15 @@ export default {
     'Log out' : 'Выйти',
     'Are you ready to meet today?' : 'Готовы встретиться сегодня?',
     'Make the main' : 'Сделать главным',
+    'Buy coins' : 'Купить монеты',
+    'Pay with' : 'Оплатить c помощью',
+    'Fast dates' : 'Быстрые свидания',
+    'Make an appointment now.' : 'Назначай встречу прямо сейчас.',
+    'Chat with users who are ready to meet live.' : 'Общайся с пользователями, которые готовы к знакомству вживую.',
+    'Invite to the theater' : 'Пригласить в театр',
+    'Password recovery' : 'Восстановление пароля',
+    'Invalid code' : 'Неправильный код',
     'Complain about' : 'Пожаловаться на',
     'The user is complained!' : 'Жалоба отправлена!'
   }
+

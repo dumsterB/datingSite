@@ -2,7 +2,7 @@
   <div class="password-recovery" v-if="isForgotPassword">
     <h2 class="title">
       <inline-svg src="/icons/arrow-left.svg" @click="$emit('setForgotPassword')" />
-      Восстановление пароля
+      {{$t('Password recovery')}}
     </h2>
     <form @submit.prevent="send" @keypress.enter="send">
       <div class="row jc-center">

@@ -26,8 +26,6 @@ export default {
     'Add one photo' : 'Add one photo',
     'Upload photo' : 'Upload photo',
     'Select the area to be displayed' : 'Select the area to be displayed',
-    'Continue' : 'Continue',
-    'Continue' : 'Continue',
     'Swipes' : 'Swipes',
     'My account' : 'My account',
     'People nearby' : 'People nearby',
@@ -54,7 +52,6 @@ export default {
     'Mute notifications' : 'Mute notifications',
     'The user is blocked!' : 'The user is blocked!',
     'Please tell me the reason' : 'Please tell me the reason',
-    'Interests' : 'Interests',
     'Popular' : 'Popular',
     'I\'m interested in...' : 'I\'m interested in...',
     'Done!' : 'Done!',
@@ -64,6 +61,15 @@ export default {
     'Log out' : 'Log out',
     'Are you ready to meet today?' : 'Are you ready to meet today?',
     'Make the main' : 'Make the main',
+    'Buy coins' : 'Buy coins',
+    'Pay with' : 'Pay with',
+    'Fast dates' : 'Fast dates',
+    'Make an appointment now.' : 'Make an appointment now.',
+    'Chat with users who are ready to meet live.' : 'Chat with users who are ready to meet live.',
+    'Invite to the theater' : 'Invite to the theater',
+    'Password recovery' : 'Password recovery',
+    'Invalid code' : 'Invalid code',
     'Complain about' : 'Complain about',
     'The user is complained!' : 'The user is complained!'
   }
+

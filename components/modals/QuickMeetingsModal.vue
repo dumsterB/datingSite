@@ -20,17 +20,17 @@
           <ProfileCard :title="50" :price="32.99" :activeItem="activeItem" @setCheckCard="setCheckCard" />
           <ProfileCard :title="100" :price="54.99" :activeItem="activeItem" @setCheckCard="setCheckCard" />
         </div>
-        <button class="button button__full">Оплатить c помощью <LiqpayIcon/></button>
+        <button class="button button__full">{{$t('Pay with')}} <LiqpayIcon/></button>
       </form>
     </div>
 
     <div class="modal-body" v-else>
-      <h2 class="title">Быстрые свидания</h2>
-      <p class="text">Назначай встречу прямо сейчас.</p>
+      <h2 class="title">{{$t('Fast dates')}}</h2>
+      <p class="text">{{$t('Make an appointment now.')}}</p>
       <span class="quick-meeting-modal__icon">
        <inline-svg src="icons/quick-meetings-modal.svg"/>
      </span>
-      <p class="quick-meeting-modal__description">Общайся с пользователями, которые готовы к знакомству вживую.</p>
+      <p class="quick-meeting-modal__description">{{$t('Chat with users who are ready to meet live.')}}</p>
       <!--button class="button button__full" @click="$emit('next')">Войти</button-->
       <div>
         <input type="hidden" name="data" :value="quickMeetingsLiqpay.data" />
@@ -41,7 +41,7 @@
           onmouseover="this.style.opacity='0.5';"
           onmouseout="this.style.opacity='1';">
           <img src="https://static.liqpay.ua/buttons/logo-small.png" name="btn_text" class="liqpay-img"/>
-          <span>Купить монеты</span>
+          <span>{{$t('Buy coins')}}</span>
         </button>
       </div>
     </div>
@@ -50,8 +50,13 @@
 </template>
 
 <script>
+import LiqpayIcon from '@/static/icons/liqpay.svg'
+
 export default {
   name:'SentPasswordModal',
+  components: {
+    LiqpayIcon
+  },
   props:{
     modal:{
       type: Object,
