@@ -23,7 +23,7 @@
     </div>
     <div class="row">
         <div ref="info" class="button button__empty">
-            <div class="settings-item">
+            <div class="settings-item" @click="showBlock('info')">
                 <span class="heading">{{ user.profile.name }}, {{ user.profile.birth_date | birthday }}</span>
                 <span class="text">{{ gender }}, {{ city }}</span>
                 <div class="expanded">
@@ -46,9 +46,9 @@
                     </div>
                 </div>
             </div>
-            <span class="back" @click="expand('info')">
+            <div class="back" @click="hideBlock('info')">
                 <inline-svg src="/icons/arrow-right.svg"/>
-            </span>
+            </div>
         </div>
 
         <div class="button button__empty" @click="setPersonalInformation">
@@ -63,7 +63,7 @@
         <PersonalInformation v-if="isPersonalInformation" @setPersonalInformation="setPersonalInformation"></PersonalInformation>
 
         <div ref="job" class="button button__empty">
-            <div class="settings-item">
+            <div class="settings-item" @click="showBlock('job')">
                 <span class="heading">{{ $t('Job') }}</span>
                 <span class="text">{{ user.profile.job }}</span>
                 <div class="expanded">
@@ -72,7 +72,7 @@
                     </span>
                 </div>
             </div>
-            <span class="back"  @click.prevent="expand('job')">
+            <span class="back" @click="hideBlock('job')">
                 <inline-svg src="/icons/arrow-right.svg"/>
             </span>
         </div>
@@ -89,7 +89,7 @@
         <Interests v-if="isInterests" @setInterests="setInterests"></Interests>
 
         <div ref="short" class="button button__empty">
-            <div class="settings-item">
+            <div class="settings-item" @click="showBlock('short')">
                 <span class="heading">{{ $t('Shortly about myself') }}</span>
                 <span class="text">{{description}}</span>
                 <div class="expanded">
@@ -98,7 +98,7 @@
                     </span>
                 </div>
             </div>
-            <span class="back" @click.prevent="expand('short')">
+            <span class="back" @click="hideBlock('short')">
                 <inline-svg src="/icons/arrow-right.svg"/>
             </span>
         </div>
@@ -171,7 +171,7 @@ export default {
                 this.$store.commit('user/setProfileField', {description : value})
             }
         },
-    },
+  },
   methods: {
     setPersonalInformation(){
         this.isPersonalInformation = !this.isPersonalInformation;
@@ -182,8 +182,11 @@ export default {
     setConfirmProfleDelete(){
         this.isConfirmProfleDelete = !this.isConfirmProfleDelete;
     },
-    expand(id){
-        this.$refs[id].classList.toggle('opened')
+    showBlock(id){
+      this.$refs[id].classList.add('opened')
+    },
+    hideBlock(id) {
+      this.$refs[id].classList.remove('opened')
     },
     deleteProfile(){
         alert('Deleting')
