@@ -61,5 +61,7 @@ export default {
     'No chats yet...' : 'Пока нет чатов...',
     'Log out' : 'Выйти',
     'Are you ready to meet today?' : 'Готовы встретиться сегодня?',
-    'Make the main' : 'Сделать главным'
+    'Make the main' : 'Сделать главным',
+    'Complain about' : 'Пожаловаться на',
+    'The user is complained!' : 'Жалоба отправлена!'
   }

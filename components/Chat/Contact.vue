@@ -44,7 +44,7 @@
         </div>
       </div>
     </div>
-    <OptionSettings v-if="show" :itemId="contact.id" @closeOptions="close" v-click-outside="closeEvent"/>
+    <OptionSettings v-if="show" :itemId="contact.id" :reportType="reportType" @closeOptions="close" v-click-outside="closeEvent" @deleteChat="deleteChat" @reportUser="reportUser"/>
   </div>
 </template>
 
@@ -62,7 +62,8 @@ export default {
   },
   data() {
     return {
-      show: false
+      show: false,
+      reportType : 'block'
     }
   },
   mounted() {
@@ -123,6 +124,14 @@ export default {
     },
     close(){
       this.show = false
+    },
+    async deleteChat(){
+      await this.$store.dispatch('chat/deleteChat', this.contact.latest_message.chat_id)
+      this.$router.push(this.localePath('/chat'))
+      this.close()
+    },
+    async reportUser(type){
+      this.$parent.$emit('reportUser', type)
     }
   }
 }

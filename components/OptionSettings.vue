@@ -3,7 +3,7 @@
     <p @click="deleteItem"><Icon name="delete" /> {{$t('Delete')}}</p>
     <p @click="complain"><Icon name="complain" /> {{$t('Complain')}}</p>
     <p @click="block"><Icon name="block-off" /> {{$t('Block')}}</p>
-    <p @click="notificationsOff"><Icon name="notification-off" /> {{$t('Mute notifications')}}</p>
+    <!--p @click="notificationsOff"><Icon name="notification-off" /> {{$t('Mute notifications')}}</p-->
   </div>
 </template>
 
@@ -23,16 +23,13 @@ export default {
   },
   methods:{
     deleteItem(){
-      console.log('deleted');
-      this.$emit('closeOptions')
+      this.$emit('deleteChat')
     },
     complain(){
-      this.$store.commit('chat/setBlockModal')
-      this.$emit('closeOptions')
+      this.$emit('reportUser', 'complain')
     },
     block(){
-      this.$store.commit('chat/setBlockModal')
-      this.$emit('closeOptions')
+      this.$emit('reportUser', 'block')
     },
     notificationsOff(){
       console.log('notificationsOff');

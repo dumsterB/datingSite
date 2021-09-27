@@ -4,7 +4,7 @@
       <div class="row jc-start no-wrap">
         <div class="chat__contacts-block" v-if="!isMobileDialog">
           <!--div class="chat__new-answers" @click="openNewAnswers">12 new answers</div-->
-          <ContactList :contacts="contacts" @getOpponent="getOpponent" v-if="!isContactList"/>
+          <ContactList :contacts="contacts" @getOpponent="getOpponent" @reportUser="reportUser" v-if="!isContactList"/>
         </div>
         <div class="chat__answers-block" v-if="!isChat && !isNewAnswers && !isMobile && !isMobileDialog ">
           <!-- <AnswerList/> -->
@@ -110,8 +110,18 @@
                   </div>
                   <div class="chat__footer-actions">
                     <inline-svg src="/icons/smile.svg"/>
-                    <inline-svg @mousedown="startRecord" @mouseup="sendRecord"  src="/icons/voice.svg"/>
-                    <audio ref="recordPlayer" controls src=""/>
+                    <span ref="recordButton" class="recordButton">
+                      <inline-svg 
+                        @mousedown="startRecord"
+                        @touchstart="startRecord" 
+                        @mouseup="sendRecord"
+                        @touchend="sendRecord"
+                        @touchcancel="sendRecord"
+                        @contextmenu.prevent="handler"
+                        src="/icons/voice.svg"
+                      />
+                      <audio ref="recordPlayer" controls src=""/>
+                    </span>
                   </div>
                 </div>
               </div>
@@ -120,7 +130,7 @@
         </template>
       </div>
     </div>
-    <ComplainModal @close="close" @done="done"/>
+    <ComplainModal @close="close" @done="done" :reportType="reportType"/>
   </div>
 </template>
 <script>
@@ -156,6 +166,7 @@ export default {
       isMobileDialog: false,
       isContactList: false,
       isNewAnswers: false,
+      reportType : 'block'
     }
   },
   watch: {
@@ -239,10 +250,20 @@ export default {
       this.send()
     },
     sendRecord(){
-      this.mediaRecorder.stop()
-      setTimeout(() => this.send());
+      setTimeout(() => {
+        if(this.mediaRecorder.state !== 'inactive'){
+          this.mediaRecorder.stop()
+          setTimeout(() => {
+            this.send()
+            this.$refs.recordButton.classList.remove("active")
+          })
+        } else {
+          this.$refs.recordButton.classList.remove("active")
+        }
+      }, 500);
     },
     startRecord() {
+      this.$refs.recordButton.classList.toggle("active")
       navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
         let audioChunks = [];
         this.mediaRecorder = new MediaRecorder(stream)
@@ -383,6 +404,13 @@ export default {
       this.$store.commit('chat/setBlockModal')
       this.$router.push(this.localePath('/chat'))
     },
+    reportUser(type){
+      this.reportType = type;
+      this.$store.commit('chat/setBlockModal');
+    },
+    handler(){
+      return false
+    }
   },
   fetch() {
   }

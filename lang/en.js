@@ -63,5 +63,7 @@ export default {
     'No chats yet...' : 'No chats yet...',
     'Log out' : 'Log out',
     'Are you ready to meet today?' : 'Are you ready to meet today?',
-    'Make the main' : 'Make the main'
+    'Make the main' : 'Make the main',
+    'Complain about' : 'Complain about',
+    'The user is complained!' : 'The user is complained!'
   }

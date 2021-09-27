@@ -68,11 +68,11 @@
             <h2 class="profile-swipe__title-interests">Interests</h2>
             <InterestsList :interests="user.profile.interests" />
             <div class="profile-swipe__additional-options">
-              <span @click="$store.commit('chat/setBlockModal')">
+              <span @click="reportUser('block')">
                 <Icon name="block-off" />
                 {{ $t("Block") }}
               </span>
-              <span>
+              <span @click="reportUser('complain')">
                 <Icon name="complain" />
                 {{ $t("Complain") }}
               </span>
@@ -116,7 +116,7 @@
         </div>
       </div>
     </div>
-    <ComplainModal :modal="modals.complainModal" @close="close" @done="done" />
+    <ComplainModal :modal="modals.complainModal" :reportType="reportType" @close="close" @done="done" />
     <PhotosSliderModal
       v-if="user.profile"
       :photos="user.profile && user.profile.pictures"
@@ -146,7 +146,8 @@ export default {
         complainModal: {
           show: false
         }
-      }
+      },
+      reportType : 'block'
     };
   },
   computed: {
@@ -170,7 +171,7 @@ export default {
     done(payload) {
       console.log(payload);
       this.$store.commit("chat/setBlockModal");
-      this.$router.go(-1);
+      //this.$router.go(-1);
     },
     async chatEnter() {
       await this.$store.dispatch('chat/chatCreateGet', this.user._id).then(async data =>{
@@ -193,6 +194,10 @@ export default {
           }) 
         }
       })
+    },
+    async reportUser(type){
+      this.$store.commit('chat/setBlockModal');
+      this.reportType = type;
     }
   },
   async fetch() {
