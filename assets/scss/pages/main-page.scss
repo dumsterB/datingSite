@@ -268,8 +268,11 @@
     max-height: 59px;
 
     &__logo {
+      left: 12px;
+      top: 2px;
       svg {
-        width: 125px;
+        width: 137px;
+        height: 80px;
       }
     }
   }
