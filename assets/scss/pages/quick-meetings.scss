@@ -20,10 +20,10 @@
     font-size: 16px;
     border-radius: 5px;
     text-transform: inherit;
-    padding-top: 15px;
-    padding-bottom: 13px;
+    padding-top: 17px;
+    padding-bottom: 15px;
     position: absolute;
-    top: 30px;
+    top: 0;
     right: 32px;
     z-index: 20;
     
@@ -55,7 +55,7 @@
     width: 100% !important;
   }
   .quick-meeting-list .quick-meeting-item{
-    margin-right: 19px;
+    margin-right: 5px;
   }
 }
 
