@@ -382,5 +382,12 @@
    .content {
      border-radius: inherit;
    }
+   &__content {
+     margin-bottom: 105px;
+   }
+   &__footer {
+     position: absolute;
+     bottom: 0;
+   }
   }
 }
