@@ -23,7 +23,7 @@
     </div>
     <div class="row">
         <div ref="info" class="button button__empty">
-            <div class="settings-item" @click="showBlock('info')">
+            <div class="settings-item" @click="showBlock('info', 'info-arrow')">
                 <span class="heading">{{ user.profile.name }}, {{ user.profile.birth_date | birthday }}</span>
                 <span class="text">{{ gender }}, {{ city }}</span>
                 <div class="expanded">
@@ -46,7 +46,7 @@
                     </div>
                 </div>
             </div>
-            <div class="back" @click="hideBlock('info')">
+            <div ref="info-arrow" class="back" @click="hideBlock('info', 'info-arrow')">
                 <inline-svg src="/icons/arrow-right.svg"/>
             </div>
         </div>
@@ -63,7 +63,7 @@
         <PersonalInformation v-if="isPersonalInformation" @setPersonalInformation="setPersonalInformation"></PersonalInformation>
 
         <div ref="job" class="button button__empty">
-            <div class="settings-item" @click="showBlock('job')">
+            <div class="settings-item" @click="showBlock('job', 'job-arrow')">
                 <span class="heading">{{ $t('Job') }}</span>
                 <span class="text">{{ user.profile.job }}</span>
                 <div class="expanded">
@@ -72,9 +72,9 @@
                     </span>
                 </div>
             </div>
-            <span class="back" @click="hideBlock('job')">
+            <div ref="job-arrow" class="back" @click="hideBlock('job', 'job-arrow')">
                 <inline-svg src="/icons/arrow-right.svg"/>
-            </span>
+            </div>
         </div>
 
         <div class="button button__empty" @click="setInterests">
@@ -89,7 +89,7 @@
         <Interests v-if="isInterests" @setInterests="setInterests"></Interests>
 
         <div ref="short" class="button button__empty">
-            <div class="settings-item" @click="showBlock('short')">
+            <div class="settings-item" @click="showBlock('short', 'short-arrow')">
                 <span class="heading">{{ $t('Shortly about myself') }}</span>
                 <span class="text">{{description}}</span>
                 <div class="expanded">
@@ -98,9 +98,9 @@
                     </span>
                 </div>
             </div>
-            <span class="back" @click="hideBlock('short')">
+            <div ref="short-arrow" class="back" @click="hideBlock('short', 'short-arrow')">
                 <inline-svg src="/icons/arrow-right.svg"/>
-            </span>
+            </div>
         </div>
 
         <div class="button button__empty">
@@ -182,11 +182,13 @@ export default {
     setConfirmProfleDelete(){
         this.isConfirmProfleDelete = !this.isConfirmProfleDelete;
     },
-    showBlock(id){
+    showBlock(id, arrowId){
       this.$refs[id].classList.add('opened')
+      this.$refs[arrowId].classList.add('_show')
     },
-    hideBlock(id) {
+    hideBlock(id, arrowId) {
       this.$refs[id].classList.remove('opened')
+      this.$refs[arrowId].classList.remove('_show')
     },
     deleteProfile(){
         alert('Deleting')
