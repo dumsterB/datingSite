@@ -304,6 +304,12 @@
         width: 0.1px;
         height: 0.1px;
       }
+
+      .recordButton{
+        display: inline-block;
+        height: 30px;
+        border-radius: 50%;
+      }
     }
   }
 }
@@ -375,6 +381,13 @@
     padding: 0;
    .content {
      border-radius: inherit;
+   }
+   &__content {
+     margin-bottom: 105px;
+   }
+   &__footer {
+     position: absolute;
+     bottom: 0;
    }
   }
 }

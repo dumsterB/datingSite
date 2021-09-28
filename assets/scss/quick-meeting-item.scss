@@ -23,3 +23,13 @@
     margin-top: 5px;
   }
 }
+
+@media(max-width: 500px){
+  .quick-meeting-item {
+    max-width: 81px;
+    &__img {
+      width: 70px;
+      height: 65px;
+    }
+  }
+}

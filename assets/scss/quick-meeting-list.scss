@@ -22,3 +22,9 @@
     left: 0;
   }
 }
+
+@media(max-width: 500px){
+  .quick-meeting-list {
+    justify-content: space-around;
+  }
+}

@@ -6,7 +6,7 @@
     </span>
       <div class="modal__body">
         <template v-if="!isBlock">
-          <h2 class="title">{{$t('Block')}} {{user.profile.name}}?</h2>
+          <h2 class="title">{{(reportType==='complain') ? $t('Complain about') : $t('Block')}} {{user.profile.name}}?</h2>
           <div class="complain-modal__block">
             <img :src="user.profile.pictures[0] ? user.profile.pictures[0].url : '/img/avatar.jpg'" alt="">
           </div>
@@ -16,7 +16,7 @@
         </div>
         </template>
         <template v-else>
-          <h2 class="title">{{$t('The user is blocked!')}}</h2>
+          <h2 class="title">{{(reportType==='complain') ? $t('The user is complained!') : $t('The user is blocked!')}}</h2>
           <p class="subtitle">{{$t('Please tell me the reason')}}</p>
           <v-select class="select-block" v-model="select" :options="optionSelect">
             <template #open-indicator="{ attributes }">
@@ -43,6 +43,9 @@ export default {
   props: {
     modal: {
       type: Object,
+    },
+    reportType: {
+      type: String,
     }
   },
   data() {
@@ -65,13 +68,18 @@ export default {
     blockUser(){
       this.isBlock = true
     },
-    send(){
+    async send(){
       const payload = {
         comment: this.comment,
         select: this.select,
         user: this.user._id
       }
       this.isBlock = false;
+      if(this.reportType === 'complain'){
+        await this.$store.dispatch('chat/complainUser', payload)
+      } else {
+        await this.$store.dispatch('chat/blockUser', payload)
+      }
       this.$emit('done', payload)
     }
   }
