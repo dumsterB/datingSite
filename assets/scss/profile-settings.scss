@@ -1,4 +1,5 @@
 .profile-settings {
+  position: relative;
 
     .button__full {
         font-family: 'Arial', sans-serif;
@@ -60,8 +61,13 @@
     }
 
     .back{
+        position: absolute;
+        top: 15px;
+        right: 40px;
         margin-top: 5px;
         align-self: stretch;
+        transform: rotate(0deg);
+        transition: 0.2s ease;
     }
 
     .expanded{
@@ -74,6 +80,12 @@
 
     .opened .text{
         display: none;
+    }
+
+    .opened {
+      ._show {
+        transform: rotate(90deg);
+      }
     }
 
     .input-default{
