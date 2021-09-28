@@ -37,7 +37,8 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    '@nuxtjs/google-analytics'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -59,6 +60,9 @@ export default {
     lazy: true,
     langDir: 'lang',
     detectBrowserLanguage: false
+  },
+  googleAnalytics: {
+    id: 'UA-XXX-X'
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
