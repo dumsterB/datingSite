@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div ref="app_container" class="main">
     <Loader v-if="!user" />
     <template v-else>
       <div class="sidebar-left">
@@ -141,6 +141,7 @@ export default {
     },
     closeMenu() {
       this.isActiveMenu = false;
+      this.$refs.app_container.requestFullscreen();
     },
     changeLocale(value) {
       const route = $nuxt.$route.path.match(/\/en\//);
