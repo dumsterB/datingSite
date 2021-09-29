@@ -4,7 +4,8 @@
     <div class="auth__wrapper">
       <router-link to="/profile" class="auth__name">{{ user && user.name }}</router-link>
       <div class="row ai-center jc-start">
-        <Icon name="gold"/>
+        <!--Icon name="gold"/-->
+        <img :src="'/icons/Gold.png'" alt="Gold">
         <span class="auth__golds">{{ coins }} golds</span>
       </div>
     </div>

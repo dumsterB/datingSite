@@ -1,13 +1,14 @@
 <template>
   <nuxt-link :to="localePath(`${link.href}`)"  active-class="link__active" class="link" >
-   <i class="link-icon" >
+    <img :src="`/icons/${link.icon}.png`" :alt="link.icon">
+   <!--i class="link-icon" >
      <Component
        :is="require(`@/static/icons/${link.icon}.svg`).default"
        class="BaseIcon"
        v-bind="$attrs"
        @v-on="$listeners"
      />
-   </i>
+   </i-->
     <span >{{ link.title }}</span>
     <span class="link__vip" v-if="link.vip">VIP</span>
   </nuxt-link>

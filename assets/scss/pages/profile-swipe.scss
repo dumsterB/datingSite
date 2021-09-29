@@ -180,3 +180,15 @@
     }
   }
 }
+
+@media (min-width: 840px) {
+  .profile-swipe {  
+    &__additional-options {
+      .button__empty {
+        &svg, path {
+          fill:#559584
+        }
+      }
+    }
+  }
+}
