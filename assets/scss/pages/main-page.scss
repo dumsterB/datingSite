@@ -255,6 +255,7 @@
 @media(max-width: 840px) {
   .main {
     flex-direction: column;
+    max-height: -webkit-fill-available;
 
     .header-mobile {
       display: flex;
