@@ -208,21 +208,12 @@ export const actions = {
   },
 
   async removeProfilePhoto(ctx, payload) {
-    await fetch(`https://${process.env.API_HOST}/v2/user/profile/image`, {
-      method: 'delete',
-      headers: {
-        'Authorization': `Bearer ${ctx.state.token}`
-      },
-      body: JSON.stringify(payload)
-    }).then(res => {
-      return res.json()
+    await load('/v2/user/profile/image','delete', payload, true).then(res => {
+      ctx.commit('user/setProfilePictures', res, {root: true})
     })
-      .then(data => {
-        ctx.commit('user/setProfilePictures', data, {root: true})
-        // ctx.commit('user/setCoins', {
-        //   coins: data
-        // }, {root: true})
-      })
+    .catch(e => {
+      throw e;
+    })
   },
 
   async makeProfilePhotoMain(ctx, payload) {
