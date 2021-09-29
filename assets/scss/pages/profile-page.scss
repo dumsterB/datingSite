@@ -172,6 +172,20 @@
       color: #B1B1B1;
     }
   }
+  .filter-list{
+      .row {
+        .slider{
+          background: none;
+        }
+        .slider:before{
+          display: none;
+        }
+        &:nth-child(2) {
+          flex-direction: column;
+        }
+      }
+    
+  }
 }
 
 
@@ -239,6 +253,13 @@
         text-align: center;
       }
     }
+
+    .filter-list{
+      .row {
+        flex-direction: column;
+      }
+    
+  }
 
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="profile-page" v-if="user">
     <div class="content">
-      <template v-if="!isBallance && !isStatusVip && !isProfileSettings">
+      <template v-if="!isBallance && !isStatusVip && !isProfileSettings && !isFilters">
         <div class="row">
           <label for="file-upload" class="button button__full">+ {{$t('Add photo')}}</label>
           <input id="file-upload" type="file" @change="change"
@@ -38,7 +38,13 @@
             <i>
               <BallanceIcon/>
             </i>
-            <span>Ballance</span>
+            <span>{{$t('Ballance')}}</span>
+          </button>
+          <button class="button button__empty" @click="setFilters">
+            <i>
+              <Filters/>
+            </i>
+            <span>{{$t('Search')}}</span>
           </button>
 <!--          <button class="button button__empty" @click="setStatusVip">-->
 <!--            <i>-->
@@ -66,6 +72,7 @@
 <!--          </button>-->
         </div>
       </template>
+      <FilterList @setFilters="setFilters" @applyFilters="applyFilters" v-if="isFilters"/>
       <Ballance @setBallance="setBallance" v-if="isBallance"/>
       <StatusVip @setStatusVip="setStatusVip" v-if="isStatusVip"/>
       <ProfileSettings :user="user" @setProfileSettings="setProfileSettings" @updateProfile="updateProfile" v-if="isProfileSettings"/>
@@ -88,6 +95,7 @@ import Ballance from '@/components/Ballance';
 import VerificationModal from '@/components/modals/VerificationModal';
 import SettingsIcon from '@/static/icons/settings.svg';
 import EditIcon from '@/static/icons/edit.svg';
+import Filters from '@/static/icons/filters.svg';
 import VerificationIcon from '@/static/icons/verification.svg';
 import BallanceIcon from '@/static/icons/gold.svg';
 import VipIcon from '@/static/icons/vip.svg';
@@ -96,6 +104,7 @@ import GuestIcon from '@/static/icons/guest.svg';
 import StatusVip from '@/components/StatusVip';
 import PhotosSliderModal from '@/components/modals/PhotosSliderModal';
 import ProfileSettings from '@/components/ProfileSettings';
+import FilterList from '@/components/Filters/FilterList'
 
 export default {
   components: {
@@ -111,13 +120,16 @@ export default {
     BallanceIcon,
     GuestIcon,
     PhotosSliderModal,
-    ProfileSettings
+    ProfileSettings,
+    Filters,
+    FilterList
   },
   data() {
     return {
       isBallance: false,
       isStatusVip: false,
       isProfileSettings: false,
+      isFilters: false,
       modals: {
         verificationModal: {
           show: false
@@ -126,6 +138,7 @@ export default {
       photos: [],
       edit: true,
       image: '',
+      isFilter : false
     }
   },
   methods: {
@@ -137,6 +150,12 @@ export default {
     },
     setProfileSettings() {
       this.isProfileSettings = !this.isProfileSettings;
+    },
+    setFilters() {
+      this.isFilters = !this.isFilters;
+    },
+    applyFilters(){
+      this.$router.push(this.localePath('/quick-meetings'))
     },
     async updateProfile() {
       await this.$store.dispatch('user/updateProfile', this.$store.state.user.user.profile).then(data => {
@@ -160,7 +179,10 @@ export default {
     },
     async uploadImage(file) {
 
-    }
+    },
+    setFilter(){
+      this.isFilter = !this.isFilter
+    },
   },
   computed: {
     user() {

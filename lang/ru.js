@@ -72,6 +72,10 @@ export default {
     'Complain about' : 'Пожаловаться на',
     'The user is complained!' : 'Жалоба отправлена!',
     'Close' : 'Закрыть',
-    'Daily limit of new chats has been reached' : 'Дневной лимит новых чатов исчерпан'
+    'Daily limit of new chats has been reached' : 'Дневной лимит новых чатов исчерпан',
+    'Filters' : 'Фильтры',
+    'Apply' : 'Принять',
+    'Ballance' : 'Баланс',
+    'Search' : 'Найти'
   }
 

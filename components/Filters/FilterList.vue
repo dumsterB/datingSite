@@ -1,10 +1,10 @@
 <template>
   <div class="filter-list">
     <div class="row jc-start">
-    <span class="filter-list__back" @click="$emit('setFilter')">
+    <span class="filter-list__back" @click="$emit('setFilters')">
        <inline-svg src="/icons/arrow-left.svg"/>
     </span>
-      <h2 class="filter-list__title">Filters</h2>
+      <h2 class="filter-list__title">{{$t('Filters')}}</h2>
     </div>
     <div class="row no-wrap">
       <FilterRange
@@ -58,7 +58,7 @@
       <FilterSelect title="Zodiac" :select="selectZodiac" :option-select="optionZodiac"/>
       <FilterSelect title="Body type" :select="selectBodyType" :option-select="optionBodyType"/>
     </div>
-  <button class="button button__full">Apply</button>
+  <button class="button button__full" @click="$emit('applyFilters')">{{$t('Apply')}}</button>
   </div>
 </template>
 
