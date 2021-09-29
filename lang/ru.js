@@ -70,6 +70,8 @@ export default {
     'Password recovery' : 'Восстановление пароля',
     'Invalid code' : 'Неправильный код',
     'Complain about' : 'Пожаловаться на',
-    'The user is complained!' : 'Жалоба отправлена!'
+    'The user is complained!' : 'Жалоба отправлена!',
+    'Close' : 'Закрыть',
+    'Daily limit of new chats has been reached' : 'Дневной лимит новых чатов исчерпан'
   }
 

@@ -56,7 +56,7 @@
               </div>
               <div class="profile-swipe__additional-options">
                 <div class="row">
-                  <span class="button__empty">
+                  <span class="button__empty" @click="chatEnter">
                     <Icon name="micro" />
                   </span>
                   <span class="button__empty" @click="chatEnter">
@@ -104,7 +104,7 @@
             </div>
             <div class="profile-swipe__additional-options">
               <div class="row">
-                <span class="button__empty">
+                <span class="button__empty" @click="chatEnter">
                   <Icon name="micro" />
                 </span>
                 <span class="button__empty" @click="chatEnter">
@@ -116,6 +116,7 @@
         </div>
       </div>
     </div>
+    <ChatAmountEndedModal :show="chatAmountEndedModal" @close="chatAmountEndedModal=false"></ChatAmountEndedModal>
     <ComplainModal :modal="modals.complainModal" :reportType="reportType" @close="close" @done="done" />
     <PhotosSliderModal
       v-if="user.profile"
@@ -138,8 +139,9 @@ import InterestsList from "~/components/Interests/InterestsList";
 import ComplainModal from "~/components/modals/ComplainModal";
 import Icon from "@/components/Icon";
 import PhotosSliderModal from "@/components/modals/PhotosSliderModal";
+import ChatAmountEndedModal from "~/components/modals/ChatAmountEndedModal";
 export default {
-  components: { Icon, ComplainModal, InterestsList, Photos, PhotosSliderModal },
+  components: { Icon, ComplainModal, InterestsList, Photos, PhotosSliderModal, ChatAmountEndedModal },
   data() {
     return {
       modals: {
@@ -147,6 +149,7 @@ export default {
           show: false
         }
       },
+      chatAmountEndedModal: false,
       reportType : 'block'
     };
   },
@@ -194,6 +197,7 @@ export default {
           }) 
         }
       }).catch(e => {
+        this.chatAmountEndedModal = true;
         console.log(e)
       })
     },

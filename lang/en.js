@@ -70,6 +70,8 @@ export default {
     'Password recovery' : 'Password recovery',
     'Invalid code' : 'Invalid code',
     'Complain about' : 'Complain about',
-    'The user is complained!' : 'The user is complained!'
+    'The user is complained!' : 'The user is complained!',
+    'Close' : 'Close',
+    'Daily limit of new chats has been reached' : 'Daily limit of new chats has been reached'
   }
 

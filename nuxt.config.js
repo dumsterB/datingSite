@@ -12,7 +12,12 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    ],
+    script : [
+      { hid: 'analytics', src: `https://www.googletagmanager.com/gtag/js?id=G-DL55M9PQZG`, defer: true },
+      { hid: 'analytics-script', innerHTML: `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-DL55M9PQZG');`, type: 'text/javascript' }
+    ],
+    __dangerouslyDisableSanitizers: ['script']
   },
   server:{
     port: 3001
@@ -39,8 +44,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
-    '@nuxtjs/dotenv',
-    '@nuxtjs/google-analytics'
+    '@nuxtjs/dotenv'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -62,9 +66,6 @@ export default {
     lazy: true,
     langDir: 'lang',
     detectBrowserLanguage: false
-  },
-  googleAnalytics: {
-    id: 'G-DL55M9PQZG'
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
