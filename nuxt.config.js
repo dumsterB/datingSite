@@ -62,7 +62,7 @@ export default {
     detectBrowserLanguage: false
   },
   googleAnalytics: {
-    id: 'UA-XXX-X'
+    id: 'G-DL55M9PQZG'
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
