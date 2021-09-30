@@ -76,6 +76,15 @@ export default {
     'Filters' : 'Фильтры',
     'Apply' : 'Принять',
     'Ballance' : 'Баланс',
-    'Search' : 'Найти'
+    'Search' : 'Найти',
+    'Age' : 'Возраст',
+    'Year' : 'Года',
+    'Height' : 'Рост',
+    'Cm' : 'См',
+    'Zodiac' : 'Знак зодиака',
+    'Alcohol' : 'Алкоголь',
+    'Smokes' : 'Курение',
+    'Childs' : 'Дети',
+    'Body type' : 'Тело сложение'
   }
 

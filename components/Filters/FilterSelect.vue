@@ -2,7 +2,7 @@
   <div class="filter-container">
     <div class="filter-select">
       <p class="filter-select__title">{{title}}</p>
-      <v-select class="select-block" v-model="select" :options="optionSelect">
+      <v-select class="select-block" v-model="select" :options="optionSelect" return-object>
         <template #open-indicator="{ attributes }">
           <Component
             :is="require(`@/static/icons/filter-arrow-dwn.svg`).default"
@@ -37,6 +37,9 @@ export default {
     return{
 
     }
-  }
+  },
+  updated: function () {
+    if(this.select.value) this.$emit('update', this.select.value)
+  },
 }
 </script>

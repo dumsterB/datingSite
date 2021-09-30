@@ -154,8 +154,12 @@ export default {
     setFilters() {
       this.isFilters = !this.isFilters;
     },
-    applyFilters(){
-      this.$router.push(this.localePath('/quick-meetings'))
+    async applyFilters(payload){
+      await this.$store.dispatch('user/setUserPreference', payload).then(() => {
+        this.$router.push(this.localePath('/quick-meetings'))
+      }).catch(e => {
+        console.log(e)
+      })
     },
     async updateProfile() {
       await this.$store.dispatch('user/updateProfile', this.$store.state.user.user.profile).then(data => {

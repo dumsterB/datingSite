@@ -22,3 +22,12 @@
     z-index: 1;
   }
 }
+
+@media (max-width: 840px) {
+  .filter-list{
+    .button {
+      max-width: 100%!important;
+      width: 100%!important;
+    }
+  }
+}

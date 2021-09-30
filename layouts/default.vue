@@ -257,7 +257,8 @@ export default {
     await this.$store.dispatch("user/userFullData");
     await this.$store.dispatch("user/userCoins");
     await this.$store.dispatch("chat/allChat");
-    await this.$store.dispatch("forum/allForums");
+    //await this.$store.dispatch("forum/allForums");
+    await this.$store.dispatch("user/userPreference");
   }
 };
 </script>

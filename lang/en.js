@@ -76,6 +76,15 @@ export default {
     'Filters' : 'Filters',
     'Apply' : 'Apply',
     'Ballance' : 'Ballance',
-    'Search' : 'Search'
+    'Search' : 'Search',
+    'Age' : 'Age',
+    'Year' : 'Year',
+    'Height' : 'Height',
+    'Cm' : 'Cm',
+    'Zodiac' : 'Zodiac',
+    'Alcohol' : 'Alcohol',
+    'Smokes' : 'Smokes',
+    'Childs' : 'Childs',
+    'Body type' : 'Body type'
   }
 

@@ -7,6 +7,7 @@ export const state = () => ({
   selectedUser:[],
   coins:{},
   token: '',
+  preference : {}
 })
 
 export const actions = {
@@ -238,6 +239,18 @@ export const actions = {
         ctx.commit('user/setSelectedUser', data, {root: true})
       })
   },
+
+  async userPreference(ctx) {
+    await load('/v2/user/preference','get', '',  true).then(data => {
+      ctx.commit('user/setUserPreference', data, {root: true})
+    })
+  },
+
+  async setUserPreference(ctx, payload) {
+    await load('/v2/user/preference','put', payload,  true).then(data => {
+      ctx.commit('user/setUserPreference', data, {root: true})
+    })
+  },
 }
 
 export const mutations = {
@@ -272,6 +285,11 @@ export const mutations = {
   setProfilePictures(state, payload){
     state.user.profile.pictures = payload
   },
+  setUserPreference(state, payload){
+    for (let key in payload) {
+      this._vm.$set(state.preference, key, payload[key]);
+    }
+  },
   clearUser(state) {
     state.user = {}
     state.token = ''
@@ -295,6 +313,9 @@ export const getters = {
   hasToken(state) {
     console.log(state.token)
     return state.token
+  },
+  getUserPreference(state) {
+    return state.preference
   }
 }
 
