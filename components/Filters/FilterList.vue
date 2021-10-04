@@ -7,6 +7,27 @@
       <h2 class="filter-list__title">{{$t('Filters')}}</h2>
     </div>
     <div class="row no-wrap">
+      <div class="gender-block">
+        <div class="filter-container">
+          <span class="filter-title">{{$t('Sex')}}:</span>
+          <div class="gender-block__radio">
+              <span>
+                  <input type="radio" id="mail" :value="['male']" v-model="gender">
+                  <label for="mail" :class="{'checked' : gender[0]=='male' ? true : false}">{{$t('Male')}}</label>
+              </span>
+              <span>
+                  <input type="radio" id="female" :value="['female']" v-model="gender">
+                  <label for="female" :class="{'checked' : gender[0]=='female' ? true : false}">{{$t('Female')}}</label>
+              </span>
+              <span>
+                  <input type="radio" id="both" :value="[]" v-model="gender">
+                  <label for="both" :class="{'checked' : gender[0] ? false : true}">{{$t('All')}}</label>
+              </span>
+          </div>
+        </div> 
+    </div>
+    </div>
+    <div class="row no-wrap">
       <FilterRange
         :title="$t('Age')"
         :subtitle="$t('Year')"
@@ -108,6 +129,30 @@ export default {
     }
   },
   computed : {
+    gender: {
+      get () {
+          return this.preference.gender
+      },
+      set(value) {
+          this.$store.commit('user/setUserPreference', {gender:value})
+      }
+    },
+    optionSex(){
+      return [
+        {
+          label: "Male",
+          value : "male"
+        },
+        {
+          label: "Female",
+          value : "female"
+        },
+        {
+          label: "Both",
+          value : null
+        }
+      ];
+    },
     optionZodiac(){
       return ['Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'];
     },

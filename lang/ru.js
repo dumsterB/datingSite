@@ -85,6 +85,7 @@ export default {
     'Alcohol' : 'Алкоголь',
     'Smokes' : 'Курение',
     'Childs' : 'Дети',
-    'Body type' : 'Тело сложение'
+    'Body type' : 'Тело сложение',
+    'All' : 'Все'
   }
 

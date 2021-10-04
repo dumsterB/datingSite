@@ -16,10 +16,33 @@
     margin-bottom: 20px;
   }
 
-
   .button {
     max-width: 186px;
     z-index: 1;
+  }
+
+  .gender-block{
+    &__radio{
+      padding: 15px 0;
+
+      input{
+        visibility: hidden;
+        width: 0.1px;
+      }
+      label{
+        font-family: 'Gotham', sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 19px;
+        color: #F1F1F1;
+        padding: 5px 10px 5px 10px;
+        &.checked{
+          border: 1px solid #559575;
+          border-radius: 5px;
+        }
+      }
+    }
   }
 }
 

@@ -85,6 +85,7 @@ export default {
     'Alcohol' : 'Alcohol',
     'Smokes' : 'Smokes',
     'Childs' : 'Childs',
-    'Body type' : 'Body type'
+    'Body type' : 'Body type',
+    'All' : 'All'
   }
 
