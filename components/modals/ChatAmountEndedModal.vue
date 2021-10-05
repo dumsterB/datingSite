@@ -37,10 +37,4 @@ export default {
 </script>
 
 
-<style lang="scss">
-.modal {
-  .button {
-    max-width: 159px!important;
-  }
-}
-</style>
+<style lang="scss"></style>
