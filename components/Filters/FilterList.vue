@@ -1,31 +1,53 @@
 <template>
   <div class="filter-list">
-    <div class="row jc-start">
-    <span class="filter-list__back" @click="$emit('setFilters')">
-       <inline-svg src="/icons/arrow-left.svg"/>
-    </span>
-      <h2 class="filter-list__title">{{$t('Filters')}}</h2>
+    <div class="filter-list_block">
+      <span class="filter-list__back" @click="$emit('setFilters')">
+        <inline-svg src="/icons/arrow-left.svg" />
+      </span>
+      <h2 class="filter-list__title">{{ $t("Filters") }}</h2>
     </div>
     <div class="row no-wrap">
       <div class="gender-block">
         <div class="filter-container">
-          <span class="filter-title">{{$t('Sex')}}:</span>
+          <span class="filter-title">{{ $t("Sex") }}:</span>
           <div class="gender-block__radio">
-              <span>
-                  <input type="radio" id="mail" :value="['male']" v-model="gender">
-                  <label for="mail" :class="{'checked' : gender[0]=='male' ? true : false}">{{$t('Male')}}</label>
-              </span>
-              <span>
-                  <input type="radio" id="female" :value="['female']" v-model="gender">
-                  <label for="female" :class="{'checked' : gender[0]=='female' ? true : false}">{{$t('Female')}}</label>
-              </span>
-              <span>
-                  <input type="radio" id="both" :value="[]" v-model="gender">
-                  <label for="both" :class="{'checked' : gender[0] ? false : true}">{{$t('All')}}</label>
-              </span>
+            <span>
+              <input
+                type="radio"
+                id="mail"
+                :value="['male']"
+                v-model="gender"
+              />
+              <label
+                for="mail"
+                :class="{ checked: gender[0] == 'male' ? true : false }"
+                >{{ $t("Male") }}</label
+              >
+            </span>
+            <span>
+              <input
+                type="radio"
+                id="female"
+                :value="['female']"
+                v-model="gender"
+              />
+              <label
+                for="female"
+                :class="{ checked: gender[0] == 'female' ? true : false }"
+                >{{ $t("Female") }}</label
+              >
+            </span>
+            <span>
+              <input type="radio" id="both" :value="[]" v-model="gender" />
+              <label
+                for="both"
+                :class="{ checked: gender[0] ? false : true }"
+                >{{ $t("All") }}</label
+              >
+            </span>
           </div>
-        </div> 
-    </div>
+        </div>
+      </div>
     </div>
     <div class="row no-wrap">
       <FilterRange
@@ -76,23 +98,50 @@
       /-->
     </div>
     <div class="row no-wrap">
-      <FilterSelect :title="$t('Zodiac')" :select="preference.zodiac[0] ? $t(preference.zodiac[0]) : ''" :option-select="optionZodiac" @update="value => updateValue('zodiac', value)" />
-      <FilterSelect :title="$t('Alcohol')" :select="preference.alcohol[0] ? $t(preference.alcohol[0]) : ''" :option-select="optionAlco" @update="value => updateValue('alcohol', value)"/>
+      <FilterSelect
+        :title="$t('Zodiac')"
+        :select="preference.zodiac[0] ? $t(preference.zodiac[0]) : ''"
+        :option-select="optionZodiac"
+        @update="value => updateValue('zodiac', value)"
+      />
+      <FilterSelect
+        :title="$t('Alcohol')"
+        :select="preference.alcohol[0] ? $t(preference.alcohol[0]) : ''"
+        :option-select="optionAlco"
+        @update="value => updateValue('alcohol', value)"
+      />
     </div>
-     <div class="row no-wrap">
-      <FilterSelect :title="$t('Smokes')" :select="preference.smokes[0] ? $t(preference.smokes[0]) : ''" :option-select="optionSmokes" @update="value => updateValue('smokes', value)"/>
-      <FilterSelect :title="$t('Childs')" :select="preference.children[0] ? $t(preference.children[0]) : ''" :option-select="optionChildes" @update="value => updateValue('children', value)"/>
+    <div class="row no-wrap">
+      <FilterSelect
+        :title="$t('Smokes')"
+        :select="preference.smokes[0] ? $t(preference.smokes[0]) : ''"
+        :option-select="optionSmokes"
+        @update="value => updateValue('smokes', value)"
+      />
+      <FilterSelect
+        :title="$t('Childs')"
+        :select="preference.children[0] ? $t(preference.children[0]) : ''"
+        :option-select="optionChildes"
+        @update="value => updateValue('children', value)"
+      />
     </div>
-     <div class="row no-wrap">
-      <FilterSelect :title="$t('Body type')" :select="preference.physique[0] ? $t(preference.physique[0]) : ''" :option-select="optionBodyType" @update="value => updateValue('physique', value)"/>
+    <div class="row no-wrap">
+      <FilterSelect
+        :title="$t('Body type')"
+        :select="preference.physique[0] ? $t(preference.physique[0]) : ''"
+        :option-select="optionBodyType"
+        @update="value => updateValue('physique', value)"
+      />
     </div>
-    <button class="button button__full" @click="setFilters">{{$t('Search')}}</button>
+    <button class="button button__full" @click="setFilters">
+      {{ $t("Search") }}
+    </button>
   </div>
 </template>
 
 <script>
-import FilterRange from './FilterRange'
-import FilterSelect from './FilterSelect'
+import FilterRange from "./FilterRange";
+import FilterSelect from "./FilterSelect";
 
 export default {
   components: {
@@ -121,123 +170,142 @@ export default {
       minThresholdDistance: 30,
       maxThresholdDistance: 120,
 
-      selectZodiac: 'Virgin',
+      selectZodiac: "Virgin",
       //optionZodiac: ['Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'],
 
-      selectBodyType:'Athletic',
+      selectBodyType: "Athletic"
       //optionBodyType:['thin','slim','skinny','medium-build','muscular','athletic']
-    }
+    };
   },
-  computed : {
+  computed: {
     gender: {
-      get () {
-          return this.preference.gender
+      get() {
+        return this.preference.gender;
       },
       set(value) {
-          this.$store.commit('user/setUserPreference', {gender:value})
+        this.$store.commit("user/setUserPreference", { gender: value });
       }
     },
-    optionSex(){
+    optionSex() {
       return [
         {
           label: "Male",
-          value : "male"
+          value: "male"
         },
         {
           label: "Female",
-          value : "female"
+          value: "female"
         },
         {
           label: "Both",
-          value : null
+          value: null
         }
       ];
     },
-    optionZodiac(){
-      return ['Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'];
+    optionZodiac() {
+      return [
+        "Aries",
+        "Taurus",
+        "Gemini",
+        "Cancer",
+        "Leo",
+        "Virgo",
+        "Libra",
+        "Scorpio",
+        "Sagittarius",
+        "Capricorn",
+        "Aquarius",
+        "Pisces"
+      ];
     },
-    optionAlco(){
+    optionAlco() {
       return [
         {
           label: "Yes",
-          value : "yes"
+          value: "yes"
         },
         {
           label: "No",
-          value : "no"
+          value: "no"
         }
-      ]
+      ];
     },
-    optionSmokes(){
+    optionSmokes() {
       return [
         {
           label: "Yes",
-          value : "yes"
+          value: "yes"
         },
         {
           label: "No",
-          value : "no"
+          value: "no"
         }
-      ]
+      ];
     },
-    optionChildes(){
+    optionChildes() {
       return [
         {
           label: "Yes",
-          value : "yes"
+          value: "yes"
         },
         {
           label: "No",
-          value : "no"
+          value: "no"
         }
-      ]
+      ];
     },
-    optionBodyType(){
+    optionBodyType() {
       //return ['thin','slim','skinny','medium-build','muscular','athletic'];
       return [
         {
           label: "Thin",
-          value : "thin"
+          value: "thin"
         },
         {
           label: "Slim",
-          value : "slim"
+          value: "slim"
         },
         {
           label: "Skinny",
-          value : "skinny"
+          value: "skinny"
         },
         {
           label: "Medium-build",
-          value : "medium-build"
+          value: "medium-build"
         },
         {
           label: "Muscular",
-          value : "muscular"
+          value: "muscular"
         },
         {
           label: "Athletic",
-          value : "athletic"
-        },
-      ]
+          value: "athletic"
+        }
+      ];
     },
     preference() {
       return this.$store.getters["user/getUserPreference"];
     }
   },
   methods: {
-    updateValue(key, val){
+    updateValue(key, val) {
       let payload = {};
       let value = val;
-      if(key === 'zodiac' || key === 'alcohol' || key === 'smokes' || key === 'children' || key === 'physique'){
-        value = [val]
+      if (
+        key === "zodiac" ||
+        key === "alcohol" ||
+        key === "smokes" ||
+        key === "children" ||
+        key === "physique"
+      ) {
+        value = [val];
       }
       payload[key] = value;
-      this.$store.commit('user/setUserPreference', payload)
+      this.$store.commit("user/setUserPreference", payload);
     },
-    setFilters(){
-      this.$emit('applyFilters', this.preference);
+    setFilters() {
+      this.$emit("applyFilters", this.preference);
     }
   }
-}
+};
 </script>

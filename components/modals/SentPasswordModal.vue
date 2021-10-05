@@ -83,9 +83,9 @@ export default {
 
 
 <style>
-.title{
+/* .title{
   margin-top: 10px;
-}
+} */
 .codes{
   margin: 10px auto;
 }
