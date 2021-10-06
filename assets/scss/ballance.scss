@@ -1,12 +1,29 @@
 .ballance {
   margin-top: 20px;
 
-  .back {
-    position: absolute;
-    top: 50px;
-    left: 46px;
-    cursor: pointer;
+  &-title {
+    display: flex;
+    align-items: center;
   }
+
+  &-block {
+    display: flex;
+    align-items: center;
+    margin-top: 160px;
+
+    svg {
+      width: 60px;
+      height: 60px;
+      margin-left: 15px;
+    }
+  }
+
+  // .back {
+  //   position: absolute;
+  //   top: 50px;
+  //   left: 46px;
+  //   cursor: pointer;
+  // }
 
   .title {
     font-family: 'Gotham', sans-serif;
@@ -15,7 +32,7 @@
     font-size: 36px;
     line-height: 43px;
     text-align: left;
-    margin-left: 35px;
+    margin-left: 25px;
     color: #F1F1F1;
   }
 
@@ -30,7 +47,7 @@
       text-align: center;
       color: #FFFFFF;
       text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-      margin-top: 160px;
+      // margin-top: 160px;
 
 
       svg {
