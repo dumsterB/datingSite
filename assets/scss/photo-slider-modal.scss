@@ -138,3 +138,21 @@
 
 
 }
+
+@media(max-width: 500px) {
+  .photo-slider-modal {
+   
+    .carousel {
+  
+      &-item {
+  
+        img {
+          max-height: 75vh;
+        }
+      }
+    }
+  
+  
+  }
+
+}

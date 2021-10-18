@@ -86,6 +86,16 @@ export default {
     'Smokes' : 'Smokes',
     'Childs' : 'Childs',
     'Body type' : 'Body type',
-    'All' : 'All'
+    'All' : 'All',
+    'Top up' : 'Top up',
+    'gold' : 'gold',
+    'Spam' : 'Spam',
+    'Fraud' : 'Fraud',
+    'Abuse' : 'Abuse',
+    'Distribution of pornographic materials' : 'Distribution of pornographic materials',
+    'Threat' : 'Threat',
+    'Alien photo' : 'Alien photo',
+    'No 18 years old' : 'No 18 years old',
+    'Other' : 'Other'
   }
 

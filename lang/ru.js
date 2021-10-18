@@ -86,6 +86,16 @@ export default {
     'Smokes' : 'Курение',
     'Childs' : 'Дети',
     'Body type' : 'Тело сложение',
-    'All' : 'Все'
+    'All' : 'Все',
+    'Top up' : 'Пополнить',
+    'gold' : 'монет',
+    'Spam' : 'Спам',
+    'Fraud' : 'Мошенничество',
+    'Abuse' : 'Оскорбление',
+    'Distribution of pornographic materials' : 'Распространение порно',
+    'Threat' : 'Угроза',
+    'Alien photo' : 'Чужое фото',
+    'No 18 years old' : 'Нет 18 лет',
+    'Other' : 'Другое'
   }
 

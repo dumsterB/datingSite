@@ -2,7 +2,7 @@
   <div class="profile-settings">
     <div class="row">
       <label for="file-upload" class="button button__full">+ {{$t('Add photo')}}</label>
-      <input id="file-upload" type="file" style="visibility:hidden;width:0.1px"/>
+      <input id="file-upload" type="file" style="visibility:hidden;width:0.1px" @change="change"/>
       <div class="settings-block">
         <button @click="$emit('setProfileSettings')" class="button button__empty">
           {{$t('Cancel')}}
@@ -192,7 +192,14 @@ export default {
     },
     deleteProfile(){
         alert('Deleting')
-    }
+    },
+    async change(event) {
+      const reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      const res = await this.$store.dispatch('media/uploadImage', event.target.files[0])
+      const data = await res.json();
+      await this.$store.dispatch('user/addProfilePhoto', {file:data._id, index: this.$store.state.user.user.profile.pictures.length+1})
+    },
   }
 };
 </script>

@@ -4,7 +4,7 @@
       <span class="back" @click="$emit('setBallance')">
         <inline-svg src="/icons/arrow-left.svg" />
       </span>
-      <h2 class="title">Ballance</h2>
+      <h2 class="title">{{$t('Ballance')}}</h2>
     </div>
     <div class="column ai-center" v-if="!isRefill">
       <div class="ballance-block">
@@ -12,7 +12,7 @@
         <BallanceIcon />
       </div>
       <!-- <span class="ballance__bill">10 <BallanceIcon /></span> -->
-      <button class="button button__full" @click="setRefill">Top up</button>
+      <button class="button button__full" @click="setRefill">{{$t('Top up')}}</button>
     </div>
     <form
       class="ballance-card-block"

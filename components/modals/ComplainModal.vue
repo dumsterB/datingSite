@@ -51,8 +51,17 @@ export default {
   data() {
     return {
       isBlock: false,
-      select:'Spam',
-      optionSelect:['Spam', 'Fraud', 'Abuse', 'Distribution of pornographic materials','Threat','Alien photo', 'No 18 years old', 'Other'],
+      select: this.$t('Spam'),
+      optionSelect:[
+        this.$t('Spam'), 
+        this.$t('Fraud'), 
+        this.$t('Abuse'),
+        this.$t('Distribution of pornographic materials'),
+        this.$t('Threat'),
+        this.$t('Alien photo'),
+        this.$t('No 18 years old'), 
+        this.$t('Other')
+        ],
       comment:'',
     }
   },

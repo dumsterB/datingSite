@@ -109,7 +109,7 @@
                     </form>
                   </div>
                   <div class="chat__footer-actions">
-                    <inline-svg src="/icons/smile.svg"/>
+                    <!--inline-svg src="/icons/smile.svg"/-->
                     <span ref="recordButton" class="recordButton">
                       <inline-svg 
                         @mousedown="startRecord"

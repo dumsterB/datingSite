@@ -1,13 +1,13 @@
 <template>
   <div class="profile-card"
-       @click.prevent="$emit('setCheckCard', {title, name: title + 'gold'})"
+       @click.prevent="$emit('setCheckCard', {title, name: title + $t('gold')})"
        :class="{ 'active': activeItem == title + 'gold'}" >
     <div class="row ai-center">
      <div class="row ">
        <BallanceIcon v-if="!isVip"/>
        <VipIcon v-else/>
        <div class="column">
-         <span class="profile-card__gold"> {{isVip ? title : title + ' gold'}}</span>
+         <span class="profile-card__gold"> {{isVip ? title : title + ' ' + $t('gold')}}</span>
          <div class="profile-card__price">{{ price }} USD</div>
        </div>
      </div>
