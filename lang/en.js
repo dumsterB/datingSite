@@ -96,6 +96,13 @@ export default {
     'Threat' : 'Threat',
     'Alien photo' : 'Alien photo',
     'No 18 years old' : 'No 18 years old',
-    'Other' : 'Other'
+    'Other' : 'Other',
+    'Settings' : 'Settings',
+    'Account' : 'Account',
+    'Support' : 'Support',
+    'About app' : 'About app',
+    'Privacy policy' : 'Privacy policy',
+    'Language' : 'Language',
+    'Contact support' : 'Contact support'
   }
 

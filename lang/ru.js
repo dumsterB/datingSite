@@ -96,6 +96,13 @@ export default {
     'Threat' : 'Угроза',
     'Alien photo' : 'Чужое фото',
     'No 18 years old' : 'Нет 18 лет',
-    'Other' : 'Другое'
+    'Other' : 'Другое',
+    'Settings' : 'Настройки',
+    'Account' : 'Аккаунт',
+    'Support' : 'Служба поддержки',
+    'About app' : 'О приложении',
+    'Privacy policy' : 'Политика конфиденциальности',
+    'Language' : 'Язык интерфейса',
+    'Contact support' : 'Обратиться в службу поддержки'
   }
 

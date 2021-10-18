@@ -1,18 +1,18 @@
 <template>
   <div class="profile-page" v-if="user">
     <div class="content">
-      <template v-if="!isBallance && !isStatusVip && !isProfileSettings && !isFilters">
+      <template v-if="!isBallance && !isStatusVip && !isProfileSettings && !isFilters && !isSettings">
         <div class="row">
           <label for="file-upload" class="button button__full">+ {{$t('Add photo')}}</label>
           <input id="file-upload" type="file" @change="change"
                  style="display:none;">
           <div class="settings-block">
-            <i @click="setProfileSettings">
+            <i @click="setSettings">
               <SettingsIcon/>
             </i>
-            <!--i>
+            <i @click="setProfileSettings">
               <EditIcon/>
-            </i-->
+            </i>
           </div>
         </div>
         <div class="row" v-if="user.profile">
@@ -76,7 +76,7 @@
       <Ballance @setBallance="setBallance" v-if="isBallance"/>
       <StatusVip @setStatusVip="setStatusVip" v-if="isStatusVip"/>
       <ProfileSettings :user="user" @setProfileSettings="setProfileSettings" @updateProfile="updateProfile" v-if="isProfileSettings"/>
-
+      <SettingsList @setSettings="setSettings" v-if="isSettings"/>
 
     </div>
     <VerificationModal :modal="modals.verificationModal" @close="close"/>
@@ -104,7 +104,8 @@ import GuestIcon from '@/static/icons/guest.svg';
 import StatusVip from '@/components/StatusVip';
 import PhotosSliderModal from '@/components/modals/PhotosSliderModal';
 import ProfileSettings from '@/components/ProfileSettings';
-import FilterList from '@/components/Filters/FilterList'
+import FilterList from '@/components/Filters/FilterList';
+import SettingsList from '@/components/settings/settingsList';
 
 export default {
   components: {
@@ -122,7 +123,8 @@ export default {
     PhotosSliderModal,
     ProfileSettings,
     Filters,
-    FilterList
+    FilterList,
+    SettingsList
   },
   data() {
     return {
@@ -130,6 +132,7 @@ export default {
       isStatusVip: false,
       isProfileSettings: false,
       isFilters: false,
+      isSettings: false,
       modals: {
         verificationModal: {
           show: false
@@ -187,6 +190,9 @@ export default {
     setFilter(){
       this.isFilter = !this.isFilter
     },
+    setSettings(){
+      this.isSettings = !this.isSettings;
+    }
   },
   computed: {
     user() {
