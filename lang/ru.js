@@ -104,6 +104,8 @@ export default {
     'Privacy policy' : 'Политика конфиденциальности',
     'Language' : 'Язык интерфейса',
     'Contact support' : 'Обратиться в службу поддержки',
-    'Comment' : 'Комментарий'
+    'Comment' : 'Комментарий',
+    'Recording audio' : 'Записывается аудио',
+    'Your message...' : 'Ваше сообщение...'
   }
 

@@ -47,7 +47,7 @@
                       <div class="message">
                         <span class="text" v-if="message.message_text" v-html="message.message_text"></span>
                         <span class="text audio" v-if="message.message_audio">
-                        {{ audioSound(message.message_audio) }}
+                          {{ audioSound(message.message_audio) }}
                            <span @click="$refs[`audio_${message.message_audio._id}`][0].play()">
                               <Icon name="play" class="play"/>
                             </span>
@@ -57,10 +57,10 @@
                               :src="message.message_audio.url"
                               type="audio/mp3">
                           </audio>
-                      </span>
-                        <span class="text images" v-if="message.images">
-                        <img v-for="(image, index) in message.images" :key="index" :src="image.url" alt="">
-                      </span>
+                        </span>
+                        <span class="text images" v-if="message.images.length">
+                          <img @click="openImage(image.url)" v-for="(image, index) in message.images" :key="index" :src="image.url" alt="">
+                        </span>
                         <span class="time">{{ message.createdAt | time }}</span>
                       </div>
                     </div>
@@ -95,8 +95,8 @@
                     /-->
                   </div>
                   <div class="chat__footer-textarea">
-                    <form @submit.prevent="send">
-                      <input type="text" placeholder="Your message..." v-model="message">
+                    <form @submit.prevent="send" v-if="!recordingAudio">
+                      <input type="text" :placeholder="$t('Your message...')" v-model="message">
 <!--                      <span class="icon-send">-->
 <!--                        <Component-->
 <!--                          :is="require(`@/static/icons/chats.svg`).default"-->
@@ -107,6 +107,7 @@
 <!--                      </span>-->
                       <div @click="send" class="icon-send"></div>
                     </form>
+                    <div class="recording" v-else>{{$t('Recording audio')}}</div>
                   </div>
                   <div class="chat__footer-actions">
                     <!--inline-svg src="/icons/smile.svg"/-->
@@ -131,6 +132,10 @@
       </div>
     </div>
     <ComplainModal @close="close" @done="done" :reportType="reportType"/>
+    <div id="myModal" class="image-modal">
+      <span class="close" @click="closeImage">&times;</span>
+      <img class="modal-content" id="img01">
+    </div>
   </div>
 </template>
 <script>
@@ -166,7 +171,8 @@ export default {
       isMobileDialog: false,
       isContactList: false,
       isNewAnswers: false,
-      reportType : 'block'
+      reportType : 'block',
+      recordingAudio : false
     }
   },
   watch: {
@@ -256,9 +262,11 @@ export default {
           setTimeout(() => {
             this.send()
             this.$refs.recordButton.classList.remove("active")
+            this.recordingAudio = !this.recordingAudio;
           })
         } else {
           this.$refs.recordButton.classList.remove("active")
+          this.recordingAudio = !this.recordingAudio;
         }
       }, 500);
     },
@@ -277,7 +285,7 @@ export default {
           this.audio = new File([audioBlob], "audio");
         })
         this.mediaRecorder.start()
-
+        this.recordingAudio = !this.recordingAudio;
       }).catch((error) => {
         alert('Чтобы записать аудио, разрешите использование микрофона')
       })
@@ -399,8 +407,6 @@ export default {
       this.$store.commit('chat/setBlockModal')
     },
     done(payload){
-      console.log(payload)
-      //todo block action
       this.$store.commit('chat/setBlockModal')
       this.$router.push(this.localePath('/chat'))
     },
@@ -410,6 +416,16 @@ export default {
     },
     handler(){
       return false
+    },
+    openImage(src){
+      let modal = document.getElementById("myModal");
+      let modalImg = document.getElementById("img01");
+      modal.style.display = "block";
+      modalImg.src = src;
+    },
+    closeImage(){
+      let modal = document.getElementById("myModal");    
+      modal.style.display = "none";
     }
   },
   fetch() {

@@ -104,6 +104,8 @@ export default {
     'Privacy policy' : 'Privacy policy',
     'Language' : 'Language',
     'Contact support' : 'Contact support',
-    'Comment' : 'Comment'
+    'Comment' : 'Comment',
+    'Recording audio' : 'Recording audio',
+    'Your message...' : 'Your message...'
   }
 
