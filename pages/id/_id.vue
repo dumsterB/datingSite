@@ -72,7 +72,7 @@
                 <Icon name="block-off" />
                 {{ $t("Block") }}
               </span>
-              <span @click="reportUser('complain')">
+              <span @click="reportUser('complain')" style="margin-left:15px;">
                 <Icon name="complain" />
                 {{ $t("Complain") }}
               </span>

@@ -103,6 +103,7 @@ export default {
     'About app' : 'About app',
     'Privacy policy' : 'Privacy policy',
     'Language' : 'Language',
-    'Contact support' : 'Contact support'
+    'Contact support' : 'Contact support',
+    'Comment' : 'Comment'
   }
 

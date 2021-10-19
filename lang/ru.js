@@ -103,6 +103,7 @@ export default {
     'About app' : 'О приложении',
     'Privacy policy' : 'Политика конфиденциальности',
     'Language' : 'Язык интерфейса',
-    'Contact support' : 'Обратиться в службу поддержки'
+    'Contact support' : 'Обратиться в службу поддержки',
+    'Comment' : 'Комментарий'
   }
 

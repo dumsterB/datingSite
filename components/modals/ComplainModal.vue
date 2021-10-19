@@ -28,7 +28,7 @@
               />
             </template>
           </v-select>
-          <input type="text" placeholder="Comment" v-model="comment" class="input input-default"/>
+          <input type="text" :placeholder="$t('Comment')" v-model="comment" class="input input-default"/>
           <button class="button button__full white-text" @click="send">{{$t('Send')}}</button>
         </template>
       </div>

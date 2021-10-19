@@ -8,7 +8,7 @@
     </div>
     <div class="column ai-center" v-if="!isRefill">
       <div class="ballance-block">
-        <span class="ballance__bill">10</span>
+        <span class="ballance__bill">{{coins.coins}}</span>
         <BallanceIcon />
       </div>
       <!-- <span class="ballance__bill">10 <BallanceIcon /></span> -->
@@ -76,7 +76,10 @@ export default {
   computed: {
     quickMeetingsLiqpay() {
       return this.$store.getters["quick-dating/getQuickMeetingsLiqpay"];
-    }
+    },
+    coins() {
+      return this.$store.getters["user/coins"];
+    },
   },
   methods: {
     setRefill() {
