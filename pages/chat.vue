@@ -23,8 +23,9 @@
                 <template v-if="companion">
                   <img :src="companion.pic" alt="">
                   <div class="column">
-                    <p class="chat__header-name" @click="openProfile">{{ companion.name }},
-                      <span>{{ companion.age | birthday }}</span></p>
+                    <p class="chat__header-name" @click="openProfile">{{ companion.name }}
+                      <span v-if="companion.role !== 'moderator'">, {{ companion.age | birthday }}</span>
+                    </p>
                     <span class="chat__header-online">{{ companion.status }}</span>
                   </div>
                 </template>
@@ -71,7 +72,7 @@
             </div>
             <div class="chat__footer">
               <div class="row ai-center jc-center">
-                <div class="row no-wrap ai-center w-100">
+                <div class="row no-wrap ai-center w-100" v-if="companion.role !== 'moderator'">
                   <div class="chat__footer-government">
                     <input
                       id="img"
@@ -322,7 +323,8 @@ export default {
           name: contact.opponent.profile.name,
           pic: contact.opponent.pic && contact.opponent.pic.url,
           age: contact.opponent.profile.birth_date,
-          status: contact.opponent.is_online ? 'online' : 'offline'
+          status: contact.opponent.is_online ? 'online' : 'offline',
+          role: contact.opponent.role
         }
         this.isMobile && this.openMobileDialog()
         this.isChat = true;

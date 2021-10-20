@@ -12,9 +12,9 @@
               :class="{'online': contact.opponent.is_online}"
               v-if="contact.opponent"
             >
-              {{ contact.opponent.profile.name }},
-              <span>
-                {{ birthday(contact.opponent.profile.birth_date) }}
+              {{ contact.opponent.profile.name }}
+              <span v-if="contact.opponent.role !== 'moderator'">
+                , {{ birthday(contact.opponent.profile.birth_date) }}
               </span>
             </p>
             <div class="contact__unread-message" v-if="contact.new_messages_count">{{
@@ -38,7 +38,7 @@
           </div>
         </div>
         <div class="row column p-0">
-          <span class="options" ref="dots" @click="showOptions(contact.id)">
+          <span v-if="contact.opponent.role !== 'moderator'" class="options" ref="dots" @click="showOptions(contact.id)">
             <!--Icon  name="options"/-->
           </span>
         </div>

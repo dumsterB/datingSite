@@ -28,7 +28,7 @@ export default {
   },
   methods: {
       redirect(){
-          window.location.href = 'https://t.me/alanica_support_bot?start=Web'
+          window.open('https://t.me/alanica_support_bot?start=Web', '_blank');
       }
   }
 };
