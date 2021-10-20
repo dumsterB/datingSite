@@ -132,16 +132,14 @@
       </div>
     </div>
     <ComplainModal @close="close" @done="done" :reportType="reportType"/>
-    <div id="myModal" class="image-modal">
-      <span class="close" @click="closeImage">&times;</span>
-      <img class="modal-content" id="img01">
-    </div>
+    <ImageZoomModal @closeImage="closeImage" :src="modalImg" v-if="modalImg"/>
   </div>
 </template>
 <script>
 import ContactList from "@/components/Chat/ContactList";
 // import AnswerList from "@/components/NewAnswers/Answer-list";
 import ComplainModal from "~/components/modals/ComplainModal";
+import ImageZoomModal from "~/components/modals/ImageZoomModal";
 import * as _ from 'lodash'
 import Icon from "@/components/Icon";
 import Loader from "@/components/Loader";
@@ -152,7 +150,8 @@ export default {
     // AnswerList,
     ContactList,
     Loader,
-    ComplainModal
+    ComplainModal,
+    ImageZoomModal
   },
   data() {
     return {
@@ -172,7 +171,8 @@ export default {
       isContactList: false,
       isNewAnswers: false,
       reportType : 'block',
-      recordingAudio : false
+      recordingAudio : false,
+      modalImg : null
     }
   },
   watch: {
@@ -418,14 +418,10 @@ export default {
       return false
     },
     openImage(src){
-      let modal = document.getElementById("myModal");
-      let modalImg = document.getElementById("img01");
-      modal.style.display = "block";
-      modalImg.src = src;
+      this.modalImg = src;
     },
     closeImage(){
-      let modal = document.getElementById("myModal");    
-      modal.style.display = "none";
+      this.modalImg = null;
     }
   },
   fetch() {
