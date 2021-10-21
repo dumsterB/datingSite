@@ -1,6 +1,6 @@
 <template>
   <div class="settings-list">
-    <template v-if="!isSupport && !isAbout && !isPrivacy">
+    <template v-if="!isSupport && !isAbout && !isPrivacy && !isLanguage">
         <div class="settings-list-title">
         <span class="back" @click="$emit('setSettings')">
             <inline-svg src="/icons/arrow-left.svg" />
@@ -29,13 +29,13 @@
                 </span>
             </div>
             </div>
-            <!--div class="settings-list__item">
+            <div class="settings-list__item" @click="setLanguage">
               <div class="item-title">
                   <span>
                     {{$t('Language')}}
                   </span>
               </div>
-            </div-->
+            </div>
             <div class="settings-list__item" @click="setSupport">
             <div class="item-title">
                 <span>
@@ -55,6 +55,7 @@
     <Support @setSupport="setSupport" v-if="isSupport"/>
     <About @setAbout="setAbout" v-if="isAbout"/>
     <Privacy @setPrivacy="setPrivacy" v-if="isPrivacy"/>
+    <Language @setLanguage="setLanguage" v-if="isLanguage"/>
   </div>
 </template>
 
@@ -63,14 +64,16 @@
 import Support from '@/components/settings/support';
 import About from '@/components/settings/about';
 import Privacy from '@/components/settings/privacy';
+import Language from '@/components/settings/language';
 
 export default {
-  components: { Support, About, Privacy },
+  components: { Support, About, Privacy, Language },
   data() {
     return {
         isSupport : false,
         isAbout : false,
-        isPrivacy : false
+        isPrivacy : false,
+        isLanguage : false
     };
   },
   methods: {
@@ -82,6 +85,9 @@ export default {
     },
     setPrivacy() {
       this.isPrivacy = !this.isPrivacy;
+    },
+    setLanguage() {
+      this.isLanguage = !this.isLanguage;
     },
   }
 };

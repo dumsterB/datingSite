@@ -106,6 +106,7 @@ export default {
     'Contact support' : 'Contact support',
     'Comment' : 'Comment',
     'Recording audio' : 'Recording audio',
-    'Your message...' : 'Your message...'
+    'Your message...' : 'Your message...',
+    'Choose language' : 'Choose language'
   }
 

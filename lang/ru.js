@@ -106,6 +106,7 @@ export default {
     'Contact support' : 'Обратиться в службу поддержки',
     'Comment' : 'Комментарий',
     'Recording audio' : 'Записывается аудио',
-    'Your message...' : 'Ваше сообщение...'
+    'Your message...' : 'Ваше сообщение...',
+    'Choose language' : 'Выберите язык'
   }
 

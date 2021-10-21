@@ -1,19 +1,19 @@
 <template>
   <carousel
     :per-page-custom="$props.perPageCustom"
-    :navigationEnabled="true"
-    :paginationEnabled="false"
+    :navigationEnabled="false"
+    :paginationEnabled="true"
     :navigation-next-label="navigationNext"
     :navigation-prev-label="navigationPrev"
     class="carousel"
 
   >
     <slide v-for="(photo, index) in  photos" :key="index" :data-key="index">
-      <div class="carousel-item">
-        <router-link :to="{path:'', query: { To: index }}" append>
-        <img :src="photo.url" @click="openPhotoModal"/>
-        </router-link>
-      </div>
+      <router-link :to="{path:'', query: { To: index }}" append >
+        <div class="carousel-item" :style="{ backgroundImage: 'url(' + photo.url + ')' }" @click="openPhotoModal">
+            <!--img :src="photo.url" @click="openPhotoModal"/-->
+        </div>
+      </router-link>
     </slide>
   </carousel>
 </template>

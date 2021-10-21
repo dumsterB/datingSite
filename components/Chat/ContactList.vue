@@ -17,9 +17,6 @@ export default {
       type: Array
     }
   },
-  mounted(){
-    console.log('contacts', this.contacts);
-  },
   methods:{
     getUser(contact){
       // this.$emit('getOpponent',contact )

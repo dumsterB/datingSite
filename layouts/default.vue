@@ -11,7 +11,7 @@
         <div class="sidebar-left__content">
           <Auth v-if="userData" :user="userData" :coins="coins.coins" />
           <LinksList :links="links" />
-          <v-select
+          <!--v-select
             class="select-block__year"
             v-model="currentLocale"
             :clearable="false"
@@ -19,12 +19,12 @@
             @input="changeLocale"
           >
             <template v-slot:selected-option="currentLocale">
-              <!-- <inline-svg :src="currentLocale.src" /> -->
+              <inline-svg :src="currentLocale.src" />
               <span>{{ currentLocale.label }}</span>
             </template>
             <template v-slot:option="option">
               <span :class="option.icon"></span>
-              <!-- <inline-svg :src="option.src" />  -->
+              <inline-svg :src="option.src" />
               <span>{{ option.label }}</span>
             </template>
             <template #open-indicator="{ attributes }">
@@ -32,7 +32,7 @@
                 ><inline-svg src="/icons/arrow-dwn.svg"
               /></span>
             </template>
-          </v-select>
+          </v-select-->
         </div>
         <div class="sidebar-left__footer">
           <span class="log-out" @click="logout">
@@ -57,7 +57,7 @@
         >
           <Auth v-if="userData" :user="userData" :coins="coins.coins" />
           <LinksList :links="links" @closeMenu="closeMenu" />
-          <v-select
+          <!--v-select
             class="select-block__year"
             v-model="currentLocale"
             :clearable="false"
@@ -65,12 +65,12 @@
             @input="changeLocale"
           >
             <template v-slot:selected-option="currentLocale">
-              <!-- <inline-svg :src="currentLocale.src" /> -->
+              <inline-svg :src="currentLocale.src" /> 
               <span>{{ currentLocale.label }}</span>
             </template>
             <template v-slot:option="option">
               <span :class="option.icon"></span>
-              <!-- <inline-svg :src="option.src" />  -->
+               <inline-svg :src="option.src" />  
               <span>{{ option.label }}</span>
             </template>
             <template #open-indicator="{ attributes }">
@@ -78,7 +78,7 @@
                 ><inline-svg src="/icons/arrow-dwn.svg"
               /></span>
             </template>
-          </v-select>
+          </v-select-->
           <div class="mobile-footer">
             <span class="log-out" @click="logout">
             <inline-svg src="/icons/logout.svg" />

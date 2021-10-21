@@ -17,7 +17,7 @@
         </div>
         <div class="row" v-if="user.profile">
           <Photos :photos="user.profile && user.profile.pictures" edit
-                  :per-page-custom="[[2560,6],[1920,4],[1500, 4], [1440,4], [1250,3] ]"/>
+                  :per-page-custom="[[2560,6],[1920,4],[1500, 4], [1440,4], [1250,3], [500, 1], [320, 1] ]"/>
         </div>
         <div class="row">
           <div class="profile-page__info online">
