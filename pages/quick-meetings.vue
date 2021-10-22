@@ -8,7 +8,7 @@
           </router-link>
         </button>
         <div class="quick-meetings__map">
-          <GmapMap :center="map" :zoom="12" style="width: 100%; height: 50vh">
+          <GmapMap :center="map" :zoom="12" style="flex:1">
             <GmapCustomMarker
               v-for="(m, i) in quickMeetingsPeoples"
               :key="i"
@@ -22,8 +22,8 @@
             </GmapCustomMarker>
           </GmapMap>
         </div>
+        <QuickMeetingList :quickMeetingsPeoples="quickMeetingsPeoples" />
       </div>
-      <QuickMeetingList :quickMeetingsPeoples="quickMeetingsPeoples" />
     </div>
     <QuickMeetingsModal
       v-show="showModal"
@@ -83,7 +83,7 @@ export default {
   },
   async mounted() {
     if ("geolocation" in navigator) {
-      navigator.geolocation.watchPosition(position => {
+      navigator.geolocation.getCurrentPosition(position => {
         this.map.lat = position.coords.latitude;
         this.map.lng = position.coords.longitude;
         this.$store.dispatch(

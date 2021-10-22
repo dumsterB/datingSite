@@ -7,11 +7,15 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   padding-left: 57px;
-
+  //background: rgba(24, 24, 24, 0.47);
+  background: red;
   max-height: 320px;
   overflow-y: scroll;
   @include styledScrollbar();
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(24, 24, 24, 0.57);
 
   &:after {
     content:'';
@@ -26,6 +30,6 @@
 @media(max-width: 500px){
   .quick-meeting-list {
     justify-content: space-around;
-    min-height: 35vh;
+    min-height: 30vh;
   }
 }
