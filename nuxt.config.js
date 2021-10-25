@@ -39,6 +39,7 @@ export default {
     '@/plugins/glob.js',
     '@/plugins/directives.js',
     '@/plugins/api.js',
+    '@/plugins/fb-sdk.js',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
