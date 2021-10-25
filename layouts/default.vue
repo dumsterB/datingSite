@@ -11,6 +11,14 @@
         <div class="sidebar-left__content">
           <Auth v-if="userData" :user="userData" :coins="coins.coins" />
           <LinksList :links="links" />
+          <div class="links-list">
+            <nuxt-link :to="localePath('/chat')"  active-class="link__active" class="link">
+              <img src="/icons/chats.png" alt="Chat">
+              <span >{{ $t('Chats') }}</span>
+              <span class="link__chat" v-if="unreadChatsCount() > 0"></span>
+            </nuxt-link>
+          </div>
+
           <!--v-select
             class="select-block__year"
             v-model="currentLocale"
@@ -57,6 +65,13 @@
         >
           <Auth v-if="userData" :user="userData" :coins="coins.coins" />
           <LinksList :links="links" @closeMenu="closeMenu" />
+          <div class="links-list" @click="closeMenu">
+            <nuxt-link :to="localePath('/chat')"  active-class="link__active" class="link">
+              <img src="/icons/chats.png" alt="Chat">
+              <span >{{ $t('Chats') }}</span>
+              <span class="link__chat" v-if="unreadChatsCount() > 0"></span>
+            </nuxt-link>
+          </div>
           <!--v-select
             class="select-block__year"
             v-model="currentLocale"
@@ -150,7 +165,18 @@ export default {
       } else {
         this.$router.push("/en" + $nuxt.$route.path);
       }
-    }
+    },
+    unreadChatsCount() {
+      let contacts = this.$store.getters['chat/getContacts'];
+      let count = 0;
+      for(let contact of contacts){
+        if(contact.new_messages_count > 0){
+          //count += contact.new_messages_count;
+          count ++;
+        }
+      }
+      return count
+    },
   },
   created() {},
   watch: {
@@ -208,13 +234,13 @@ export default {
           title: this.$t("Quick meetings"),
           vip: true
         },
-        {
+        /*{
           id: 6,
           href: "/chat",
           icon: "chats",
           title: this.$t("Chats"),
           vip: false
-        },
+        },*/
         {
           id: 7,
           href: "/top-users",
