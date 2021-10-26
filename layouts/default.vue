@@ -15,7 +15,7 @@
             <nuxt-link :to="localePath('/chat')"  active-class="link__active" class="link">
               <img src="/icons/chats.png" alt="Chat">
               <span >{{ $t('Chats') }}</span>
-              <span class="link__chat" v-if="unreadChatsCount() > 0"></span>
+              <span class="link__chat" v-if="unreadChatsCount() > 0">{{unreadChatsCount()}}</span>
             </nuxt-link>
           </div>
 
@@ -69,7 +69,7 @@
             <nuxt-link :to="localePath('/chat')"  active-class="link__active" class="link">
               <img src="/icons/chats.png" alt="Chat">
               <span >{{ $t('Chats') }}</span>
-              <span class="link__chat" v-if="unreadChatsCount() > 0"></span>
+              <span class="link__chat" v-if="unreadChatsCount() > 0">{{unreadChatsCount()}}</span>
             </nuxt-link>
           </div>
           <!--v-select

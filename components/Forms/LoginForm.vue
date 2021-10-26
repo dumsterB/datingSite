@@ -23,14 +23,14 @@
 <!--      <button @click="$emit('sendMobileLoginCode')" type="button"-->
 <!--              class="button button__empty">{{ $t("Login with Phone") }}-->
 <!--      </button>-->
-      <div class="row no-wrap">
+      <!--div class="row no-wrap">
         <a href="#" class="social-link">
           <inline-svg src="/icons/google.svg" />
         </a>
         <a href="#" class="social-link">
           <inline-svg src="/icons/facebook.svg" />
         </a>
-      </div>
+      </div-->
       <div class="sign-up">
         <p @click="$emit('setSignUp')">{{ $t("Not with us?") }}
           <span>{{ $t("Sign Up") }}</span></p>

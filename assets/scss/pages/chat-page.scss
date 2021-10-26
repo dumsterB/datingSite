@@ -117,8 +117,18 @@
       margin-top: auto;
 
       .play {
+        display: none;
         margin-right: 10px;
         cursor: pointer;
+      }
+
+      .pause {
+        height: 18px;
+        width: 14px;
+        margin-right: 10px;
+        cursor: pointer;
+        
+
       }
 
       .audio-waves {
