@@ -1,6 +1,6 @@
 <template>
   <div class="profile-page" v-if="user">
-    <div class="content">
+    <div class="content" :style="noPadding ? 'padding:0' : ''">
       <template v-if="!isBallance && !isStatusVip && !isProfileSettings && !isFilters && !isSettings">
         <div class="row">
           <label for="file-upload" class="button button__full">+ {{$t('Add photo')}}</label>
@@ -76,7 +76,7 @@
       <Ballance @setBallance="setBallance" v-if="isBallance"/>
       <StatusVip @setStatusVip="setStatusVip" v-if="isStatusVip"/>
       <ProfileSettings :user="user" @setProfileSettings="setProfileSettings" @updateProfile="updateProfile" v-if="isProfileSettings"/>
-      <SettingsList @setSettings="setSettings" v-if="isSettings"/>
+      <SettingsList @setSettings="setSettings" @setPadding="setPadding" v-if="isSettings"/>
 
     </div>
     <VerificationModal :modal="modals.verificationModal" @close="close"/>
@@ -141,7 +141,8 @@ export default {
       photos: [],
       edit: true,
       image: '',
-      isFilter : false
+      isFilter : false,
+      noPadding: false
     }
   },
   methods: {
@@ -192,6 +193,9 @@ export default {
     },
     setSettings(){
       this.isSettings = !this.isSettings;
+    },
+    setPadding(){
+      this.noPadding = !this.noPadding;
     }
   },
   computed: {

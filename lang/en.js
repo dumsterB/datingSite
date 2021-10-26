@@ -107,6 +107,11 @@ export default {
     'Comment' : 'Comment',
     'Recording audio' : 'Recording audio',
     'Your message...' : 'Your message...',
-    'Choose language' : 'Choose language'
+    'Choose language' : 'Choose language',
+    'How it works?' : 'How it works?',
+    'Get more attention. Choose your location' : 'Get more attention. Choose your location',
+    'Chat with those who are ready for meetings' : 'Chat with those who are ready for meetings',
+    'And attach SMS so that users can see it' : 'And attach SMS so that users can see it',
+    'Going into fast dates, you get on the list of ready to meet' : 'Going into fast dates, you get on the list of ready to meet'
   }
 

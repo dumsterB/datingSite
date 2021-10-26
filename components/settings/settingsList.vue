@@ -1,6 +1,6 @@
 <template>
   <div class="settings-list">
-    <template v-if="!isSupport && !isAbout && !isPrivacy && !isLanguage">
+    <template v-if="!isSupport && !isAbout && !isPrivacy && !isLanguage && !isTutorial">
         <div class="settings-list-title">
         <span class="back" @click="$emit('setSettings')">
             <inline-svg src="/icons/arrow-left.svg" />
@@ -37,11 +37,18 @@
               </div>
             </div>
             <div class="settings-list__item" @click="setSupport">
-            <div class="item-title">
-                <span>
-                {{$t('Support')}}
-                </span>
+              <div class="item-title">
+                  <span>
+                  {{$t('Support')}}
+                  </span>
+              </div>
             </div>
+            <div class="settings-list__item" @click="openTutorial">
+              <div class="item-title">
+                  <span>
+                  {{$t('How it works?')}}
+                  </span>
+              </div>
             </div>
             <!--div class="settings-list__item">
               <div class="item-title">
@@ -56,6 +63,7 @@
     <About @setAbout="setAbout" v-if="isAbout"/>
     <Privacy @setPrivacy="setPrivacy" v-if="isPrivacy"/>
     <Language @setLanguage="setLanguage" v-if="isLanguage"/>
+    <Tutorial @setTutorial="setTutorial" v-if="isTutorial"/>
   </div>
 </template>
 
@@ -65,15 +73,17 @@ import Support from '@/components/settings/support';
 import About from '@/components/settings/about';
 import Privacy from '@/components/settings/privacy';
 import Language from '@/components/settings/language';
+import Tutorial from '@/components/settings/tutorial';
 
 export default {
-  components: { Support, About, Privacy, Language },
+  components: { Support, About, Privacy, Language, Tutorial },
   data() {
     return {
         isSupport : false,
         isAbout : false,
         isPrivacy : false,
-        isLanguage : false
+        isLanguage : false,
+        isTutorial : false
     };
   },
   methods: {
@@ -89,6 +99,13 @@ export default {
     setLanguage() {
       this.isLanguage = !this.isLanguage;
     },
+    setTutorial() {
+      this.isTutorial = !this.isTutorial;
+    },
+    openTutorial(){
+      this.setTutorial();
+      this.$emit('setPadding')
+    }
   }
 };
 </script>

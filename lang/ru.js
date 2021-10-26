@@ -107,6 +107,11 @@ export default {
     'Comment' : 'Комментарий',
     'Recording audio' : 'Записывается аудио',
     'Your message...' : 'Ваше сообщение...',
-    'Choose language' : 'Выберите язык'
+    'Choose language' : 'Выберите язык',
+    'How it works?' : 'Как это работает?',
+    'Get more attention. Choose your location' : 'Получай больше внимания. Выбери свое местоположение',
+    'Chat with those who are ready for meetings' : 'Общайся с теми, кто готов для встреч',
+    'And attach SMS so that users can see it' : 'И прикрепи смс, чтобы пользователи могли его увидеть',
+    'Going into fast dates, you get on the list of ready to meet' : 'Заходя в быстрые свидения, ты попадаешь в список готовых к встрече'
   }
 
