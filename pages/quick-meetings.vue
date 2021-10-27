@@ -4,7 +4,7 @@
       <div class="quick-meetings__map-block">
         <button class="button button__full quick-meetings__button">
           <router-link :to="{path: '/profile' }">
-            Stop Quick dating
+            {{$t('End dating')}}
           </router-link>
         </button>
         <div class="quick-meetings__map">

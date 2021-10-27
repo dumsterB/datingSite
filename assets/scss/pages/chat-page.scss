@@ -117,7 +117,6 @@
       margin-top: auto;
 
       .play {
-        display: none;
         margin-right: 10px;
         cursor: pointer;
       }
@@ -127,8 +126,7 @@
         width: 14px;
         margin-right: 10px;
         cursor: pointer;
-        
-
+        display: none;
       }
 
       .audio-waves {
@@ -186,6 +184,15 @@
             font-weight: 300;
             font-size: 9px;
             color: #FFFFFF;
+          }
+
+          .duration {
+            font-family: 'Arial', sans-serif;
+            font-style: normal;
+            font-weight: 300;
+            font-size: 11px;
+            color: #FFFFFF;
+            vertical-align: text-top;
           }
         }
 

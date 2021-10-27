@@ -1,7 +1,7 @@
 <template>
   <div class="overlay" v-if="qDateOff">
   <div class="modal quick-meeting-modal">
-     <span class="close" @click="$router.push('/profile')">
+     <span class="close" @click="$router.push(localePath('/profile'))">
       <inline-svg src="icons/close-modal.svg"/>
     </span>
 

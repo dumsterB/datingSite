@@ -1,80 +1,115 @@
-.tutorial{
-    
-    img{
-        width: 100%;
-        max-width: 100%;
-        border-radius: 30px;
+.tutorial {
+  img {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 30px;
+  }
+  &__slide {
+    background-color: red;
+  }
+
+  .tooltip {
+    font-family: "Arial", sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 13px;
+    color: #f1f1f1;
+    background: rgba(26, 26, 26, 0.91);
+    box-shadow: 0px 9px 33px rgba(0, 0, 0, 0.54);
+    border-radius: 18px;
+    padding: 5px 10px;
+    width: 255px;
+    min-height: 50px;
+
+    position: absolute;
+
+    .row {
+      display: flex;
+      flex-wrap: nowrap;
     }
-    &__slide{
-        background-color: red;
 
-        
+    span {
+      font-family: "Arial", sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 33px;
+      color: #559575;
+    }
+    p {
+      font-family: "Arial", sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 13px;
+      color: #f1f1f1;
+      opacity: 0.9;
+      padding: 5px 10px 0px 10px;
+    }
+    .next {
+      font-family: "Arial", sans-serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      color: #559575;
+      opacity: 0.8;
+      text-align: center;
+      margin: 5px 0 5px 0;
+      cursor: pointer;
     }
 
-    .tooltip{
-        font-family: 'Arial', sans-serif;
-        font-style: normal;
-        font-weight: 300;
-        font-size: 13px;
-        color: #F1F1F1;
-        background: rgba(26, 26, 26, 0.91);
-        box-shadow: 0px 9px 33px rgba(0, 0, 0, 0.54);
-        border-radius: 18px;
-        padding: 5px 10px;
-        width: 255px;
-        min-height: 50px;
+    &__step {
+      &__1 {
+        top: 10px;
+        left: 40%;
+      }
+      &__2 {
+        top: 27%;
+        left: 30%;
+      }
+      &__3 {
+        top: 10px;
+        left: 60%;
+      }
+      &__4 {
+        top: 45%;
+        left: 30%;
+      }
+      &__5 {
+        top: 10px;
+        left: 30%;
+      }
+    }
+  }
+}
 
-        position: absolute;
+@media (max-width: 500px) {
+    .tutorial{
+        img{
+            border-radius: 0;
+        }
+        .tooltip{
+            position: absolute;
 
-        .row{
-            display: flex;
-            flex-wrap: nowrap;
-        }
-
-        span{
-            font-family: 'Arial', sans-serif;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 33px;
-            color: #559575;
-        }
-        p{
-            font-family: 'Arial', sans-serif;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 13px;
-            color: #F1F1F1;
-            opacity: 0.9;
-            padding: 5px 10px 0px 10px;
-        }
-        .next{
-            font-family: 'Arial', sans-serif;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 14px;
-            color: #559575;
-            opacity: 0.8;
-            text-align: center;
-            margin: 5px 0 5px 0;
-            cursor: pointer;
-        }
-
-        &__step{
-            &__1{
-                top:10px;
-                left: 40%;
-            }
-            &__2{
-                top:27%;
-                left: 30%;
-            }
-            &__3{
-                top:10px;
-                left: 60%;
-            }
-            &__4{
-                top: 45%;
-                left: 30%;
+            &__step{
+                &__1{
+                    top: 20%;
+                    left: 20%;
+                }
+                &__2{
+                    top: 27%;
+                    left: 30%;
+                }
+                &__3{
+                    top: 10px;
+                    left: 20%;
+                }
+                &__4{
+                    top: 10%;
+                    left: 20%;
+                }
+                &__5{
+                    top: 10%;
+                    left: 20%;
+                }
             }
         }
     }

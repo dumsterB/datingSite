@@ -112,6 +112,8 @@ export default {
     'Get more attention. Choose your location' : 'Получай больше внимания. Выбери свое местоположение',
     'Chat with those who are ready for meetings' : 'Общайся с теми, кто готов для встреч',
     'And attach SMS so that users can see it' : 'И прикрепи смс, чтобы пользователи могли его увидеть',
-    'Going into fast dates, you get on the list of ready to meet' : 'Заходя в быстрые свидения, ты попадаешь в список готовых к встрече'
+    'Going into fast dates, you get on the list of ready to meet' : 'Заходя в быстрые свидения, ты попадаешь в список готовых к встрече',
+    'Any plans for the evening? Click \"End Dating\"' : 'Появились планы на вечер? Нажимай \"Закончить свидания\"',
+    'End dating' : 'Закончить свидания'
   }
 
