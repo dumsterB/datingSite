@@ -123,10 +123,10 @@ export const actions = {
   },
   async verifySMS(ctx, payload) {
     await load('/users/verify_sms','post', payload).then(data => {
-      localStorage.setItem('token', data.accessToken)
+      /*localStorage.setItem('token', data.accessToken)
       ctx.commit('user/setToken', {
         token: data.accessToken
-      }, {root: true})
+      }, {root: true})*/
     }).catch(e => {
       throw e;
     })

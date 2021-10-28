@@ -57,7 +57,11 @@ methods:{
       const next = event.target.nextElementSibling
       if(next === null){
         //console.log('code', this.codes.join(''))
-        await this.$emit('confirmVerificCode', this.codes.join(''))
+        if(this.codes.join('').length === 6){
+          await this.$emit('confirmVerificCode', this.codes.join(''))
+        } else {
+          console.log(this.codes.join(''));
+        }
         return
       }
       event.target.nextElementSibling.focus()
@@ -65,7 +69,12 @@ methods:{
     return
   },
   async sendCode(){
-    await this.$emit('confirmVerificCode', this.codes.join(''))
+    if(this.codes.join('').length === 6){
+      await this.$emit('confirmVerificCode', this.codes.join(''))
+    } else {
+      console.log(this.codes.join(''));
+    }
+    
   }
 }
 }
