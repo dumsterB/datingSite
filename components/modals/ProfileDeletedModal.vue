@@ -14,6 +14,11 @@
 <script>
 export default {
     name:'ConfirmProfileDeleteModal',
+    mounted(){
+      setTimeout(()=>{
+        this.$router.push(this.localePath('/'))
+      }, 3000);
+    },
     methods: {
         redirect(){
             this.$router.push(this.localePath('/'))

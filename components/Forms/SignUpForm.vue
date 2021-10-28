@@ -5,9 +5,14 @@
     </span>
     <h2 class="title">{{$t('Sign Up')}}</h2>
     <form @submit.prevent="send">
+      <div class="row row__full">
+        <div class="column-full">
+          <input v-focus type="text" :placeholder="$t('Full Name')" v-model="form.full_name"  class="input-default" required/>
+        </div>
+      </div>
       <div class="row">
         <div class="column">
-          <input v-focus type="text" :placeholder="$t('Full Name')" v-model="form.full_name"  class="input-default" required/>
+          <!--input v-focus type="text" :placeholder="$t('Full Name')" v-model="form.full_name"  class="input-default" required/-->
           <input type="password" :placeholder="$t('Password')" v-model="form.password"  class="input-default" required/>
 <!--          <input type="text" placeholder="Phone" required class="input-default m-0"/>-->
           <div class="sex-block">
@@ -25,7 +30,7 @@
           </div>
         </div>
         <div class="column">
-          <input type="email" :placeholder="$t('Email')" v-model="form.email"  class="input-default" required/>
+          <!--input type="email" :placeholder="$t('Email')" v-model="form.email"  class="input-default" required/ -->
           <input type="password" :placeholder="$t('Password again')" v-model="form.password_again" class="input-default" required/>
           <div class="select-block">
             <v-select class="select-block__day" v-model="selectedDay" :options="optionsDays">
@@ -46,7 +51,7 @@
           </div>
         </div>
       </div>
-      <button id="register" class="button button__full" >{{$t('Next')}}</button>
+      <button id="register" class="register-btn" >{{$t('Next')}}</button>
     </form>
   </div>
 </template>

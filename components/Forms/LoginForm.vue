@@ -19,7 +19,7 @@
           }}</span>
       </div>
       <span v-if="loginError" class="error-message password">Неверный логин или пароль</span>
-      <button id="login" class="button button__full">{{ $t("Continue") }}</button>
+      <button id="login" class="login-btn">{{ $t("Continue") }}</button>
 <!--      <button @click="$emit('sendMobileLoginCode')" type="button"-->
 <!--              class="button button__empty">{{ $t("Login with Phone") }}-->
 <!--      </button>-->

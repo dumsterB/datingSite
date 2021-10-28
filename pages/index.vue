@@ -154,8 +154,14 @@ export default {
     async sendVerificCode(payload) {
       this.newUser.mobile = payload;
       await this.$store.dispatch('user/register', this.newUser)
-      this.isSendVerifCode = false;
-      this.isVerifCode = true
+      .then(() => {
+        this.isSendVerifCode = false;
+        this.isVerifCode = true
+      })
+      .catch(e => {
+        console.log(e);
+      })
+      
     },
     async confirmVerificCode(payload) {
       //this.newUser.code = payload;

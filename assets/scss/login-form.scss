@@ -144,4 +144,27 @@
       }
     }
   }
+  .login-btn, .register-btn{
+    max-width: 320px;
+    width: 100%;
+    font-family: 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #E0E0E0;
+    padding: 13px 10px;
+    border-radius: 5px;
+    margin: 8px 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+    background: linear-gradient(94deg, #133983 -12.18%, #71BC6F 134.71%);
+    backdrop-filter: blur(4px);
+    border-radius: 43px;
+  }
 }

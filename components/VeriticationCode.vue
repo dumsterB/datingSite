@@ -15,6 +15,9 @@
       </div>
       <span v-if="verifySMSError" class="text-error-message">Неправильный код</span>
       <span class="text">{{$t('Didn’t get a code?')}} <span class="send-again">{{$t('Send again')}}</span></span>
+      <div class="row jc-center">
+        <button type="button" class="button button__full" @click="sendCode">{{$t('Next')}}</button>
+      </div>
     </form>
   </div>
 </template>
@@ -60,6 +63,9 @@ methods:{
       event.target.nextElementSibling.focus()
     }
     return
+  },
+  async sendCode(){
+    await this.$emit('confirmVerificCode', this.codes.join(''))
   }
 }
 }
