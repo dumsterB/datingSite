@@ -102,7 +102,8 @@ export const actions = {
     localStorage.removeItem('token')
   },
   async register(ctx, user) {
-    await load('/users/register','post',  user).then(data => {
+    return await load('/users/register','post',  user).then(data => {
+      return data;
       /*localStorage.setItem('token', data.accessToken)
         ctx.commit('user/setToken', {
           token: data.accessToken

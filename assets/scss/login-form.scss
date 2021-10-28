@@ -30,15 +30,16 @@
     }
 
     .login {
-      position: absolute;
+      /*position: absolute;
       top: 55px;
-      left: 20px;
+      left: 20px;*/
     }
 
     .password {
-      position: absolute;
+      /*position: absolute;
       top: 154px;
-      left: 20px;
+      left: 20px;*/
+      margin-bottom: 25px;
     }
 
     .password-block {
@@ -46,7 +47,7 @@
       position: relative;
 
       .input-default {
-        margin-bottom: 30px;
+        margin-bottom: 20px;
       }
 
       .forgot-password{
@@ -88,12 +89,14 @@
     .phone-code {
       max-width: 60px;
       margin-right: 30px;
+      margin-bottom: 20px;
       padding-right: 0;
       padding-left: 0; 
     }
 
     .phone-number{
       max-width: 100%;
+      margin-bottom: 20px;
 
       &::placeholder {
         color: #D5D5D5;

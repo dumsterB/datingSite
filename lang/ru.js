@@ -114,6 +114,7 @@ export default {
     'And attach SMS so that users can see it' : 'И прикрепи смс, чтобы пользователи могли его увидеть',
     'Going into fast dates, you get on the list of ready to meet' : 'Заходя в быстрые свидения, ты попадаешь в список готовых к встрече',
     'Any plans for the evening? Click \"End Dating\"' : 'Появились планы на вечер? Нажимай \"Закончить свидания\"',
-    'End dating' : 'Закончить свидания'
+    'End dating' : 'Закончить свидания',
+    'Number is using' : 'Номер уже используется'
   }
 

@@ -9,7 +9,8 @@
         <input type="text" class="input-default phone-code" v-model="phoneCode">
         <input v-focus type="number" class="input-default phone-number" v-model="phoneNumber" :placeholder="$t('Phone number')" required>
       </div>
-      <p class="text">{{$t('We will send you a varification code')}}</p>
+      <p v-if="sendSMSError" class="text text__error">{{$t('Number is using')}}</p>
+      <p v-else class="text">{{$t('We will send you a varification code')}}</p>
       <button class="button button__full" >{{$t('Next')}}</button>
     </form>
   </div>
@@ -21,6 +22,10 @@ export default {
     isSendVerifCode: {
       type: Boolean,
       required: true
+    },
+    sendSMSError: {
+      type: Boolean,
+      default: false
     }
   },
   data() {

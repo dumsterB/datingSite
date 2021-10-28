@@ -23,7 +23,7 @@
       />
       <SignUpForm :isSignUp="isSignUp" :authType="'register'" @setSignUp="setSignUp" @sendSendUp="sendSendUp"/>
       <LogInWithQrCode :isQrCode="isQrCode" @setQrCode="setQrCode"/>
-      <SendVarificationCode :authType="authType" :isSendVerifCode="isSendVerifCode" @setSendVerificCode="setSendVerificCode" @sendVerificCode="sendVerificCode"/>
+      <SendVarificationCode :sendSMSError="sendSMSError"  :authType="authType" :isSendVerifCode="isSendVerifCode" @setSendVerificCode="setSendVerificCode" @sendVerificCode="sendVerificCode"/>
       <VeriticationCode :verifySMSError="verifySMSError" :isVerifCode="isVerifCode" @setVerificCode="setVerificCode" @confirmVerificCode="confirmVerificCode"/>
       <RegisterPhoto :isRegisterPhoto="isRegisterPhoto" @setRegisterPhoto="setRegisterPhoto" @getRegisterPhoto="getRegisterPhoto"/>
     </div>
@@ -75,6 +75,7 @@ export default {
       loading: false,
       loginError: false,
       verifySMSError: false,
+      sendSMSError : false,
       recoveryPhone: ''
     }
   },
@@ -154,9 +155,14 @@ export default {
     async sendVerificCode(payload) {
       this.newUser.mobile = payload;
       await this.$store.dispatch('user/register', this.newUser)
-      .then(() => {
-        this.isSendVerifCode = false;
-        this.isVerifCode = true
+      .then((res) => {
+        if(res.code === 4 && res.existed_field === 'mobile'){
+          console.log('res', res);
+          this.sendSMSError = true;
+        } else {
+          this.isSendVerifCode = false;
+          this.isVerifCode = true
+        }
       })
       .catch(e => {
         console.log(e);
