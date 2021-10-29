@@ -8,16 +8,20 @@
           </router-link>
         </button>
         <div class="quick-meetings__map">
-          <GmapMap :center="map" :zoom="2" style="flex:1">
+          <GmapMap :center="map" :zoom="10" style="flex:1">
             <GmapCustomMarker
               v-for="(m, i) in quickMeetingsPeoples"
               :key="i"
               :marker="{ lat: m.geo[1], lng: m.geo[0] }"
             >
-              <UserMarker
+              <!--UserMarker
                 :img="m.pic ? m.pic.url : require('../static/img/avatar.jpg')"
                 :peopleId="m._id"
                 :textMessage="textMessage"
+              /-->
+              <UserMarker
+                :img="m.pic ? m.pic.url : require('../static/img/avatar.jpg')"
+                :peopleId="m._id"
               />
             </GmapCustomMarker>
           </GmapMap>
@@ -93,6 +97,7 @@ export default {
       });
     } else {
       /* местоположение НЕ доступно */
+      console.log('geo is disabled');
     }
   },
   computed: {

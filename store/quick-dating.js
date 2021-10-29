@@ -10,7 +10,8 @@ export const state = () => ({
 export const actions = {
   async fetchAllQuickMeetingsPeoples(ctx, payload){
     const token = localStorage.getItem('token');
-    await fetch(`https://${process.env.API_HOST}/v2/quick-dating/select/want-qdate/near/all`, {
+    //await fetch(`https://${process.env.API_HOST}/v2/quick-dating/select/want-qdate/near/all`, {
+    await fetch(`https://${process.env.API_HOST}/v2/user/select/near/all`, {
       method: 'post',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -20,7 +21,11 @@ export const actions = {
     }).then(res => {
       return res.json()
     }).then(data => {
-      ctx.commit('quick-dating/setQuickMeetingsPeoples', data, {root: true})
+      if(!data.err){
+        ctx.commit('quick-dating/setQuickMeetingsPeoples', data, {root: true})
+      }      
+    }).catch((e) => {
+      console.log('error', e);
     })
   },
 
