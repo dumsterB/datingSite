@@ -68,7 +68,7 @@ export default {
     return {
       selectedDay: 1,
       selectedMonth: 'January',
-      selectedYear: 2021,
+      selectedYear: 2003,
       optionsMonths: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
       form:{
         full_name:'',
@@ -90,7 +90,7 @@ export default {
     },
     optionsYear() {
       const years = [];
-      for (let i = 2021; i >= 1940; i--) {
+      for (let i = 2003; i >= 1940; i--) {
         years.push(i)
       }
       return years
