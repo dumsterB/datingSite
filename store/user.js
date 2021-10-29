@@ -134,7 +134,7 @@ export const actions = {
   },
   async recover(ctx, phone) {
     await load('/v2/auth/recover','post',  {phone}).then(data => {
-      
+
     }).catch(e => {
       throw e;
     })
