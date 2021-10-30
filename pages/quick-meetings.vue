@@ -1,11 +1,11 @@
 <template>
 
   <div class="quick-meetings">
-    <button class="button  button__full quick-meetings__button changeState d-flex" v-if="!isVisable" @click="changeState">
-        {{$t('Lesson')}}
+  <button class="button  button__full quick-meetings__button changeState d-flex" v-if="!isVisable" @click="changeState">
+        Пройти обучение
     </button>
     <button class="button  button__full quick-meetings__button changeState d-flex" v-if="isVisable" @click="skipLesson">
-        {{$t('Skip')}}
+       Пропустить
     </button>
     <div class="content" style="width: 90%" >
       <div class="tutorial" :class="isVisable ? '' :'isVisable'">
