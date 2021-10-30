@@ -1,5 +1,5 @@
 <template>
-  <div class="tutorial">
+  <div class="tutorial" :class="isVisable ? 'isVisable' :''">
     <img v-if="isMobile" :src="`/img/mob_step_${currentSlide}.png`" />
     <img v-else :src="`/img/step_${currentSlide}.png`" />
     <div class="tooltip" :class="`tooltip__step__${currentSlide}`">
@@ -18,6 +18,7 @@ export default {
   data() {
     return {
       currentSlide: 1,
+      isVisable:false ,
       currentText: "Get more attention. Choose your location",
       windowWidth: window.innerWidth,
       isMobile: false
@@ -75,6 +76,7 @@ export default {
       if (this.currentSlide === 5) {
         this.$parent.$emit("setPadding");
         this.$emit("setTutorial");
+        this.isVisable=true
       } else {
         const id = this.currentSlide + 1;
         const nextSlide = this.slides.find(el => el.id === id);
@@ -85,3 +87,8 @@ export default {
   }
 };
 </script>
+<style>
+.isVisable{
+  display: none;
+}
+</style>
