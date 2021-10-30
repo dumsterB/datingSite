@@ -1,30 +1,51 @@
 <template>
+
   <div class="quick-meetings">
-    <div class="content">
+    <button class="button  button__full quick-meetings__button changeState d-flex" v-if="!isVisable" @click="changeState">
+        {{$t('Lesson')}}
+    </button>
+    <button class="button  button__full quick-meetings__button changeState d-flex" v-if="isVisable" @click="skipLesson">
+        {{$t('Skip')}}
+    </button>
+    <div class="content" style="width: 90%" >
+      <div class="tutorial" :class="isVisable ? '' :'isVisable'">
+        <img v-if="isMobile" :src="`/img/mob_step_${currentSlide}.png`" />
+        <img v-else :src="`/img/step_${currentSlide}.png`" />
+        <div class="tooltip" :class="`tooltip__step__${currentSlide}`">
+          <div class="row">
+            <span>{{ currentSlide }}.</span>
+            <p>{{ $t(currentText) }}</p>
+          </div>
+          <div class="next" @click="next">{{ $t("Next") }}</div>
+        </div>
+      </div>
       <div class="quick-meetings__map-block">
-        <button class="button button__full quick-meetings__button">
+        <button class="button button__full quick-meetings__button d-flex">
+          <router-link :to="{path: '/profile' }">
+            {{$t('End dating')}}
+          </router-link>
+        </button>
+        <br>
+        <button class="button button__full quick-meetings__button d-flex">
           <router-link :to="{path: '/profile' }">
             {{$t('End dating')}}
           </router-link>
         </button>
         <div class="quick-meetings__map">
-          <GmapMap :center="map" :zoom="10" style="flex:1">
+          <GmapMap :center="map" :zoom="2" style="flex:1">
             <GmapCustomMarker
               v-for="(m, i) in quickMeetingsPeoples"
               :key="i"
               :marker="{ lat: m.geo[1], lng: m.geo[0] }"
             >
-              <!--UserMarker
-                :img="m.pic ? m.pic.url : require('../static/img/avatar.jpg')"
-                :peopleId="m._id"
-                :textMessage="textMessage"
-              /-->
               <UserMarker
                 :img="m.pic ? m.pic.url : require('../static/img/avatar.jpg')"
                 :peopleId="m._id"
+                :textMessage="textMessage"
               />
             </GmapCustomMarker>
           </GmapMap>
+
         </div>
         <QuickMeetingList :quickMeetingsPeoples="quickMeetingsPeoples" />
       </div>
@@ -33,7 +54,7 @@
       v-show="showModal"
       :modal="modals.QuickMeetingsModal"
       @close="close"
-      @next="next"
+      @next="nextS"
     />
     <QuickMeetingsMessageModal
       :modal="modals.QuickMeetingsMessageModal"
@@ -50,6 +71,7 @@ import QuickMeetingsModal from "@/components/modals/QuickMeetingsModal";
 import QuickMeetingsMessageModal from "@/components/modals/QuickMeetingsMessageModal";
 import GmapCustomMarker from "vue2-gmap-custom-marker";
 import UserMarker from "@/components/UserMarker.vue";
+import Tutorial from '../components/settings/tutorial'
 
 export default {
   components: {
@@ -57,7 +79,8 @@ export default {
     QuickMeetingList,
     QuickMeetingsMessageModal,
     GmapCustomMarker,
-    UserMarker
+    UserMarker,
+    Tutorial
   },
   data() {
     return {
@@ -82,7 +105,12 @@ export default {
         {
           position: { lat: 46.4814079922, lng: 30.70033 }
         }
-      ]
+      ],
+      currentSlide: 1,
+      isVisable:false ,
+      currentText: "Get more attention. Choose your location",
+      windowWidth: window.innerWidth,
+      isMobile: false
     };
   },
   async mounted() {
@@ -97,12 +125,16 @@ export default {
       });
     } else {
       /* местоположение НЕ доступно */
-      console.log('geo is disabled');
     }
+    this.checkMobile();
+    this.$nextTick(() => {
+      window.addEventListener("resize", this.onResize);
+    });
   },
   computed: {
     quickMeetingsPeoples() {
       return this.$store.getters["quick-dating/getQuickMeetingsPeoples"];
+      console.log(this.$store.getters["quick-dating/getQuickMeetingsPeoples"],'quick meetingsауц')
     },
     user() {
       return this.$store.getters["user/user"];
@@ -111,21 +143,90 @@ export default {
       if(this.user.profile){
         return this.user.profile.gender === 'male' ? true : false;
       }
+    },
+    slides() {
+      return [
+        {
+          id: 1,
+          text: "Get more attention. Choose your location"
+        },
+        {
+          id: 2,
+          text: "Chat with those who are ready for meetings"
+        },
+        {
+          id: 3,
+          text: "And attach SMS so that users can see it"
+        },
+        {
+          id: 4,
+          text: "Going into fast dates, you get on the list of ready to meet"
+        },
+        {
+          id: 5,
+          text: "Any plans for the evening? Click \"End Dating\""
+        }
+      ];
     }
   },
   methods: {
+    skipLesson(){
+      this.isVisable=!this.isVisable
+    },
+    changeState(){
+      this.isVisable=!this.isVisable
+      this.currentSlide=1
+    },
+    checkMobile(){
+      if (this.windowWidth < 500) {
+        this.isMobile = true;
+      } else {
+        this.isMobile = false;
+      }
+    },
+    onResize() {
+      this.windowWidth = window.innerWidth;
+      this.checkMobile();
+    },
+    next() {
+      if (this.currentSlide === 5) {
+        this.$parent.$emit("setPadding");
+        this.$emit("setTutorial");
+        this.isVisable=false
+      } else {
+        const id = this.currentSlide + 1;
+        const nextSlide = this.slides.find(el => el.id === id);
+        this.currentSlide = nextSlide.id;
+        this.currentText = nextSlide.text;
+      }
+    },
     close() {
       this.modals.QuickMeetingsModal.show = false;
     },
-    next() {
+    nextS() {
       this.modals.QuickMeetingsModal.show = false;
       this.modals.QuickMeetingsMessageModal.show = true;
     },
     nextStep() {
       this.modals.QuickMeetingsMessageModal.show = false;
     }
-  }
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.onResize);
+  },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+
+@media (max-width: 1200px) {
+  .content{
+    margin-top: 80px;
+    margin-left: 30px;
+  }
+  .changeState{
+    margin-top: 70px;
+    position: fixed;
+  }
+}
+</style>
