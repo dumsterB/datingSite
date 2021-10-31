@@ -1,6 +1,6 @@
 <template>
 
-  <div class="quick-meetings" v-if="user.profile">
+  <div class="quick-meetings" v-if="user.profile && map">
   <button class="button  button__full quick-meetings__button changeState d-flex" v-if="!isVisable" @click="changeState">
         Пройти обучение
     </button>
@@ -43,13 +43,16 @@
                 :peopleId="m._id"
                 :textMessage="textMessage"
               />
+            </GmapCustomMarker>
+            <GmapCustomMarker
+              :marker="{ lat: map.lat, lng: map.lng }"
+            >
               <UserMarker
                 :img="(user.profile.pictures[0]) ? user.profile.pictures[0].url : require('../static/img/avatar.jpg')"
                 :peopleId="user._id"
               />
             </GmapCustomMarker>
           </GmapMap>
-
         </div>
         <QuickMeetingList :quickMeetingsPeoples="quickMeetingsPeoples" />
       </div>
