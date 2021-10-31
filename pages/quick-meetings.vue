@@ -58,6 +58,14 @@
                 :textMessage="textMessage"
               />
             </GmapCustomMarker>
+            <GmapCustomMarker
+              :marker="{ lat: map.lat, lng: map.lng }"
+            >
+              <UserMarker
+                :img="(user.profile.pictures[0]) ? user.profile.pictures[0].url : require('../static/img/avatar.jpg')"
+                :peopleId="user._id"
+              />
+            </GmapCustomMarker>
           </GmapMap>
 
         </div>
