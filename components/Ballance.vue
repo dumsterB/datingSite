@@ -34,7 +34,6 @@
           :price="0.99"
           :activeItem="activeItem"
           :class="[activeItem === '1монет'? 'profile-cardd' :'']"
-          @click="changeFirst"
           @setCheckCard="setCheckCard"
         />
         <ProfileCard
@@ -42,14 +41,12 @@
           :price="8.99"
           :activeItem="activeItem"
           :class="[activeItem === '10монет'? 'profile-cardd' :'']"
-          @click="changeSecond"
           @setCheckCard="setCheckCard"
         />
         <ProfileCard
           :title="50"
           :price="32.99"
           :activeItem="activeItem"
-          @click="changeThird"
           :class="[activeItem === '50монет'? 'profile-cardd' :'']"
           @setCheckCard="setCheckCard"
         />
@@ -62,7 +59,6 @@
           @setCheckCard="setCheckCard"
         />
       </div>
-      {{activeItem}}
       <button class="button button__full">
         {{ $t("Pay with") }} <LiqpayIcon />
       </button>
