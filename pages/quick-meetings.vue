@@ -233,6 +233,9 @@ export default {
 <style scoped>
 
 @media (max-width: 1200px) {
+  .modal{
+    width: 350px;
+  }
   .content{
     margin-top: 80px;
     margin-left: 30px;
@@ -240,6 +243,16 @@ export default {
   .changeState{
     margin-top: 70px;
     position: fixed;
+  }
+  .modal-vue .modal {
+    z-index: 9999;
+    margin-left: 1px!important;
+    justify-content: center;
+    display: flex;
+    background: none;
+  }
+  .modal .button {
+    max-width: 100px!important;
   }
 }
 .modal-vue .overlay {
@@ -271,12 +284,6 @@ export default {
   color: white;
   box-shadow: none;
   border-radius: 50px;
-}
-.textModal{
-  margin-top:70px;
-  justify-content: center;
-  display: flex;
-  align-content: center;
 }
 .modal .close {
   position: absolute;
