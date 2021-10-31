@@ -1,6 +1,6 @@
 <template>
 
-  <div class="quick-meetings">
+  <div class="quick-meetings"  v-if="user.profile && map">
     <!-- app -->
     <div id="app" class="modal-vue">
 
