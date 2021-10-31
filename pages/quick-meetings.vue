@@ -11,8 +11,7 @@
 
       <!-- modal -->
       <div class="modal" v-if="showModal">
-        <button class="button  button__full quick-meetings__button close" @click="showModal = false">Закрыть</button>
-        <h2 class="textModal">Пожалуйста включите GPS</h2>
+        <button class="button close" @click="showModal = false">Пожалуйста,включите GPS</button>
       </div>
 
     </div>
@@ -254,30 +253,40 @@ export default {
 }
 
 .modal-vue .modal {
-  width: 700px;
   z-index: 9999;
-  height: 200px;
   margin-left: 200px;
-  padding: 20px 30px;
   justify-content: center;
   display: flex;
-  background-color: #fff;
+  background: none;
 }
 
 .modal-vue .close{
   position: absolute;
-  top: 10px;
-  right: 10px;
+  justify-content: center;
+  display: flex;
+  align-content: center;
 }
 .close{
   background: linear-gradient(94deg, #133983 -12.18%, #71BC6F 134.71%);
   color: white;
   box-shadow: none;
+  border-radius: 50px;
 }
 .textModal{
   margin-top:70px;
   justify-content: center;
   display: flex;
   align-content: center;
+}
+.modal .close {
+  position: absolute;
+  top: 1px!important;
+  left: 20px!important;
+  margin-top: 25px;
+  width: 500px!important;
+  cursor: pointer;
+}
+.modal .button {
+  max-width: 300px!important;
 }
 </style>
