@@ -11,8 +11,8 @@
 
       <!-- modal -->
       <div class="modal" v-if="showModal">
-        <button class="close" @click="showModal = false">x</button>
-        <h3>Пожалуйста включите GPS</h3>
+        <button class="button  button__full quick-meetings__button close" @click="showModal = false">Закрыть</button>
+        <h2 class="textModal">Пожалуйста включите GPS</h2>
       </div>
 
     </div>
@@ -254,8 +254,9 @@ export default {
 }
 
 .modal-vue .modal {
-  width: 500px;
+  width: 700px;
   z-index: 9999;
+  height: 200px;
   margin-left: 200px;
   padding: 20px 30px;
   justify-content: center;
@@ -272,5 +273,11 @@ export default {
   background: linear-gradient(94deg, #133983 -12.18%, #71BC6F 134.71%);
   color: white;
   box-shadow: none;
+}
+.textModal{
+  margin-top:70px;
+  justify-content: center;
+  display: flex;
+  align-content: center;
 }
 </style>
