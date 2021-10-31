@@ -1,6 +1,6 @@
 <template>
 
-  <div class="quick-meetings">
+  <div class="quick-meetings" v-if="user.profile">
   <button class="button  button__full quick-meetings__button changeState d-flex" v-if="!isVisable" @click="changeState">
         Пройти обучение
     </button>
@@ -42,6 +42,10 @@
                 :img="m.pic ? m.pic.url : require('../static/img/avatar.jpg')"
                 :peopleId="m._id"
                 :textMessage="textMessage"
+              />
+              <UserMarker
+                :img="(user.profile.pictures[0]) ? user.profile.pictures[0].url : require('../static/img/avatar.jpg')"
+                :peopleId="user._id"
               />
             </GmapCustomMarker>
           </GmapMap>
@@ -118,6 +122,7 @@ export default {
       navigator.geolocation.getCurrentPosition(position => {
         this.map.lat = position.coords.latitude;
         this.map.lng = position.coords.longitude;
+        console.log(`${this.map.lat},${this.map.lng}`)
         this.$store.dispatch(
           "quick-dating/fetchAllQuickMeetingsPeoples",
           `${this.map.lat},${this.map.lng}`
@@ -141,7 +146,7 @@ export default {
     },
     showModal(){
       if(this.user.profile){
-        return this.user.profile.gender === 'male' ? true : false;
+        return this.user.profile.gender === 'male';
       }
     },
     slides() {

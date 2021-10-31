@@ -29,7 +29,7 @@ class WS {
   }
 
   connect() {
-    this.socket = new WebSocket('wss://' + process.env.API_HOST + ':8000');
+    this.socket = new WebSocket(`wss://${process.env.API_HOST}:8000`);
 
     this.socket.onopen = () => {
       console.log('ws connected');
