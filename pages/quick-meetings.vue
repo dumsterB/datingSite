@@ -1,7 +1,22 @@
 <template>
 
-  <div class="quick-meetings" v-if="user.profile && map">
-  <button class="button  button__full quick-meetings__button changeState d-flex" v-if="!isVisable" @click="changeState">
+  <div class="quick-meetings">
+    <!-- app -->
+    <div id="app" class="modal-vue">
+
+      <!-- button show -->
+
+      <!-- overlay -->
+      <div class="overlay" v-if="showModal" @click="showModal = true"></div>
+
+      <!-- modal -->
+      <div class="modal" v-if="showModal">
+        <button class="close" @click="showModal = false">x</button>
+        <h3>Пожалуйста включите GPS</h3>
+      </div>
+
+    </div>
+    <button class="button  button__full quick-meetings__button changeState d-flex" v-if="!isVisable" @click="changeState">
         Пройти обучение
     </button>
     <button class="button  button__full quick-meetings__button changeState d-flex" v-if="isVisable" @click="skipLesson">
@@ -44,15 +59,8 @@
                 :textMessage="textMessage"
               />
             </GmapCustomMarker>
-            <GmapCustomMarker
-              :marker="{ lat: map.lat, lng: map.lng }"
-            >
-              <UserMarker
-                :img="(user.profile.pictures[0]) ? user.profile.pictures[0].url : require('../static/img/avatar.jpg')"
-                :peopleId="user._id"
-              />
-            </GmapCustomMarker>
           </GmapMap>
+
         </div>
         <QuickMeetingList :quickMeetingsPeoples="quickMeetingsPeoples" />
       </div>
@@ -101,6 +109,7 @@ export default {
           show: false
         }
       },
+      showModal: true,
       map: {
         lat: 0,
         lng: 0
@@ -120,20 +129,19 @@ export default {
       isMobile: false
     };
   },
-  async mounted() {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(position => {
-        this.map.lat = position.coords.latitude;
-        this.map.lng = position.coords.longitude;
-        console.log(`${this.map.lat},${this.map.lng}`)
-        this.$store.dispatch(
-          "quick-dating/fetchAllQuickMeetingsPeoples",
-          `${this.map.lat},${this.map.lng}`
-        );
-      });
-    } else {
-      /* местоположение НЕ доступно */
-    }
+   mounted() {
+   if ("geolocation" in navigator) {
+     navigator.geolocation.getCurrentPosition(position => {
+       this.map.lat = position.coords.latitude;
+       this.map.lng = position.coords.longitude;
+       this.$store.dispatch(
+         "quick-dating/fetchAllQuickMeetingsPeoples",
+         `${this.map.lat},${this.map.lng}`
+       );
+     });
+   } else {
+     /* местоположение НЕ доступно */
+   }
     this.checkMobile();
     this.$nextTick(() => {
       window.addEventListener("resize", this.onResize);
@@ -141,15 +149,14 @@ export default {
   },
   computed: {
     quickMeetingsPeoples() {
-      return this.$store.getters["quick-dating/getQuickMeetingsPeoples"];
-      console.log(this.$store.getters["quick-dating/getQuickMeetingsPeoples"],'quick meetingsауц')
+        return this.$store.getters["quick-dating/getQuickMeetingsPeoples"];
     },
     user() {
       return this.$store.getters["user/user"];
     },
     showModal(){
       if(this.user.profile){
-        return this.user.profile.gender === 'male';
+        return this.user.profile.gender === 'male' ? true : false;
       }
     },
     slides() {
@@ -224,17 +231,46 @@ export default {
   },
 };
 </script>
-
 <style scoped>
 
 @media (max-width: 1200px) {
   .content{
     margin-top: 80px;
-    margin-left: 20px;
+    margin-left: 30px;
   }
   .changeState{
     margin-top: 70px;
     position: fixed;
   }
+}
+.modal-vue .overlay {
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.modal-vue .modal {
+  width: 500px;
+  z-index: 9999;
+  margin-left: 200px;
+  padding: 20px 30px;
+  justify-content: center;
+  display: flex;
+  background-color: #fff;
+}
+
+.modal-vue .close{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.close{
+  background: linear-gradient(94deg, #133983 -12.18%, #71BC6F 134.71%);
+  color: white;
+  box-shadow: none;
 }
 </style>
