@@ -123,7 +123,7 @@ export default {
           show: false
         }
       },
-      errorModal: falsa,
+      errorModal: false,
       errorMessage: '',
       map: {
         lat: null,
@@ -158,11 +158,6 @@ export default {
     user() {
       return this.$store.getters["user/user"];
     },
-    // showModal() {
-    //   if (this.user.profile) {
-    //     return this.user.profile.gender === 'male';
-    //   }
-    // },
     slides() {
       return [
         {
