@@ -46,7 +46,7 @@
           </router-link>
         </button>
         <div class="quick-meetings__map">
-          <GmapMap :center="map" :zoom="8" style="flex:1">
+          <GmapMap :center="map" :zoom="14" style="flex:1">
             <GmapCustomMarker
               v-for="(m, i) in quickMeetingsPeoples"
               :key="i"
@@ -137,18 +137,25 @@ export default {
     };
   },
    mounted() {
-   if ("geolocation" in navigator) {
-     navigator.geolocation.getCurrentPosition(position => {
-       this.map.lat = position.coords.latitude;
-       this.map.lng = position.coords.longitude;
-       this.$store.dispatch(
-         "quick-dating/fetchAllQuickMeetingsPeoples",
-         `${this.map.lat},${this.map.lng}`
-       );
-     });
-   } else {
-     /* местоположение НЕ доступно */
-   }
+    if ("geolocation" in navigator) {
+      const location_timeout = setTimeout("geolocFail()", 10000);
+      navigator.geolocation.getCurrentPosition(position => {
+        clearTimeout(location_timeout);
+        this.map.lat = position.coords.latitude;
+        this.map.lng = position.coords.longitude;
+        this.$store.dispatch(
+          "quick-dating/fetchAllQuickMeetingsPeoples",
+          `${this.map.lat},${this.map.lng}`
+        );
+      }, function (error) {
+        clearTimeout(location_timeout);
+        geolocFail();
+        console.log(error, 'geolocation')
+      },);
+    } else {
+      /* местоположение НЕ доступно */
+      geolocFail();
+    }
     this.checkMobile();
     this.$nextTick(() => {
       window.addEventListener("resize", this.onResize);
