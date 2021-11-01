@@ -1,30 +1,36 @@
 <template>
 
-  <div class="quick-meetings"  v-if="user.profile && map">
+  <div class="quick-meetings" v-if="user.profile && map">
     <!-- app -->
     <div id="app" class="modal-vue">
 
       <!-- button show -->
 
       <!-- overlay -->
-      <div class="overlay" v-if="showModal" @click="showModal = true"></div>
+      <div class="overlay" v-if="errorModal"></div>
+
+<!--      &lt;!&ndash; modal &ndash;&gt;-->
+<!--      <div class="modal" v-if="showModal">-->
+<!--        <button class="button close" @click="showModal = false">Пожалуйста,включите GPS</button>-->
+<!--      </div>-->
 
       <!-- modal -->
-      <div class="modal" v-if="showModal">
-        <button class="button close" @click="showModal = false">Пожалуйста,включите GPS</button>
+      <div class="modal" v-if="errorModal">
+        <button class="button close" @click="getLocation">{{errorMessage}}</button>
       </div>
 
     </div>
-    <button class="button  button__full quick-meetings__button changeState d-flex" v-if="!isVisable" @click="changeState">
-        Пройти обучение
+    <button class="button  button__full quick-meetings__button changeState d-flex" v-if="!isVisable"
+            @click="changeState">
+      Пройти обучение
     </button>
     <button class="button  button__full quick-meetings__button changeState d-flex" v-if="isVisable" @click="skipLesson">
-       Пропустить
+      Пропустить
     </button>
-    <div class="content" style="width: 90%" >
+    <div class="content" style="width: 90%">
       <div class="tutorial" :class="isVisable ? '' :'isVisable'">
-        <img v-if="isMobile" :src="`/img/mob_step_${currentSlide}.png`" />
-        <img v-else :src="`/img/step_${currentSlide}.png`" />
+        <img v-if="isMobile" :src="`/img/mob_step_${currentSlide}.png`"/>
+        <img v-else :src="`/img/step_${currentSlide}.png`"/>
         <div class="tooltip" :class="`tooltip__step__${currentSlide}`">
           <div class="row">
             <span>{{ currentSlide }}.</span>
@@ -36,13 +42,13 @@
       <div class="quick-meetings__map-block">
         <button class="button button__full quick-meetings__button d-flex">
           <router-link :to="{path: '/profile' }">
-            {{$t('End dating')}}
+            {{ $t('End dating') }}
           </router-link>
         </button>
         <br>
         <button class="button button__full quick-meetings__button d-flex">
           <router-link :to="{path: '/profile' }">
-            {{$t('End dating')}}
+            {{ $t('End dating') }}
           </router-link>
         </button>
         <div class="quick-meetings__map">
@@ -60,6 +66,7 @@
             </GmapCustomMarker>
             <GmapCustomMarker
               :marker="{ lat: map.lat, lng: map.lng }"
+              v-if="map.lat && map.lng"
             >
               <UserMarker
                 :img="(user.profile.pictures[0]) ? user.profile.pictures[0].url : require('../static/img/avatar.jpg')"
@@ -69,7 +76,7 @@
           </GmapMap>
 
         </div>
-        <QuickMeetingList :quickMeetingsPeoples="quickMeetingsPeoples" />
+        <QuickMeetingList :quickMeetingsPeoples="quickMeetingsPeoples"/>
       </div>
     </div>
     <QuickMeetingsModal
@@ -116,42 +123,29 @@ export default {
           show: false
         }
       },
-      showModal: true,
+      errorModal: falsa,
+      errorMessage: '',
       map: {
-        lat: 0,
-        lng: 0
+        lat: null,
+        lng: null
       },
       markers: [
         {
-          position: { lat: 46.4814079999, lng: 30.70033 }
+          position: {lat: 46.4814079999, lng: 30.70033}
         },
         {
-          position: { lat: 46.4814079922, lng: 30.70033 }
+          position: {lat: 46.4814079922, lng: 30.70033}
         }
       ],
       currentSlide: 1,
-      isVisable:false ,
+      isVisable: false,
       currentText: "Get more attention. Choose your location",
       windowWidth: window.innerWidth,
       isMobile: false
     };
   },
-   mounted() {
-   if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(position => {
-        this.map.lat = position.coords.latitude;
-        this.map.lng = position.coords.longitude;
-        this.$store.dispatch(
-          "quick-dating/fetchAllQuickMeetingsPeoples",
-          `${this.map.lat},${this.map.lng}`
-        );
-      }, function (error) {
-        console.log(error)
-      }, {timeout: 10000});
-    } else {
-      /* местоположение НЕ доступно */
-      console.log('местоположение НЕ доступно')
-    }
+  mounted() {
+    this.getLocation()
     this.checkMobile();
     this.$nextTick(() => {
       window.addEventListener("resize", this.onResize);
@@ -159,16 +153,16 @@ export default {
   },
   computed: {
     quickMeetingsPeoples() {
-        return this.$store.getters["quick-dating/getQuickMeetingsPeoples"];
+      return this.$store.getters["quick-dating/getQuickMeetingsPeoples"];
     },
     user() {
       return this.$store.getters["user/user"];
     },
-    showModal(){
-      if(this.user.profile){
-        return this.user.profile.gender === 'male' ? true : false;
-      }
-    },
+    // showModal() {
+    //   if (this.user.profile) {
+    //     return this.user.profile.gender === 'male';
+    //   }
+    // },
     slides() {
       return [
         {
@@ -195,14 +189,46 @@ export default {
     }
   },
   methods: {
-    skipLesson(){
-      this.isVisable=!this.isVisable
+    getLocation() {
+      this.errorModal = false;
+      if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(position => {
+          this.map.lat = position.coords.latitude;
+          this.map.lng = position.coords.longitude;
+          this.$store.dispatch(
+            "quick-dating/fetchAllQuickMeetingsPeoples",
+            `${this.map.lat},${this.map.lng}`
+          );
+        }, function (error) {
+          this.errorModal = true
+          switch (error.code) {
+            case 1:
+              this.errorMessage = 'Turn on geolocation and try again'
+              break
+            case 2:
+              this.errorMessage = 'We can not find you, try later'
+              break
+            case 3:
+              this.errorMessage = 'Try again, that took too much time'
+              break
+          }
+          console.log(error)
+        }.bind(this), {timeout: 10000});
+      } else {
+        this.errorModal = true
+        this.errorMessage = 'Your browser does not support geolocation'
+        /* местоположение НЕ доступно */
+        console.log('местоположение НЕ доступно')
+      }
     },
-    changeState(){
-      this.isVisable=!this.isVisable
-      this.currentSlide=1
+    skipLesson() {
+      this.isVisable = !this.isVisable
     },
-    checkMobile(){
+    changeState() {
+      this.isVisable = !this.isVisable
+      this.currentSlide = 1
+    },
+    checkMobile() {
       if (this.windowWidth < 500) {
         this.isMobile = true;
       } else {
@@ -217,7 +243,7 @@ export default {
       if (this.currentSlide === 5) {
         this.$parent.$emit("setPadding");
         this.$emit("setTutorial");
-        this.isVisable=false
+        this.isVisable = false
       } else {
         const id = this.currentSlide + 1;
         const nextSlide = this.slides.find(el => el.id === id);
@@ -244,28 +270,33 @@ export default {
 <style scoped>
 
 @media (max-width: 1200px) {
-  .modal{
+  .modal {
     width: 350px;
   }
-  .content{
+
+  .content {
     margin-top: 80px;
     margin-left: 20px;
   }
-  .changeState{
+
+  .changeState {
     margin-top: 70px;
     position: fixed;
   }
+
   .modal-vue .modal {
     z-index: 9999;
-    margin-left: 1px!important;
+    margin-left: 1px !important;
     justify-content: center;
     display: flex;
     background: none;
   }
+
   .modal .button {
-    max-width: 100px!important;
+    max-width: 100px !important;
   }
 }
+
 .modal-vue .overlay {
   position: fixed;
   z-index: 9998;
@@ -284,27 +315,30 @@ export default {
   background: none;
 }
 
-.modal-vue .close{
+.modal-vue .close {
   position: absolute;
   justify-content: center;
   display: flex;
   align-content: center;
 }
-.close{
+
+.close {
   background: linear-gradient(94deg, #133983 -12.18%, #71BC6F 134.71%);
   color: white;
   box-shadow: none;
   border-radius: 50px;
 }
+
 .modal .close {
   position: absolute;
-  top: 1px!important;
-  left: 20px!important;
+  top: 1px !important;
+  left: 20px !important;
   margin-top: 25px;
-  width: 500px!important;
+  width: 500px !important;
   cursor: pointer;
 }
+
 .modal .button {
-  max-width: 300px!important;
+  max-width: 300px !important;
 }
 </style>
