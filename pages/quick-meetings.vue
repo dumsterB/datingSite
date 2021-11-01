@@ -46,7 +46,7 @@
           </router-link>
         </button>
         <div class="quick-meetings__map">
-          <GmapMap :center="map" :zoom="18" style="flex:1">
+          <GmapMap :center="map" :zoom="8" style="flex:1">
             <GmapCustomMarker
               v-for="(m, i) in quickMeetingsPeoples"
               :key="i"
