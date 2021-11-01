@@ -46,7 +46,7 @@
           </router-link>
         </button>
         <div class="quick-meetings__map">
-          <GmapMap :center="map" :zoom="14" style="flex:1">
+          <GmapMap :center="map" :zoom="8" style="flex:1">
             <GmapCustomMarker
               v-for="(m, i) in quickMeetingsPeoples"
               :key="i"
@@ -137,10 +137,8 @@ export default {
     };
   },
    mounted() {
-    if ("geolocation" in navigator) {
-      const location_timeout = setTimeout("geolocFail()", 10000);
+   if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(position => {
-        clearTimeout(location_timeout);
         this.map.lat = position.coords.latitude;
         this.map.lng = position.coords.longitude;
         this.$store.dispatch(
@@ -148,13 +146,11 @@ export default {
           `${this.map.lat},${this.map.lng}`
         );
       }, function (error) {
-        clearTimeout(location_timeout);
-        geolocFail();
-        console.log(error, 'geolocation')
-      },);
+        console.log(error)
+      }, {timeout: 10000});
     } else {
       /* местоположение НЕ доступно */
-      geolocFail();
+      console.log('местоположение НЕ доступно')
     }
     this.checkMobile();
     this.$nextTick(() => {
