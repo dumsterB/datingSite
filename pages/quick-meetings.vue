@@ -137,21 +137,23 @@ export default {
     };
   },
    mounted() {
-   if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(position => {
-        this.map.lat = position.coords.latitude;
-        this.map.lng = position.coords.longitude;
-        this.$store.dispatch(
-          "quick-dating/fetchAllQuickMeetingsPeoples",
-          `${this.map.lat},${this.map.lng}`
-        );
-      }, function (error) {
-        console.log(error)
-      }, {timeout: 10000});
-    } else {
-      /* местоположение НЕ доступно */
-      console.log('местоположение НЕ доступно')
-    }
+  setTimeout(()=>{
+      if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(position => {
+          this.map.lat = position.coords.latitude;
+          this.map.lng = position.coords.longitude;
+          this.$store.dispatch(
+            "quick-dating/fetchAllQuickMeetingsPeoples",
+            `${this.map.lat},${this.map.lng}`
+          );
+        }, function (error) {
+          console.log(error)
+        }, {timeout: 10000});
+      } else {
+        /* местоположение НЕ доступно */
+        console.log('местоположение НЕ доступно')
+      }
+    },1000)
     this.checkMobile();
     this.$nextTick(() => {
       window.addEventListener("resize", this.onResize);
