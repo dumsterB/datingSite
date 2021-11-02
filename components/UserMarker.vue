@@ -1,7 +1,7 @@
 <template>
   <div class="user-marker">
     <div class="user-marker__circle">
-      <div class="user-marker__avatar"  v-if="textMessageShow ? 'positionChange' : ''">
+      <div class="user-marker__avatar">
         <div @click="openProfile">
           <img :src="img" alt="" />
         </div>
