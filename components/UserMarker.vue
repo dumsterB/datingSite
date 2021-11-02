@@ -2,9 +2,9 @@
   <div class="user-marker">
     <div class="user-marker__circle">
       <div class="user-marker__avatar">
-        <router-link tag="div"  @click="openProfile">
+        <div  @click="openProfile">
           <img :src="img" alt="" />
-        </router-link>
+        </div>
       </div>
     </div>
     <div class="user-marker__triangle" ></div>
