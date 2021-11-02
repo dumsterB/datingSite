@@ -40,19 +40,13 @@
         </div>
       </div>
       <div class="quick-meetings__map-block">
-        <button class="button button__full quick-meetings__button d-flex">
-          <router-link :to="{path: '/profile' }">
-            {{ $t('End dating') }}
-          </router-link>
-        </button>
-        <br>
-        <button class="button button__full quick-meetings__button d-flex">
+        <button class="button button__full quick-meetings__button endDating d-flex">
           <router-link :to="{path: '/profile' }">
             {{ $t('End dating') }}
           </router-link>
         </button>
         <div class="quick-meetings__map">
-          <GmapMap :center="map" :zoom="5" style="flex:1">
+          <GmapMap :center="map" :zoom="16" style="flex:1">
             <GmapCustomMarker
               v-for="(m, i) in quickMeetingsPeoples"
               :key="i"
@@ -270,11 +264,11 @@ export default {
   }
 
   .content {
-    margin-top: 80px;
+    margin-top: 52px;
   }
 
   .changeState {
-    margin-top: 70px;
+    margin-top: 60px;
     position: fixed;
   }
 
@@ -335,4 +329,8 @@ export default {
 .modal .button {
   max-width: 300px !important;
 }
+.endDating{
+  opacity: 0.6!important;
+}
+
 </style>
