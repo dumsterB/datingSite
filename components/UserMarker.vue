@@ -42,7 +42,7 @@ export default {
       if(this.textMessageShow===false){
         this.textMessageShow=true
       }else{
-        this.$router.push(`/id/${peopleId}`)
+        this.$router.push(`/id/${this.peopleId}`)
       }
     }
   }
