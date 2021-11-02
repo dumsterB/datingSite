@@ -2,7 +2,7 @@
   <div class="user-marker">
     <div class="user-marker__circle">
       <div class="user-marker__avatar">
-        <router-link tag="div" @click="goProfile">
+        <router-link tag="div" :to="`/id/${peopleId}`">
           <img :src="img" alt="" />
         </router-link>
       </div>
@@ -29,23 +29,9 @@ export default {
     },
     textMessage: {
       type: String,
-      default: false
-    }
-  },
-  data(){
-    return{
-    }
-  },
-  methods:{
-    goProfile(){
-      if(this.textMessage===false){
-        this.textMessage=true
-      }else{
-        this.$router.push(`/id/${peopleId}`)
-      }
+      default: ""
     }
   }
-
 };
 </script>
 
@@ -66,7 +52,4 @@ export default {
     z-index: 2;
   }
 }
-
-
-
 </style>
