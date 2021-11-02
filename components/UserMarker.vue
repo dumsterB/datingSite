@@ -2,12 +2,12 @@
   <div class="user-marker">
     <div class="user-marker__circle">
       <div class="user-marker__avatar">
-        <router-link tag="div" :to="`/id/${peopleId}`">
+        <router-link tag="div" :to="`/id/${peopleId}`" @click="openProfile">
           <img :src="img" alt="" />
         </router-link>
       </div>
     </div>
-     <div class="user-marker__triangle" @click="textMessageShow=!textMessageShow"></div>
+    <div class="user-marker__triangle" ></div>
     <div v-if="textMessageShow" class="user-marker__message">
       <p class="user-marker__message_text">
         {{ textMessage }}
@@ -32,9 +32,18 @@ export default {
       default: ""
     }
   },
-   data(){
+  data(){
     return{
       textMessageShow:false
+    }
+  },
+  methods:{
+    openProfile(){
+      if(this.textMessageShow===false){
+        this.textMessageShow=true
+      }else{
+        this.$router.push(`/id/${peopleId}`)
+      }
     }
   }
 };
