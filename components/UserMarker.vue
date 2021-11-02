@@ -7,8 +7,8 @@
         </router-link>
       </div>
     </div>
-    <div class="user-marker__triangle"></div>
-    <div v-if="textMessage" class="user-marker__message">
+     <div class="user-marker__triangle" @click="textMessageShow=!textMessageShow"></div>
+    <div v-if="textMessageShow" class="user-marker__message">
       <p class="user-marker__message_text">
         {{ textMessage }}
       </p>
@@ -30,6 +30,11 @@ export default {
     textMessage: {
       type: String,
       default: ""
+    }
+  },
+   data(){
+    return{
+      textMessageShow:false
     }
   }
 };
