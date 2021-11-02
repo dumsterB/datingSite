@@ -43,8 +43,8 @@ export default {
     border-radius: 50%;
   }
   .user-marker__circle {
-    width: 57px;
-    height: 58px;
+    width: 60px;
+    height: 60px;
     position: relative;
     background-clip: padding-box;
     border: 5px solid transparent;
