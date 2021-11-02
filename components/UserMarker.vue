@@ -1,8 +1,8 @@
 <template>
   <div class="user-marker">
     <div class="user-marker__circle">
-      <div class="user-marker__avatar">
-        <div v-if="textMessageShow ? 'positionChange' : ''" @click="openProfile">
+      <div class="user-marker__avatar"  v-if="textMessageShow ? 'positionChange' : ''">
+        <div @click="openProfile">
           <img :src="img" alt="" />
         </div>
       </div>
