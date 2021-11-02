@@ -27,7 +27,7 @@
     <button class="button  button__full quick-meetings__button changeState d-flex" v-if="isVisable" @click="skipLesson">
       Пропустить
     </button>
-    <div class="content" style="width: 90%">
+    <div class="content" style="width: 100%">
       <div class="tutorial" :class="isVisable ? '' :'isVisable'">
         <img v-if="isMobile" :src="`/img/mob_step_${currentSlide}.png`"/>
         <img v-else :src="`/img/step_${currentSlide}.png`"/>
@@ -271,7 +271,6 @@ export default {
 
   .content {
     margin-top: 80px;
-    margin-left: 20px;
   }
 
   .changeState {
