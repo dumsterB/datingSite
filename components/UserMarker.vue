@@ -2,7 +2,7 @@
   <div class="user-marker">
     <div class="user-marker__circle">
       <div class="user-marker__avatar">
-        <div  @click="openProfile">
+        <div v-if="textMessageShow ? 'positionChange' : ''" @click="openProfile">
           <img :src="img" alt="" />
         </div>
       </div>
@@ -57,13 +57,17 @@ export default {
     border-radius: 50%;
   }
   .user-marker__circle {
-    width: 60px;
-    height: 60px;
+    width: 67px;
+    height: 68px;
     position: relative;
     background-clip: padding-box;
     border: 5px solid transparent;
     border-radius: 50%;
     z-index: 2;
+  }
+  .positionChange{
+   top:-10px;
+   left:-5px
   }
 }
 </style>
