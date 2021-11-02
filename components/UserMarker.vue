@@ -35,4 +35,21 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+@media (max-width: 1200px) {
+  .user-marker__avatar img {
+    width: 58px;
+    height: 59px;
+    border-radius: 50%;
+  }
+  .user-marker__circle {
+    width: 57px;
+    height: 58px;
+    position: relative;
+    background-clip: padding-box;
+    border: 5px solid transparent;
+    border-radius: 50%;
+    z-index: 2;
+  }
+}
+</style>
